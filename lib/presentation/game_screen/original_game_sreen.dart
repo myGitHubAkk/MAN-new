@@ -12,13 +12,13 @@ class OriginalGameScreen extends StatefulWidget {
 
 class _OriginalGameScreenState extends State<OriginalGameScreen> {
   int lenghtRow = 20;
-  static int sizeZone = 560;
+  static int sizeFieldPlay = 460;
   static List<int> snakePosition = [25, 45, 65, 85];
 
   static var randomNamber = Random();
-  int apple = randomNamber.nextInt(sizeZone);
+  int apple = randomNamber.nextInt(sizeFieldPlay);
   void generateNewApple() {
-    apple = randomNamber.nextInt(sizeZone);
+    apple = randomNamber.nextInt(sizeFieldPlay);
   }
 
   void startGame() {
@@ -29,7 +29,6 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
       snakeUpdate();
       if (isGameOver()) {
         timer.cancel();
-        _showGameOverScreen();
       }
     });
   }
@@ -39,8 +38,8 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
     setState(() {
       switch (direction) {
         case 'down':
-          if (snakePosition.last > sizeZone - lenghtRow) {
-            snakePosition.add(snakePosition.last + lenghtRow - sizeZone);
+          if (snakePosition.last > sizeFieldPlay - lenghtRow) {
+            snakePosition.add(snakePosition.last + lenghtRow - sizeFieldPlay);
           } else {
             snakePosition.add(snakePosition.last + lenghtRow);
           }
@@ -48,7 +47,7 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
 
         case 'up':
           if (snakePosition.last < lenghtRow) {
-            snakePosition.add(snakePosition.last - lenghtRow - sizeZone);
+            snakePosition.add(snakePosition.last - lenghtRow - sizeFieldPlay);
           } else {
             snakePosition.add(snakePosition.last - lenghtRow);
           }
@@ -97,29 +96,29 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
     return false;
   }
 
-  void _showGameOverScreen() {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Game Over траляля'),
-          content: Text(
-            'ти просрав з щотом:' + snakePosition.length.toString(),
-          ),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                setState(() {});
-                startGame();
-                Navigator.of(context).pop();
-              },
-              child: Text('Дубль 2'),
-            )
-          ],
-        );
-      },
-    );
-  }
+  // void _showGameOverScreen() {
+  //   showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return AlertDialog(
+  //         title: Text('Game Over траляля'),
+  //         content: Text(
+  //           'ти просрав з щотом:' + snakePosition.length.toString(),
+  //         ),
+  //         actions: <Widget>[
+  //           TextButton(
+  //             onPressed: () {
+  //               setState(() {});
+  //               startGame();
+  //               Navigator.of(context).pop();
+  //             },
+  //             child: Text('Дубль 2'),
+  //           )
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
 
   @override
   void initState() {
@@ -130,7 +129,9 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
   @override
   Widget build(BuildContext context) {
     final widthScreen = MediaQuery.of(context).size.width;
-    final sizeCanvas = widthScreen * 0.8;
+    final heightScreen = MediaQuery.of(context).size.height;
+    final widthFieldPlay = widthScreen * 0.8;
+    final heightFieldPlay = heightScreen * 0.6;
 
     return Scaffold(
       body: Center(
@@ -141,8 +142,8 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
               height: 20,
             ),
             Container(
-              width: sizeCanvas,
-              height: sizeCanvas,
+              width: widthFieldPlay,
+              height: heightFieldPlay,
               child: GestureDetector(
                 onVerticalDragUpdate: (details) {
                   if (direction != 'up' && details.delta.dy > 0) {
@@ -169,7 +170,7 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
                 child: Container(
                   child: GridView.builder(
                     physics: NeverScrollableScrollPhysics(),
-                    itemCount: sizeZone,
+                    itemCount: sizeFieldPlay,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: lenghtRow,
                     ),
