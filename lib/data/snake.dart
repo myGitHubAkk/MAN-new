@@ -12,7 +12,7 @@ class Snake {
 
   static bool isGameOn = true;
 
-  void GameOver() {
+  static void gameOver() {
     isGameOn = false;
     print(isGameOn);
   }
