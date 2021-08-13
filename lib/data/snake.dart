@@ -1,10 +1,21 @@
 import 'dart:async';
 
-import 'package:man_project/domain/SnakeBloc.dart';
+import 'package:man_project/domain/SnakeMove.dart';
 
 class Snake {
-  int tailPosition = 5;
-  static List<int> snakePosition = [5, 25, 45, 65];
+  static List<int> snakePosition = [
+    tailPosition,
+    tailPosition + lenghtRow,
+    tailPosition + lenghtRow * 2,
+    tailPosition + lenghtRow * 3,
+  ];
+
+  static bool isGameOn = true;
+
+  void GameOver() {
+    isGameOn = false;
+    print(isGameOn);
+  }
 
   // Snake() {
   //   snakeUpdate();

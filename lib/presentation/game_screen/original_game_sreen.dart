@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:man_project/data/snake.dart';
-import 'package:man_project/domain/SnakeBloc.dart';
+import 'package:man_project/domain/SnakeMove.dart';
 
 class OriginalGameScreen extends StatefulWidget {
   const OriginalGameScreen({Key? key}) : super(key: key);
@@ -12,10 +12,7 @@ class OriginalGameScreen extends StatefulWidget {
 }
 
 class _OriginalGameScreenState extends State<OriginalGameScreen> {
-  int lenghtRow = 20;
-  static int sizeZone = 560;
-
-  SnakeBloc snakeBloc = SnakeBloc();
+  SnakeMoveBloc snakeMoveBloc = SnakeMoveBloc();
   SnakeDirection snakeDirection = SnakeDirection.down;
 
   var snake = Snake.snakePosition;
@@ -23,7 +20,7 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
   void snakeUpdate() {
     Timer.periodic(Duration(milliseconds: 10), (timer) {
       setState(() {
-        snake = Snake.snakePosition;
+        // snake = Snake.snakePosition;
       });
     });
   }
@@ -50,65 +47,61 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
             Container(
               width: sizeCanvas,
               height: sizeCanvas,
-              child: StreamBuilder(
-                builder: (_, snapshot) {
-                  return GestureDetector(
-                    onVerticalDragUpdate: (details) {
-                      if (snakeDirection != SnakeDirection.up &&
-                          details.delta.dy > 0) {
-                        setState(() {
-                          snakeDirection = SnakeDirection.down;
-                        });
-                        snakeBloc.inputEventSink.add(snakeDirection);
-                      } else if (snakeDirection != SnakeDirection.down &&
-                          details.delta.dy < 0) {
-                        setState(() {
-                          snakeDirection = SnakeDirection.up;
-                        });
-                        snakeBloc.inputEventSink.add(snakeDirection);
-                      }
-                    },
-                    onHorizontalDragUpdate: (details) {
-                      if (snakeDirection != SnakeDirection.left &&
-                          details.delta.dx > 0) {
-                        setState(() {
-                          snakeDirection = SnakeDirection.right;
-                        });
-                        snakeBloc.inputEventSink.add(snakeDirection);
-                      } else if (snakeDirection != SnakeDirection.right &&
-                          details.delta.dx < 0) {
-                        setState(() {
-                          snakeDirection = SnakeDirection.left;
-                        });
-                        snakeBloc.inputEventSink.add(snakeDirection);
-                      }
-                    },
-                    child: Container(
-                      child: GridView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: sizeZone,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: lenghtRow,
-                        ),
-                        itemBuilder: (BuildContext context, int index) {
-                          if (Snake.snakePosition.contains(index)) {
-                            return Container(
-                              color: Colors.white,
-                            );
-                          }
-
-                          // if (index == apple) {
-                          //   return cell(Colors.green);
-                          // }
-
-                          return Container(
-                            color: Colors.grey[900],
-                          );
-                        },
-                      ),
-                    ),
-                  );
+              child: GestureDetector(
+                onVerticalDragUpdate: (details) {
+                  if (snakeDirection != SnakeDirection.up &&
+                      details.delta.dy > 0) {
+                    setState(() {
+                      snakeDirection = SnakeDirection.down;
+                    });
+                    snakeMoveBloc.inputEventSink.add(snakeDirection);
+                  } else if (snakeDirection != SnakeDirection.down &&
+                      details.delta.dy < 0) {
+                    setState(() {
+                      snakeDirection = SnakeDirection.up;
+                    });
+                    snakeMoveBloc.inputEventSink.add(snakeDirection);
+                  }
                 },
+                onHorizontalDragUpdate: (details) {
+                  if (snakeDirection != SnakeDirection.left &&
+                      details.delta.dx > 0) {
+                    setState(() {
+                      snakeDirection = SnakeDirection.right;
+                    });
+                    snakeMoveBloc.inputEventSink.add(snakeDirection);
+                  } else if (snakeDirection != SnakeDirection.right &&
+                      details.delta.dx < 0) {
+                    setState(() {
+                      snakeDirection = SnakeDirection.left;
+                    });
+                    snakeMoveBloc.inputEventSink.add(snakeDirection);
+                  }
+                },
+                child: Container(
+                  child: GridView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: sizeFieldPlay,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: lenghtRow,
+                    ),
+                    itemBuilder: (BuildContext context, int index) {
+                      if (Snake.snakePosition.contains(index)) {
+                        return Container(
+                          color: Colors.white,
+                        );
+                      }
+
+                      // if (index == apple) {
+                      //   return cell(Colors.green);
+                      // }
+
+                      return Container(
+                        color: Colors.grey[900],
+                      );
+                    },
+                  ),
+                ),
               ),
             ),
             Container(
