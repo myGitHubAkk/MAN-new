@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:man_project/data/snake.dart';
+
 const int lenghtRow = 20;
 const int sizeFieldPlay = 460;
 
@@ -11,13 +13,13 @@ enum SnakeDirection {
 }
 
 class SnakeBloc {
-  List<int> snakePosition = [
-    0,
-    lenghtRow,
-    lenghtRow * 2,
-    lenghtRow * 3,
-    lenghtRow * 4
-  ];
+  // List<int> snakePosition = [
+  //   0,
+  //   lenghtRow,
+  //   lenghtRow * 2,
+  //   lenghtRow * 3,
+  //   lenghtRow * 4
+  // ];
 
   SnakeDirection direction = SnakeDirection.down;
 
@@ -28,10 +30,10 @@ class SnakeBloc {
   Stream<List<int>> get outputStateStream => _outputStateController.stream;
 
   bool isGameOver() {
-    for (var i = 0; i < snakePosition.length; i++) {
+    for (var i = 0; i < Snake.snakePosition.length; i++) {
       int count = 0;
-      for (var j = 0; j < snakePosition.length; j++) {
-        if (snakePosition[i] == snakePosition[j]) {
+      for (var j = 0; j < Snake.snakePosition.length; j++) {
+        if (Snake.snakePosition[i] == Snake.snakePosition[j]) {
           count += 1;
         }
         if (count == 2) {
@@ -60,56 +62,57 @@ class SnakeBloc {
     const duration = Duration(milliseconds: 200);
     Timer.periodic(duration, (Timer timer) {
       if (direction == SnakeDirection.up) {
-        if (snakePosition.last < 0) {
-          snakePosition.add(snakePosition.last + sizeFieldPlay);
-          _outputStateController.sink.add(snakePosition);
-          print('2 ${snakePosition.last}');
+        if (Snake.snakePosition.last < 0) {
+          Snake.snakePosition.add(Snake.snakePosition.last + sizeFieldPlay);
+          _outputStateController.sink.add(Snake.snakePosition);
+          print('2 ${Snake.snakePosition.last}');
         } else {
-          snakePosition.add(snakePosition.last - lenghtRow);
-          _outputStateController.sink.add(snakePosition);
+          Snake.snakePosition.add(Snake.snakePosition.last - lenghtRow);
+          _outputStateController.sink.add(Snake.snakePosition);
         }
       }
 
       if (direction == SnakeDirection.down) {
-        if (snakePosition.last > sizeFieldPlay - lenghtRow - 1) {
-          snakePosition.add(snakePosition.last + lenghtRow - sizeFieldPlay);
-          _outputStateController.sink.add(snakePosition);
+        if (Snake.snakePosition.last > sizeFieldPlay - lenghtRow - 1) {
+          Snake.snakePosition
+              .add(Snake.snakePosition.last + lenghtRow - sizeFieldPlay);
+          _outputStateController.sink.add(Snake.snakePosition);
         } else {
-          snakePosition.add(snakePosition.last + lenghtRow);
-          _outputStateController.sink.add(snakePosition);
+          Snake.snakePosition.add(Snake.snakePosition.last + lenghtRow);
+          _outputStateController.sink.add(Snake.snakePosition);
         }
       }
 
       if (direction == SnakeDirection.right) {
-        if ((snakePosition.last + 1) % lenghtRow == 0) {
-          snakePosition.add(snakePosition.last + 1 - lenghtRow);
-          _outputStateController.sink.add(snakePosition);
+        if ((Snake.snakePosition.last + 1) % lenghtRow == 0) {
+          Snake.snakePosition.add(Snake.snakePosition.last + 1 - lenghtRow);
+          _outputStateController.sink.add(Snake.snakePosition);
         } else {
-          snakePosition.add(snakePosition.last + 1);
-          _outputStateController.sink.add(snakePosition);
+          Snake.snakePosition.add(Snake.snakePosition.last + 1);
+          _outputStateController.sink.add(Snake.snakePosition);
         }
       }
 
       if (direction == SnakeDirection.left) {
-        if (snakePosition.last % lenghtRow == 0) {
-          snakePosition.add(snakePosition.last - 1 + lenghtRow);
-          _outputStateController.sink.add(snakePosition);
+        if (Snake.snakePosition.last % lenghtRow == 0) {
+          Snake.snakePosition.add(Snake.snakePosition.last - 1 + lenghtRow);
+          _outputStateController.sink.add(Snake.snakePosition);
         } else {
-          snakePosition.add(snakePosition.last - 1);
-          _outputStateController.sink.add(snakePosition);
+          Snake.snakePosition.add(Snake.snakePosition.last - 1);
+          _outputStateController.sink.add(Snake.snakePosition);
         }
       }
 
       // for (var subject in subjects.keys) {
-      //   if (snakePosition.last == subject) {
+      //   if (Snake.snakePosition.last == subject) {
       //     // generateNewApple();
       //   } else {
-      // snakePosition.removeAt(0);
-      // _outputStateController.sink.add(snakePosition);
+      // Snake.snakePosition.removeAt(0);
+      // _outputStateController.sink.add(Snake.snakePosition);
       //   }
       // }
-      snakePosition.removeAt(0);
-      _outputStateController.sink.add(snakePosition);
+      Snake.snakePosition.removeAt(0);
+      _outputStateController.sink.add(Snake.snakePosition);
 
       if (isGameOver()) {
         // break;
