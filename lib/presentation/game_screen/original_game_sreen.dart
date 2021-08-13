@@ -86,14 +86,10 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
                     itemCount: sizeFieldPlay,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: lenghtRow,
-                      crossAxisSpacing: 5,
-                      mainAxisSpacing: 5,
                     ),
                     itemBuilder: (BuildContext context, int index) {
                       if (Snake.snakePosition.contains(index)) {
-                        return Container(
-                          color: Colors.white,
-                        );
+                        return Snake.snake;
                       }
 
                       if (index == Subjects.subjects['stone']!.position) {
@@ -104,9 +100,8 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
                       //   return cell(Colors.green);
                       // }
 
-                      return Container(
-                        color: Colors.grey[900],
-                      );
+                      return cellTemlate(
+                          colorLight: Colors.white, colorDark: Colors.grey);
                     },
                   ),
                 ),
