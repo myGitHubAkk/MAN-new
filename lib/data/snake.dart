@@ -1,6 +1,4 @@
-import 'dart:async';
-
-import 'package:man_project/domain/SnakeMove.dart';
+import 'package:man_project/const/constFilled.dart';
 
 class Snake {
   static List<int> snakePosition = [

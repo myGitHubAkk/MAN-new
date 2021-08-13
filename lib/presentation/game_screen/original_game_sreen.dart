@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:man_project/data/snake.dart';
-import 'package:man_project/domain/SnakeMove.dart';
+import 'package:man_project/data/subjects.dart';
+import 'package:man_project/domain/snake_move.dart';
+import 'package:man_project/const/constFilled.dart';
 
 class OriginalGameScreen extends StatefulWidget {
   const OriginalGameScreen({Key? key}) : super(key: key);
@@ -33,8 +35,8 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final widthScreen = MediaQuery.of(context).size.width;
-    final sizeCanvas = widthScreen * 0.8;
+    final widthScreen = MediaQuery.of(context).size.width * 0.8;
+    final heightScreen = MediaQuery.of(context).size.height * 0.65;
 
     return Scaffold(
       body: Center(
@@ -42,11 +44,11 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Container(
-              height: 20,
+              height: 120,
             ),
             Container(
-              width: sizeCanvas,
-              height: sizeCanvas,
+              width: widthScreen,
+              height: heightScreen,
               child: GestureDetector(
                 onVerticalDragUpdate: (details) {
                   if (snakeDirection != SnakeDirection.up &&
@@ -84,12 +86,18 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
                     itemCount: sizeFieldPlay,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: lenghtRow,
+                      crossAxisSpacing: 5,
+                      mainAxisSpacing: 5,
                     ),
                     itemBuilder: (BuildContext context, int index) {
                       if (Snake.snakePosition.contains(index)) {
                         return Container(
                           color: Colors.white,
                         );
+                      }
+
+                      if (index == Subjects.subjects['stone']!.position) {
+                        return Subjects.subjects['stone']!.widget;
                       }
 
                       // if (index == apple) {
@@ -103,9 +111,6 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
                   ),
                 ),
               ),
-            ),
-            Container(
-              height: 20,
             ),
           ],
         ),

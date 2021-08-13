@@ -1,16 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:man_project/data/snake.dart';
+import 'package:man_project/domain/create_position.dart';
 
-class Subject {
+abstract class Subject {
   final int position = 0;
   final Widget widget = Container();
   void snakeClash() {}
 }
 
-class Stone implements Subject {
+class Stone extends Subject {
+  CreatePosition _createPosition = CreatePosition();
+
   @override
-  int get position => 5;
+  int get position => _createPosition.posiiton;
 
   @override
   void snakeClash() {
@@ -23,12 +26,18 @@ class Stone implements Subject {
   }
 }
 
+class Subjects {
+  static Map<String, Subject> subjects = {
+    'stone': Stone(),
+  };
+}
+
 Widget cellTemlate({required Color colorLight, required Color colorDark}) {
   return Container(
     decoration: BoxDecoration(
       color: colorLight,
       shape: BoxShape.circle,
-      border: Border.all(color: colorDark, width: 10),
+      border: Border.all(color: colorDark, width: 3),
     ),
   );
 }

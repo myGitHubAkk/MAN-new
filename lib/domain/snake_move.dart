@@ -1,10 +1,7 @@
 import 'dart:async';
 
+import 'package:man_project/const/constFilled.dart';
 import 'package:man_project/data/snake.dart';
-
-const int lenghtRow = 20;
-const int sizeFieldPlay = 460;
-const int tailPosition = 5;
 
 enum SnakeDirection {
   up,
