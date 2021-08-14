@@ -10,10 +10,14 @@ class Snake {
     tailPosition + lenghtRow * 3,
   ];
 
-  static Widget snake =
-      cellTemlate(colorLight: Colors.lightGreen, colorDark: Colors.green);
-  static Widget snakeHead =
-      cellTemlate(colorLight: Colors.green, colorDark: Colors.green);
+  static Widget snake = cellTemlate(
+    colorLight: Colors.lightGreen,
+    colorDark: Colors.green,
+  );
+  static Widget snakeHead = cellTemlate(
+    colorLight: Colors.green,
+    colorDark: Colors.green,
+  );
 
   static bool isGameOn = true;
 
