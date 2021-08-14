@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:man_project/const/constFilled.dart';
+import 'package:man_project/entities/game_state.dart';
 import 'package:man_project/entities/subjects.dart';
 import 'package:man_project/domain/snake_move.dart';
 
@@ -22,13 +23,10 @@ class Snake {
     colorDark: Colors.green,
   );
 
-  static bool isGameOn = true;
-  static bool isGameStart = true;
-
   static void gameOver() {
-    isGameOn = false;
+    GameState.isGameOn = false;
     // Subjects().subjects.clear();
-    print(isGameOn);
+    print(GameState.isGameOn);
   }
 
   // Snake() {

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:man_project/entities/game_state.dart';
 
 import 'package:man_project/entities/snake.dart';
 import 'package:man_project/entities/subjects.dart';
@@ -21,11 +22,15 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
   UserTerm userTerm = UserTerm();
 
   var snake = Snake.snakePosition;
+  var isClash = AppleWithWords.isClash;
 
   void snakeUpdate() {
     Timer.periodic(Duration(milliseconds: 10), (timer) {
       setState(() {});
-      isShowDialog();
+      if (AppleWithWords.isClash == true && GameState.isGamePause == false) {
+        _showDialog();
+        GameState.isGamePause = true;
+      }
     });
   }
 
@@ -35,17 +40,33 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
     snakeUpdate();
   }
 
-  void isShowDialog() {
-    if (AppleWithWords.isClash == true) {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            content: Text(UserTerm.term.values[UserTerm.namberWord]),
-          );
-        },
-      );
-    }
+  void _showDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Text(UserTerm.term.values[UserTerm.namberWord]),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.check),
+              onPressed: () {
+                GameState.isGamePause = false;
+                AppleWithWords.isClash = false;
+                Navigator.of(context).pop();
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.cancel),
+              onPressed: () {
+                GameState.isGamePause = false;
+                AppleWithWords.isClash = false;
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
