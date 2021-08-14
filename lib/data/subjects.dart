@@ -27,16 +27,18 @@ class Stone extends Subject {
 }
 
 class AppleWithWords extends Subject {
-  CreatePosition _createPosition = CreatePosition();
+  CreatePosition createPosition = CreatePosition();
 
   static bool isClash = false;
 
   @override
-  int get position => _createPosition.posiiton;
+  int get position => createPosition.posiiton;
 
   @override
   void snakeClash() {
+    createPosition = CreatePosition();
     isClash = true;
+    print('яблуко');
   }
 
   @override
@@ -46,10 +48,15 @@ class AppleWithWords extends Subject {
 }
 
 class Subjects {
-  static Map<String, Subject> subjects = {
-    'stone': Stone(),
-    'apple': AppleWithWords(),
-  };
+  static List<Subject> subjects = [
+    Stone(),
+    Stone(),
+    Stone(),
+    Stone(),
+    AppleWithWords(),
+    AppleWithWords(),
+    AppleWithWords(),
+  ];
 }
 
 Widget cellTemlate({required Color colorLight, required Color colorDark}) {

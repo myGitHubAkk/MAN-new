@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:man_project/data/snake.dart';
 import 'package:man_project/data/subjects.dart';
-import 'package:man_project/domain/%D1%81ollision_with_snake.dart';
+import 'package:man_project/domain/clash_with_snake.dart';
 import 'package:man_project/domain/snake_move.dart';
 import 'package:man_project/const/constFilled.dart';
 

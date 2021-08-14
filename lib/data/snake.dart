@@ -20,9 +20,11 @@ class Snake {
   );
 
   static bool isGameOn = true;
+  static bool isGameStart = true;
 
   static void gameOver() {
     isGameOn = false;
+    // Subjects().subjects.clear();
     print(isGameOn);
   }
 
