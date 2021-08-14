@@ -21,6 +21,30 @@ class CollisionWithSnake {
       }
     }
 
+    // Widget _createWidget() {
+    //   if (Snake.snakePosition.contains(index)) {
+    //     return Snake.snake;
+    //   }
+
+    //   for (int i = 0; i < Subjects.subjects.length; i++) {
+    //     if (index == Subjects.subjects[i].position) {
+    //       if (i != Subjects.subjects.length - 1) {
+    //         if (Subjects.subjects[i].position !=
+    //             Subjects.subjects[i + 1].position) {
+    //           _clashWithSubject(Subjects.subjects[i]);
+    //           return Subjects.subjects[i].widget;
+    //         } else if (Subjects.subjects[i].position ==
+    //             Subjects.subjects[i + 1].position) {
+    //           CreatePosition();
+    //           return Subjects.subjects[i].widget;
+    //         }
+    //       } else if (i == Subjects.subjects.length - 1) {
+    //         _clashWithSubject(Subjects.subjects[i]);
+    //         return Subjects.subjects[i].widget;
+    //       }
+    //     }
+    //   }
+
     return cellTemlate(colorLight: Colors.white, colorDark: Colors.grey);
 
     // if (index == Subjects.subjects['stone']!.position) {
@@ -38,7 +62,6 @@ class CollisionWithSnake {
 
   void _clashWithSubject(Subject subject) {
     if (Snake.snakePosition.contains(subject.position)) {
-      print('cl');
       subject.snakeClash();
     }
   }
