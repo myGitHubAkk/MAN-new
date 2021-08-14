@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:man_project/entities/game_state.dart';
@@ -44,8 +45,11 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
+        List values = UserTerm.term.values;
+        int index = Random().nextInt(values.length);
+        String text = values[index];
         return AlertDialog(
-          content: Text(UserTerm.term.values[UserTerm.namberWord]),
+          content: Text(text),
           actions: [
             IconButton(
               icon: Icon(Icons.check),
