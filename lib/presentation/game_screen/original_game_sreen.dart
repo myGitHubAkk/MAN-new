@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+
 import 'package:man_project/data/snake.dart';
 import 'package:man_project/data/subjects.dart';
 import 'package:man_project/domain/snake_move.dart';
@@ -26,6 +27,39 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
       });
     });
   }
+  // static List<int> snakePosition = [25, 45, 65, 85];
+
+  // static var randomNamber = Random();
+  // int apple = randomNamber.nextInt(sizeFieldPlay);
+  // void generateNewApple() {
+  //   apple = randomNamber.nextInt(sizeFieldPlay);
+  // }
+
+  // var direction = 'down';
+
+  // void _showGameOverScreen() {
+  //   showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return AlertDialog(
+  //         title: Text('Game Over траляля'),
+  //         content: Text(
+  //           'ти просрав з щотом:' + snakePosition.length.toString(),
+  //         ),
+  //         actions: <Widget>[
+  //           TextButton(
+  //             onPressed: () {
+  //               setState(() {});
+  //               startGame();
+  //               Navigator.of(context).pop();
+  //             },
+  //             child: Text('Дубль 2'),
+  //           )
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
 
   @override
   void initState() {
@@ -82,28 +116,27 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
                 },
                 child: Container(
                   child: GridView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: sizeFieldPlay,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: lenghtRow,
-                    ),
-                    itemBuilder: (BuildContext context, int index) {
-                      if (Snake.snakePosition.contains(index)) {
-                        return Snake.snake;
-                      }
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: sizeFieldPlay,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: lenghtRow,
+                      ),
+                      itemBuilder: (BuildContext context, int index) {
+                        if (Snake.snakePosition.contains(index)) {
+                          return Snake.snake;
+                        }
 
-                      if (index == Subjects.subjects['stone']!.position) {
-                        return Subjects.subjects['stone']!.widget;
-                      }
+                        if (index == Subjects.subjects['stone']!.position) {
+                          return Subjects.subjects['stone']!.widget;
+                        }
 
-                      // if (index == apple) {
-                      //   return cell(Colors.green);
-                      // }
+                        // if (index == apple) {
+                        //   return cell(Colors.green);
+                        // }
 
-                      return cellTemlate(
-                          colorLight: Colors.white, colorDark: Colors.grey);
-                    },
-                  ),
+                        return cellTemlate(
+                            colorLight: Colors.white, colorDark: Colors.grey);
+                      }),
                 ),
               ),
             ),
@@ -114,14 +147,9 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
   }
 }
 
-Widget cell(Color color) {
-  return Container(
-    padding: EdgeInsets.all(2),
-    child: ClipRRect(
-      borderRadius: BorderRadius.circular(5),
-      child: Container(
-        color: color,
-      ),
-    ),
-  );
-}
+// Widget cell(Widget widget) {
+//   return Container(
+//     padding: EdgeInsets.all(2),
+//     child: ClipRRect(borderRadius: BorderRadius.circular(5), child: widget),
+//   );
+// }
