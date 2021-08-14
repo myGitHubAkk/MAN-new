@@ -87,10 +87,7 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
               Container(
                 height: heightScreen / 3,
                 width: widthScreen,
-                child: Text(
-                  'sdf',
-                  style: TextStyle(fontSize: 18),
-                ),
+                child: UserTerm().widget,
               ),
               Container(
                 width: widthScreen,
