@@ -1,6 +1,7 @@
+import 'package:man_project/data/terms.dart';
+
 class UserTerm {
-  static String title =
-      'sdffffffffffffffffff sdfffffffffffffffffffff fsdfsdfsdfsdfsdfsdfsd' +
-          "fdgfdgfdgfdgfdgfdgfdgfdgfdgfdgfdgfdgfdgfdgfdgfdgfdgfdgfdgfdgfdgfdgfdgfdgfdg" +
-          'sfdgfdgfdgfdgfdgfdgfdgfdgfdgfdg sfdfdfdfdfdfdfdfdfdfdfd sdfffffffffffffffffffff ';
+  static int _namberTerm = TermData.namberTerm;
+  Term _term = TermData.terms[_namberTerm];
+  static String valueUserTerm = '';
 }

@@ -7,9 +7,9 @@ class Term {
 }
 
 class TermData {
-  List get terms => _terms;
+  static int namberTerm = 0;
 
-  final List _terms = [
+  static final List<Term> terms = [
     Term(
       title: 'Термін1',
       values: [
