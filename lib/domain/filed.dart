@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:man_project/data/snake.dart';
 import 'package:man_project/data/subjects.dart';
 
-class CollisionWithSnake {
+class Field {
   final int index;
 
-  CollisionWithSnake(this.index);
+  Field(this.index);
 
   Widget get widget => _createWidget();
 

@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:man_project/data/snake.dart';
+
 const int lenghtRow = 20;
 const int sizeFieldPlay = 460;
 
@@ -11,14 +13,6 @@ enum SnakeDirection {
 }
 
 class SnakeMove {
-  List<int> snakePosition = [
-    0,
-    lenghtRow,
-    lenghtRow * 2,
-    lenghtRow * 3,
-    lenghtRow * 4
-  ];
-
   SnakeDirection direction = SnakeDirection.down;
 
   final _inputEventController = StreamController<SnakeDirection>();
@@ -57,35 +51,35 @@ class SnakeMove {
     const duration = Duration(milliseconds: 200);
     Timer.periodic(duration, (Timer timer) {
       if (direction == SnakeDirection.up) {
-        if (snakePosition.last < 0) {
-          snakePosition.add(snakePosition.last + sizeFieldPlay);
-          print('2 ${snakePosition.last}');
+        if (Snake.snakePosition.last < 0) {
+          Snake.snakePosition.add(Snake.snakePosition.last + sizeFieldPlay);
         } else {
-          snakePosition.add(snakePosition.last - lenghtRow);
+          Snake.snakePosition.add(Snake.snakePosition.last - lenghtRow);
         }
       }
 
       if (direction == SnakeDirection.down) {
-        if (snakePosition.last > sizeFieldPlay - lenghtRow - 1) {
-          snakePosition.add(snakePosition.last + lenghtRow - sizeFieldPlay);
+        if (Snake.snakePosition.last > sizeFieldPlay - lenghtRow - 1) {
+          Snake.snakePosition
+              .add(Snake.snakePosition.last + lenghtRow - sizeFieldPlay);
         } else {
-          snakePosition.add(snakePosition.last + lenghtRow);
+          Snake.snakePosition.add(Snake.snakePosition.last + lenghtRow);
         }
       }
 
       if (direction == SnakeDirection.right) {
-        if ((snakePosition.last + 1) % lenghtRow == 0) {
-          snakePosition.add(snakePosition.last + 1 - lenghtRow);
+        if ((Snake.snakePosition.last + 1) % lenghtRow == 0) {
+          Snake.snakePosition.add(Snake.snakePosition.last + 1 - lenghtRow);
         } else {
-          snakePosition.add(snakePosition.last + 1);
+          Snake.snakePosition.add(Snake.snakePosition.last + 1);
         }
       }
 
       if (direction == SnakeDirection.left) {
-        if (snakePosition.last % lenghtRow == 0) {
-          snakePosition.add(snakePosition.last - 1 + lenghtRow);
+        if (Snake.snakePosition.last % lenghtRow == 0) {
+          Snake.snakePosition.add(Snake.snakePosition.last - 1 + lenghtRow);
         } else {
-          snakePosition.add(snakePosition.last - 1);
+          Snake.snakePosition.add(Snake.snakePosition.last - 1);
         }
       }
 
@@ -97,7 +91,6 @@ class SnakeMove {
       // _outputStateController.sink.add(snakePosition);
       //   }
       // }
-      snakePosition.removeAt(0);
 
       // if (isGameOver()) {
       //   // break;

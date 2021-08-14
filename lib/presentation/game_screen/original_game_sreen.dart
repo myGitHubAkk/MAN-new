@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:man_project/data/snake.dart';
 import 'package:man_project/data/subjects.dart';
-import 'package:man_project/domain/clash_with_snake.dart';
+import 'package:man_project/domain/filed.dart';
 import 'package:man_project/domain/snake_move.dart';
 import 'package:man_project/const/constFilled.dart';
 
@@ -122,7 +122,7 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
                       crossAxisCount: lenghtRow,
                     ),
                     itemBuilder: (BuildContext context, int index) {
-                      CollisionWithSnake collision = CollisionWithSnake(index);
+                      Field collision = Field(index);
                       return collision.widget;
                       // if (Snake.snakePosition.contains(index)) {
                       //   return Snake.snake;
