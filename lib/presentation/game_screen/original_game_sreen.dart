@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:man_project/data/snake.dart';
 import 'package:man_project/data/subjects.dart';
+import 'package:man_project/domain/%D1%81ollision_with_snake.dart';
 import 'package:man_project/domain/snake_move.dart';
 import 'package:man_project/const/constFilled.dart';
 
@@ -116,31 +117,34 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
                 },
                 child: Container(
                   child: GridView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: sizeFieldPlay,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: lenghtRow,
-                      ),
-                      itemBuilder: (BuildContext context, int index) {
-                        if (Snake.snakePosition.contains(index)) {
-                          return Snake.snake;
-                        }
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: sizeFieldPlay,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: lenghtRow,
+                    ),
+                    itemBuilder: (BuildContext context, int index) {
+                      CollisionWithSnake collision = CollisionWithSnake(index);
+                      return collision.widget;
+                      // if (Snake.snakePosition.contains(index)) {
+                      //   return Snake.snake;
+                      // }
 
-                        if (index == Subjects.subjects['stone']!.position) {
-                          return Subjects.subjects['stone']!.widget;
-                        }
+                      // if (index == Subjects.subjects['stone']!.position) {
+                      //   return Subjects.subjects['stone']!.widget;
+                      // }
 
-                        if (index == Subjects.subjects['apple']!.position) {
-                          return Subjects.subjects['apple']!.widget;
-                        }
+                      // if (index == Subjects.subjects['apple']!.position) {
+                      //   return Subjects.subjects['apple']!.widget;
+                      // }
 
-                        // if (index == apple) {
-                        //   return cell(Colors.green);
-                        // }
+                      // // if (index == apple) {
+                      // //   return cell(Colors.green);
+                      // // }
 
-                        return cellTemlate(
-                            colorLight: Colors.white, colorDark: Colors.grey);
-                      }),
+                      // return cellTemlate(
+                      //     colorLight: Colors.white, colorDark: Colors.grey);
+                    },
+                  ),
                 ),
               ),
             ),
