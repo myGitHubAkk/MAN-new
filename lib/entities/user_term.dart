@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:man_project/data/terms.dart';
 
 class UserTerm {
-  static Term _term = TermData.terms[TermData.namberTerm];
-  String termTitle = _term.title;
+  static int namberWord = 0;
+  static Term term = TermData.terms[TermData.namberTerm];
+  String termTitle = term.title;
   static String valueUserTerm = '';
 
   set addValue(String value) => valueUserTerm += value;

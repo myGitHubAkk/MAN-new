@@ -24,49 +24,28 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
 
   void snakeUpdate() {
     Timer.periodic(Duration(milliseconds: 10), (timer) {
-      setState(() {
-        // snake = Snake.snakePosition;
-      });
+      setState(() {});
+      isShowDialog();
     });
   }
-  // static List<int> snakePosition = [25, 45, 65, 85];
-
-  // static var randomNamber = Random();
-  // int apple = randomNamber.nextInt(sizeFieldPlay);
-  // void generateNewApple() {
-  //   apple = randomNamber.nextInt(sizeFieldPlay);
-  // }
-
-  // var direction = 'down';
-
-  // void _showGameOverScreen() {
-  //   showDialog(
-  //     context: context,
-  //     builder: (BuildContext context) {
-  //       return AlertDialog(
-  //         title: Text('Game Over траляля'),
-  //         content: Text(
-  //           'ти просрав з щотом:' + snakePosition.length.toString(),
-  //         ),
-  //         actions: <Widget>[
-  //           TextButton(
-  //             onPressed: () {
-  //               setState(() {});
-  //               startGame();
-  //               Navigator.of(context).pop();
-  //             },
-  //             child: Text('Дубль 2'),
-  //           )
-  //         ],
-  //       );
-  //     },
-  //   );
-  // }
 
   @override
   void initState() {
     super.initState();
     snakeUpdate();
+  }
+
+  void isShowDialog() {
+    if (AppleWithWords.isClash == true) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: Text(UserTerm.term.values[UserTerm.namberWord]),
+          );
+        },
+      );
+    }
   }
 
   @override
@@ -133,24 +112,6 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
                       itemBuilder: (BuildContext context, int index) {
                         Field collision = Field(index);
                         return collision.widget;
-                        // if (Snake.snakePosition.contains(index)) {
-                        //   return Snake.snake;
-                        // }
-
-                        // if (index == Subjects.subjects['stone']!.position) {
-                        //   return Subjects.subjects['stone']!.widget;
-                        // }
-
-                        // if (index == Subjects.subjects['apple']!.position) {
-                        //   return Subjects.subjects['apple']!.widget;
-                        // }
-
-                        // // if (index == apple) {
-                        // //   return cell(Colors.green);
-                        // // }
-
-                        // return cellTemlate(
-                        //     colorLight: Colors.white, colorDark: Colors.grey);
                       },
                     ),
                   ),
@@ -163,10 +124,3 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
     );
   }
 }
-
-// Widget cell(Widget widget) {
-//   return Container(
-//     padding: EdgeInsets.all(2),
-//     child: ClipRRect(borderRadius: BorderRadius.circular(5), child: widget),
-//   );
-// }
