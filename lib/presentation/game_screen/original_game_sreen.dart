@@ -130,6 +130,10 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
                           return Subjects.subjects['stone']!.widget;
                         }
 
+                        if (index == Subjects.subjects['apple']!.position) {
+                          return Subjects.subjects['apple']!.widget;
+                        }
+
                         // if (index == apple) {
                         //   return cell(Colors.green);
                         // }
