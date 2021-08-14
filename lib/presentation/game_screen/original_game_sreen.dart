@@ -17,7 +17,6 @@ class OriginalGameScreen extends StatefulWidget {
 
 class _OriginalGameScreenState extends State<OriginalGameScreen> {
   SnakeMoveBloc snakeMoveBloc = SnakeMoveBloc();
-  SnakeDirection snakeDirection = SnakeDirection.down;
 
   var snake = Snake.snakePosition;
 
@@ -86,33 +85,33 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
               height: heightScreen,
               child: GestureDetector(
                 onVerticalDragUpdate: (details) {
-                  if (snakeDirection != SnakeDirection.up &&
+                  if (Snake.snakeDirection != SnakeDirection.up &&
                       details.delta.dy > 0) {
                     setState(() {
-                      snakeDirection = SnakeDirection.down;
+                      Snake.snakeDirection = SnakeDirection.down;
                     });
-                    snakeMoveBloc.inputEventSink.add(snakeDirection);
-                  } else if (snakeDirection != SnakeDirection.down &&
+                    snakeMoveBloc.inputEventSink.add(Snake.snakeDirection);
+                  } else if (Snake.snakeDirection != SnakeDirection.down &&
                       details.delta.dy < 0) {
                     setState(() {
-                      snakeDirection = SnakeDirection.up;
+                      Snake.snakeDirection = SnakeDirection.up;
                     });
-                    snakeMoveBloc.inputEventSink.add(snakeDirection);
+                    snakeMoveBloc.inputEventSink.add(Snake.snakeDirection);
                   }
                 },
                 onHorizontalDragUpdate: (details) {
-                  if (snakeDirection != SnakeDirection.left &&
+                  if (Snake.snakeDirection != SnakeDirection.left &&
                       details.delta.dx > 0) {
                     setState(() {
-                      snakeDirection = SnakeDirection.right;
+                      Snake.snakeDirection = SnakeDirection.right;
                     });
-                    snakeMoveBloc.inputEventSink.add(snakeDirection);
-                  } else if (snakeDirection != SnakeDirection.right &&
+                    snakeMoveBloc.inputEventSink.add(Snake.snakeDirection);
+                  } else if (Snake.snakeDirection != SnakeDirection.right &&
                       details.delta.dx < 0) {
                     setState(() {
-                      snakeDirection = SnakeDirection.left;
+                      Snake.snakeDirection = SnakeDirection.left;
                     });
-                    snakeMoveBloc.inputEventSink.add(snakeDirection);
+                    snakeMoveBloc.inputEventSink.add(Snake.snakeDirection);
                   }
                 },
                 child: Container(

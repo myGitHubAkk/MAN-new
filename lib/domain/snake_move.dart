@@ -25,17 +25,17 @@ class SnakeMoveBloc {
   StreamSink<SnakeDirection> get inputEventSink => _inputEventController.sink;
 
   // bool isGameOver() {
-  //   for (var i = 0; i < Snake.snakePosition.length; i++) {
-  //     int count = 0;
-  //     for (var j = 0; j < Snake.snakePosition.length; j++) {
-  //       if (Snake.snakePosition[i] == Snake.snakePosition[j]) {
-  //         count += 1;
-  //       }
-  //       if (count == 2) {
-  //         return true;
-  //       }
+  // for (var i = 0; i < Snake.snakePosition.length; i++) {
+  //   int count = 0;
+  //   for (var j = 0; j < Snake.snakePosition.length; j++) {
+  //     if (Snake.snakePosition[i] == Snake.snakePosition[j]) {
+  //       count += 1;
+  //     }
+  //     if (count == 2) {
+  //       return true;
   //     }
   //   }
+  // }
 
   //   return false;
   // }

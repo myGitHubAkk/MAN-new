@@ -10,6 +10,8 @@ class CollisionWithSnake {
   Widget get widget => _createWidget();
 
   Widget _createWidget() {
+    _clashWithTail();
+
     if (Snake.snakePosition.contains(index)) {
       return Snake.snake;
     }
@@ -63,6 +65,20 @@ class CollisionWithSnake {
   void _clashWithSubject(Subject subject) {
     if (Snake.snakePosition.contains(subject.position)) {
       subject.snakeClash();
+    }
+  }
+
+  void _clashWithTail() {
+    for (var index1 = 0; index1 < Snake.snakePosition.length; index1++) {
+      int count = 0;
+      for (var index2 = 0; index2 < Snake.snakePosition.length; index2++) {
+        if (Snake.snakePosition[index1] == Snake.snakePosition[index2]) {
+          count += 1;
+        }
+        if (count == 2) {
+          Snake.gameOver();
+        }
+      }
     }
   }
 }
