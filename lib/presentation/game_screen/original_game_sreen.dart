@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:man_project/data/snake.dart';
-import 'package:man_project/data/subjects.dart';
+import 'package:man_project/entities/snake.dart';
+import 'package:man_project/entities/subjects.dart';
 import 'package:man_project/domain/filed.dart';
 import 'package:man_project/const/constFilled.dart';
 import 'package:man_project/domain/snake_move.dart';
@@ -78,7 +78,12 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Container(
-              height: 120,
+              height: heightScreen / 3,
+              width: widthScreen,
+              child: Text(
+                'dfggfdgdf',
+                style: TextStyle(fontSize: 26),
+              ),
             ),
             Container(
               width: widthScreen,

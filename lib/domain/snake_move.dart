@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:man_project/const/constFilled.dart';
-import 'package:man_project/data/snake.dart';
+import 'package:man_project/entities/snake.dart';
 
 enum SnakeDirection {
   up,

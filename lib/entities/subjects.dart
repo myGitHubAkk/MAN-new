@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:man_project/data/snake.dart';
+import 'package:man_project/entities/snake.dart';
 import 'package:man_project/domain/create_position.dart';
 
 abstract class Subject {

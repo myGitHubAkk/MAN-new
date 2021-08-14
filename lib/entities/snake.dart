@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:man_project/const/constFilled.dart';
-import 'package:man_project/data/subjects.dart';
+import 'package:man_project/entities/subjects.dart';
 import 'package:man_project/domain/snake_move.dart';
 
 class Snake {

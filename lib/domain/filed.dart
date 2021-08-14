@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:man_project/data/snake.dart';
-import 'package:man_project/data/subjects.dart';
+import 'package:man_project/entities/snake.dart';
+import 'package:man_project/entities/subjects.dart';
 
 class Field {
   final int index;
