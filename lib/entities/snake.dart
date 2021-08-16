@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:man_project/const/constFilled.dart';
 import 'package:man_project/entities/game_state.dart';
@@ -30,15 +32,19 @@ class Snake {
   }
 
   // Snake() {
-  //   snakeUpdate();
+  //   // snakeUpdate();
+  //   SnakeMoveBloc snakeBloc = SnakeMoveBloc();
+  //   snakeBloc.outputStateStream.listen((position) {
+  //     snakePosition.add(position);
+  //   });
   // }
 
   // void snakeUpdate() {
-  //   Timer.periodic(Duration(milliseconds: 10), (timer) {
-  //     SnakeBloc snakeBloc = SnakeBloc();
-  //     snakeBloc.outputStateStream.listen((event) {
-  //       snakePosition = event;
-  //     });
-  //   });
+  //   // Timer.periodic(Duration(milliseconds: 10), (timer) {
+  //   // SnakeMoveBloc snakeBloc = SnakeMoveBloc();
+  //   // snakeBloc.outputStateStream.listen((position) {
+  //   //   snakePosition.add(position);
+  //   // });
+  //   // });
   // }
 }

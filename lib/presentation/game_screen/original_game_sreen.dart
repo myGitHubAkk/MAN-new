@@ -100,31 +100,27 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
                   onVerticalDragUpdate: (details) {
                     if (Snake.snakeDirection != SnakeDirection.up &&
                         details.delta.dy > 0) {
-                      setState(() {
-                        Snake.snakeDirection = SnakeDirection.down;
-                      });
-                      snakeMoveBloc.inputEventSink.add(Snake.snakeDirection);
+                      Snake.snakeDirection = SnakeDirection.down;
+                      snakeMoveBloc.snakeDirection(Snake.snakeDirection);
+                      // snakeDirectionBloc.inputEventSink.add(Snake.snakeDirection);
                     } else if (Snake.snakeDirection != SnakeDirection.down &&
                         details.delta.dy < 0) {
-                      setState(() {
-                        Snake.snakeDirection = SnakeDirection.up;
-                      });
-                      snakeMoveBloc.inputEventSink.add(Snake.snakeDirection);
+                      Snake.snakeDirection = SnakeDirection.up;
+                      snakeMoveBloc.snakeDirection(Snake.snakeDirection);
+                      // snakeMoveBloc.inputEventSink.add(Snake.snakeDirection);
                     }
                   },
                   onHorizontalDragUpdate: (details) {
                     if (Snake.snakeDirection != SnakeDirection.left &&
                         details.delta.dx > 0) {
-                      setState(() {
-                        Snake.snakeDirection = SnakeDirection.right;
-                      });
-                      snakeMoveBloc.inputEventSink.add(Snake.snakeDirection);
+                      Snake.snakeDirection = SnakeDirection.right;
+                      snakeMoveBloc.snakeDirection(Snake.snakeDirection);
+                      // snakeMoveBloc.inputEventSink.add(Snake.snakeDirection);
                     } else if (Snake.snakeDirection != SnakeDirection.right &&
                         details.delta.dx < 0) {
-                      setState(() {
-                        Snake.snakeDirection = SnakeDirection.left;
-                      });
-                      snakeMoveBloc.inputEventSink.add(Snake.snakeDirection);
+                      Snake.snakeDirection = SnakeDirection.left;
+                      snakeMoveBloc.snakeDirection(Snake.snakeDirection);
+                      // snakeMoveBloc.inputEventSink.add(Snake.snakeDirection);
                     }
                   },
                   child: Container(

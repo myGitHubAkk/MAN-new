@@ -12,45 +12,15 @@ enum SnakeDirection {
 }
 
 class SnakeMoveBloc {
-  // List<int> snakePosition = [
-  //   0,
-  //   lenghtRow,
-  //   lenghtRow * 2,
-  //   lenghtRow * 3,
-  //   lenghtRow * 4
-  // ];
-
   SnakeDirection direction = SnakeDirection.down;
 
-  final _inputEventController = StreamController<SnakeDirection>();
-  StreamSink<SnakeDirection> get inputEventSink => _inputEventController.sink;
+  // final _inputEventController = StreamController<SnakeDirection>();
+  // StreamSink<SnakeDirection> get inputEventSink => _inputEventController.sink;
 
-  // bool isGameOver() {
-  // for (var i = 0; i < Snake.snakePosition.length; i++) {
-  //   int count = 0;
-  //   for (var j = 0; j < Snake.snakePosition.length; j++) {
-  //     if (Snake.snakePosition[i] == Snake.snakePosition[j]) {
-  //       count += 1;
-  //     }
-  //     if (count == 2) {
-  //       return true;
-  //     }
-  //   }
-  // }
+  // final _outputStateController = StreamController<int>();
+  // Stream<int> get outputStateStream => _outputStateController.stream;
 
-  //   return false;
-  // }
-
-  // void startGame(direction) {
-
-  //     snakeUpdate(direction);
-  // if (isGameOver()) {
-  //   timer.cancel();
-  // }
-
-  // }
-
-  void snakeDirection(direction) {
+  void snakeDirection(SnakeDirection direction) {
     this.direction = direction;
   }
 
@@ -59,63 +29,64 @@ class SnakeMoveBloc {
 
     Timer.periodic(duration, (Timer timer) {
       if (GameState.isGamePause == false) {
+        Snake();
         if (direction == SnakeDirection.up) {
           if (Snake.snakePosition.last < 0) {
+            // int currentPosition
+            // _outputStateController.sink
+            //     .add(Snake.snakePosition.last + sizeFieldPlay);
             Snake.snakePosition.add(Snake.snakePosition.last + sizeFieldPlay);
           } else {
+            // _outputStateController.sink
+            //     .add(Snake.snakePosition.last - lenghtRow);
             Snake.snakePosition.add(Snake.snakePosition.last - lenghtRow);
           }
         }
 
         if (direction == SnakeDirection.down) {
           if (Snake.snakePosition.last > sizeFieldPlay - lenghtRow - 1) {
+            // _outputStateController.sink
+            //     .add(Snake.snakePosition.last + lenghtRow - sizeFieldPlay);
             Snake.snakePosition
                 .add(Snake.snakePosition.last + lenghtRow - sizeFieldPlay);
           } else {
+            // _outputStateController.sink
+            //     .add(Snake.snakePosition.last + lenghtRow);
             Snake.snakePosition.add(Snake.snakePosition.last + lenghtRow);
           }
         }
 
         if (direction == SnakeDirection.right) {
           if ((Snake.snakePosition.last + 1) % lenghtRow == 0) {
+            // _outputStateController.sink
+            //     .add(Snake.snakePosition.last + 1 - lenghtRow);
             Snake.snakePosition.add(Snake.snakePosition.last + 1 - lenghtRow);
           } else {
+            // _outputStateController.sink.add(Snake.snakePosition.last + 1);
             Snake.snakePosition.add(Snake.snakePosition.last + 1);
           }
         }
 
         if (direction == SnakeDirection.left) {
           if (Snake.snakePosition.last % lenghtRow == 0) {
+            // _outputStateController.sink
+            //     .add(Snake.snakePosition.last - 1 + lenghtRow);
             Snake.snakePosition.add(Snake.snakePosition.last - 1 + lenghtRow);
           } else {
+            // _outputStateController.sink.add(Snake.snakePosition.last - 1);
             Snake.snakePosition.add(Snake.snakePosition.last - 1);
           }
         }
-
-        // for (var subject in subjects.keys) {
-        //   if (Snake.snakePosition.last == subject) {
-        //     // generateNewApple();
-        //   } else {
-        // Snake.snakePosition.removeAt(0);
-        // _outputStateController.sink.add(Snake.snakePosition);
-        //   }
-        // }
         Snake.snakePosition.removeAt(0);
-        // _outputStateController.sink.add(Snake.snakePosition);
-
-        // if (isGameOver()) {
-        //   // break;
-        // }
       }
     });
   }
 
   SnakeMoveBloc() {
-    _inputEventController.stream.listen(snakeDirection);
     snakeMove();
   }
 
-  void dispose() {
-    _inputEventController.close();
-  }
+  // void dispose() {
+  //   _inputEventController.close();
+  // }
 }
