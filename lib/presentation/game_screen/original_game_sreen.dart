@@ -26,8 +26,6 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
   var snake = Snake.snakePosition;
   var isClash = AppleWithWords.isClash;
 
-  bool _isAddWord = false;
-
   void snakeUpdate() {
     Timer.periodic(Duration(milliseconds: 10), (timer) {
       setState(() {});
@@ -44,15 +42,23 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
     snakeUpdate();
   }
 
-  void onPressedShowDialog(String answer) {
+  void onPressedShowDialog(String answer, bool isTrue) {
     GameState.isGamePause = false;
     AppleWithWords.isClash = false;
     Navigator.of(context).pop();
-    _isAddWord = CheckingAnswer().isTrueAnswer;
-    if (_isAddWord) {
-      UserTerm().addValue = answer;
-      print('add');
+
+    CheckingAnswer().answer = {'answer': answer, 'isTrue': isTrue};
+    bool _isAddWord = CheckingAnswer().isTrueAnswer;
+    bool _isTrueUserVersion = CheckingAnswer().isTrueUserVersion;
+
+    if (_isTrueUserVersion) {
+      if (_isAddWord) {
+        UserTerm().addValue = answer;
+      }
+    } else {
+      //
     }
+
     // print(_isAddWord);
   }
 
@@ -69,13 +75,13 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
             IconButton(
               icon: Icon(Icons.check),
               onPressed: () {
-                onPressedShowDialog(_answer);
+                onPressedShowDialog(_answer, true);
               },
             ),
             IconButton(
               icon: Icon(Icons.cancel),
               onPressed: () {
-                onPressedShowDialog(_answer);
+                onPressedShowDialog(_answer, false);
               },
             ),
           ],

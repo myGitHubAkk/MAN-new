@@ -1,26 +1,30 @@
 import 'package:man_project/data/terms.dart';
 
 class CheckingAnswer {
-  int _namberWord = 0;
+  static int _namberWord = 0;
 
-  late String _answer;
-  late bool _isTrueAnswer;
-  late bool _isTrueAnswerUserVersion;
-  late bool _isTrueUserVersion;
+  static String _answer = '';
+  static bool _isTrueAnswer = false;
+  static bool _isTrueAnswerUserVersion = false;
+  static bool _isTrueUserVersion = false;
 
-  set aswer(value) {
-    _answer = value['answer'];
-    _isTrueAnswerUserVersion = value['isTrue'];
+  set answer(Map value) {
+    _addUserVersion(value);
   }
 
   bool get isTrueAnswer {
     checking();
-    print(_isTrueUserVersion);
+    return _isTrueAnswer;
+  }
+
+  bool get isTrueUserVersion {
+    checking();
     return _isTrueUserVersion;
   }
 
   void checking() {
-    if (TermData.terms[TermData.namberTerm].values[_namberWord] == _answer) {
+    String trueAnswer = TermData.terms[TermData.namberTerm].values[_namberWord];
+    if (trueAnswer == _answer) {
       _isTrueAnswer = true;
     } else {
       _isTrueAnswer = false;
@@ -36,5 +40,10 @@ class CheckingAnswer {
     } else if (!_isTrueAnswer && !_isTrueAnswerUserVersion) {
       _isTrueUserVersion = true;
     }
+  }
+
+  void _addUserVersion(Map value) {
+    _answer = value['answer'];
+    _isTrueAnswerUserVersion = value['isTrue'];
   }
 }
