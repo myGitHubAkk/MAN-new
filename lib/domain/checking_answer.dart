@@ -15,6 +15,7 @@ class CheckingAnswer {
 
   bool get isTrueAnswer {
     checking();
+    print(_isTrueUserVersion);
     return _isTrueUserVersion;
   }
 

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:man_project/domain/checking_answer.dart';
 import 'package:man_project/entities/game_state.dart';
 
 import 'package:man_project/entities/snake.dart';
@@ -25,6 +26,8 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
   var snake = Snake.snakePosition;
   var isClash = AppleWithWords.isClash;
 
+  bool _isAddWord = false;
+
   void snakeUpdate() {
     Timer.periodic(Duration(milliseconds: 10), (timer) {
       setState(() {});
@@ -41,30 +44,38 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
     snakeUpdate();
   }
 
+  void onPressedShowDialog(String answer) {
+    GameState.isGamePause = false;
+    AppleWithWords.isClash = false;
+    Navigator.of(context).pop();
+    _isAddWord = CheckingAnswer().isTrueAnswer;
+    if (_isAddWord) {
+      UserTerm().addValue = answer;
+      print('add');
+    }
+    // print(_isAddWord);
+  }
+
   void _showDialog() {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         List values = UserTerm.term.values;
         int index = Random().nextInt(values.length);
-        String text = values[index];
+        String _answer = values[index];
         return AlertDialog(
-          content: Text(text),
+          content: Text(_answer),
           actions: [
             IconButton(
               icon: Icon(Icons.check),
               onPressed: () {
-                GameState.isGamePause = false;
-                AppleWithWords.isClash = false;
-                Navigator.of(context).pop();
+                onPressedShowDialog(_answer);
               },
             ),
             IconButton(
               icon: Icon(Icons.cancel),
               onPressed: () {
-                GameState.isGamePause = false;
-                AppleWithWords.isClash = false;
-                Navigator.of(context).pop();
+                onPressedShowDialog(_answer);
               },
             ),
           ],
