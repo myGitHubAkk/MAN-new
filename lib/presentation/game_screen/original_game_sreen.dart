@@ -19,7 +19,7 @@ class OriginalGameScreen extends StatefulWidget {
 }
 
 class _OriginalGameScreenState extends State<OriginalGameScreen> {
-  SnakeMoveBloc snakeMoveBloc = SnakeMoveBloc();
+  SnakeMove snakeMove = SnakeMove();
   UserTerm userTerm = UserTerm();
 
   var snake = Snake.snakePosition;
@@ -101,12 +101,12 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
                     if (Snake.snakeDirection != SnakeDirection.up &&
                         details.delta.dy > 0) {
                       Snake.snakeDirection = SnakeDirection.down;
-                      snakeMoveBloc.snakeDirection(Snake.snakeDirection);
+                      snakeMove.snakeDirection(Snake.snakeDirection);
                       // snakeDirectionBloc.inputEventSink.add(Snake.snakeDirection);
                     } else if (Snake.snakeDirection != SnakeDirection.down &&
                         details.delta.dy < 0) {
                       Snake.snakeDirection = SnakeDirection.up;
-                      snakeMoveBloc.snakeDirection(Snake.snakeDirection);
+                      snakeMove.snakeDirection(Snake.snakeDirection);
                       // snakeMoveBloc.inputEventSink.add(Snake.snakeDirection);
                     }
                   },
@@ -114,12 +114,12 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
                     if (Snake.snakeDirection != SnakeDirection.left &&
                         details.delta.dx > 0) {
                       Snake.snakeDirection = SnakeDirection.right;
-                      snakeMoveBloc.snakeDirection(Snake.snakeDirection);
+                      snakeMove.snakeDirection(Snake.snakeDirection);
                       // snakeMoveBloc.inputEventSink.add(Snake.snakeDirection);
                     } else if (Snake.snakeDirection != SnakeDirection.right &&
                         details.delta.dx < 0) {
                       Snake.snakeDirection = SnakeDirection.left;
-                      snakeMoveBloc.snakeDirection(Snake.snakeDirection);
+                      snakeMove.snakeDirection(Snake.snakeDirection);
                       // snakeMoveBloc.inputEventSink.add(Snake.snakeDirection);
                     }
                   },

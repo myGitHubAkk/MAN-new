@@ -11,7 +11,7 @@ enum SnakeDirection {
   right,
 }
 
-class SnakeMoveBloc {
+class SnakeMove {
   SnakeDirection direction = SnakeDirection.down;
 
   // final _inputEventController = StreamController<SnakeDirection>();
@@ -82,7 +82,7 @@ class SnakeMoveBloc {
     });
   }
 
-  SnakeMoveBloc() {
+  SnakeMove() {
     snakeMove();
   }
 
