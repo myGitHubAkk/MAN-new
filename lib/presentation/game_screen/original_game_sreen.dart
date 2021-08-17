@@ -42,12 +42,15 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
     snakeUpdate();
   }
 
-  void onPressedShowDialog(String answer, bool isTrue) {
+  void onPressedShowDialog(bool isTrue) {
     GameState.isGamePause = false;
     AppleWithWords.isClash = false;
     Navigator.of(context).pop();
 
-    CheckingAnswer().answer = {'answer': answer, 'isTrue': isTrue};
+    CheckingAnswer().answer = {
+      'answer': AppleWithWords().answer,
+      'isTrue': isTrue
+    };
     // bool _isAddWord = CheckingAnswer().isTrueAnswer;
     // bool _isTrueUserVersion = CheckingAnswer().isTrueUserVersion;
 
@@ -69,33 +72,19 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        const _maxRandom = 4;
-        List values = UserTerm.term.values;
-        int index = 0;
-        if (UserTerm.namberWord < values.length - _maxRandom) {
-          bool isZeroNamber = Random().nextBool();
-          int randomNamber = isZeroNamber ? 0 : Random().nextInt(_maxRandom);
-          index = UserTerm.namberWord + randomNamber;
-        } else {
-          var randomNamber =
-              Random().nextInt(values.length - UserTerm.namberWord);
-          index = UserTerm.namberWord + randomNamber;
-        }
-
-        String _answer = values[index];
         return AlertDialog(
-          content: Text(_answer),
+          content: Text(AppleWithWords().answer),
           actions: [
             IconButton(
               icon: Icon(Icons.check),
               onPressed: () {
-                onPressedShowDialog(_answer, true);
+                onPressedShowDialog(true);
               },
             ),
             IconButton(
               icon: Icon(Icons.cancel),
               onPressed: () {
-                onPressedShowDialog(_answer, false);
+                onPressedShowDialog(false);
               },
             ),
           ],
