@@ -48,21 +48,21 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
     Navigator.of(context).pop();
 
     CheckingAnswer().answer = {'answer': answer, 'isTrue': isTrue};
-    bool _isAddWord = CheckingAnswer().isTrueAnswer;
-    bool _isTrueUserVersion = CheckingAnswer().isTrueUserVersion;
+    // bool _isAddWord = CheckingAnswer().isTrueAnswer;
+    // bool _isTrueUserVersion = CheckingAnswer().isTrueUserVersion;
 
-    if (_isTrueUserVersion) {
-      // print('onPressedShowDialog $_isTrueUserVersion $_isAddWord');
-      if (_isAddWord) {
-        // print('addAnswer $answer');
-        UserTerm().addValue = answer;
-      }
-    } else {
-      // print('onPressedShowDialog $_isTrueUserVersion $_isAddWord');
-      //
-    }
+    // if (_isTrueUserVersion) {
+    //   // print('onPressedShowDialog $_isTrueUserVersion $_isAddWord');
+    //   if (_isAddWord) {
+    //     // print('addAnswer $answer');
 
-    // print(_isAddWord);
+    //   }
+    // } else {
+    //   // print('onPressedShowDialog $_isTrueUserVersion $_isAddWord');
+    //   //
+    // }
+
+    // // print(_isAddWord);
   }
 
   void _showDialog() {
