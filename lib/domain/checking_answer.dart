@@ -1,5 +1,5 @@
 import 'package:man_project/data/terms.dart';
-import 'package:man_project/entities/subjects.dart';
+import 'package:man_project/entities/subjects/apple.dart';
 import 'package:man_project/entities/user_term.dart';
 
 class CheckingAnswer {

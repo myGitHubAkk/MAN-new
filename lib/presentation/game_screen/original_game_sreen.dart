@@ -6,7 +6,8 @@ import 'package:man_project/domain/checking_answer.dart';
 import 'package:man_project/entities/game_state.dart';
 
 import 'package:man_project/entities/snake.dart';
-import 'package:man_project/entities/subjects.dart';
+import 'package:man_project/entities/subjects/apple.dart';
+import 'package:man_project/entities/subjects/subjects.dart';
 import 'package:man_project/domain/filed.dart';
 import 'package:man_project/const/constFilled.dart';
 import 'package:man_project/domain/snake_move.dart';

@@ -3,7 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:man_project/const/constFilled.dart';
 import 'package:man_project/entities/game_state.dart';
-import 'package:man_project/entities/subjects.dart';
+import 'package:man_project/entities/subjects/subject.dart';
+import 'package:man_project/entities/subjects/subjects.dart';
 import 'package:man_project/domain/snake_move.dart';
 
 class Snake {
