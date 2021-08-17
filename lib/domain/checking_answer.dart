@@ -1,4 +1,5 @@
 import 'package:man_project/data/terms.dart';
+import 'package:man_project/entities/subjects.dart';
 import 'package:man_project/entities/user_term.dart';
 
 class CheckingAnswer {
@@ -9,8 +10,11 @@ class CheckingAnswer {
   static bool _isTrueAnswerUserVersion = false;
   static bool _isTrueUserVersion = false;
 
-  set answer(Map value) {
-    _addUserVersion(value);
+  set addUserVersion(bool userVersion) {
+    // _addUserVersion(value);
+    _answer = AppleWithWords().answer;
+    _isTrueAnswerUserVersion = userVersion;
+    checkingUserVersion();
   }
 
   // bool get isTrueAnswer {
@@ -55,9 +59,9 @@ class CheckingAnswer {
     }
   }
 
-  void _addUserVersion(Map value) {
-    _answer = value['answer'];
-    _isTrueAnswerUserVersion = value['isTrue'];
-    checkingUserVersion();
-  }
+  // void _addUserVersion(Map value) {
+  //   _answer = AppleWithWords().answer;
+  //   _isTrueAnswerUserVersion = value['isTrue'];
+  //   checkingUserVersion();
+  // }
 }

@@ -38,7 +38,6 @@ class AppleWithWords extends Subject {
   @override
   int get position => createPosition.posiiton;
   String get answer {
-    _randomAnswer();
     return _answer;
   }
 
@@ -49,7 +48,7 @@ class AppleWithWords extends Subject {
     print('яблуко');
   }
 
-  void _randomAnswer() {
+  static void randomNextAnswer() {
     const _maxRandom = 4;
     List values = UserTerm.term.values;
     int index = 0;

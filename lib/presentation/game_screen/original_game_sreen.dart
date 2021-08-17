@@ -42,15 +42,10 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
     snakeUpdate();
   }
 
-  void onPressedShowDialog(bool isTrue) {
+  void onPressedShowDialog() {
     GameState.isGamePause = false;
     AppleWithWords.isClash = false;
     Navigator.of(context).pop();
-
-    CheckingAnswer().answer = {
-      'answer': AppleWithWords().answer,
-      'isTrue': isTrue
-    };
     // bool _isAddWord = CheckingAnswer().isTrueAnswer;
     // bool _isTrueUserVersion = CheckingAnswer().isTrueUserVersion;
 
@@ -72,19 +67,22 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
+        AppleWithWords.randomNextAnswer();
         return AlertDialog(
           content: Text(AppleWithWords().answer),
           actions: [
             IconButton(
               icon: Icon(Icons.check),
               onPressed: () {
-                onPressedShowDialog(true);
+                onPressedShowDialog();
+                CheckingAnswer().addUserVersion = true;
               },
             ),
             IconButton(
               icon: Icon(Icons.cancel),
               onPressed: () {
-                onPressedShowDialog(false);
+                onPressedShowDialog();
+                CheckingAnswer().addUserVersion = false;
               },
             ),
           ],
