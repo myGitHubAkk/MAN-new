@@ -40,12 +40,10 @@ class AppleWithWords extends Subject {
         bool isZeroNamber = Random().nextBool();
         int randomNamber = isZeroNamber ? 0 : Random().nextInt(_maxRandom);
         _index = UserTerm.namberWord + randomNamber;
-        print('работає ${UserTerm.namberWord}');
       } else {
         int randomNamber =
             Random().nextInt(_values.length - UserTerm.namberWord);
         _index = UserTerm.namberWord + randomNamber;
-        print('работає коли перепол');
       }
     }
 
