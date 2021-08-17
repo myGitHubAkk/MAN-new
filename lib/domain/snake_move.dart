@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:man_project/const/constFilled.dart';
+import 'package:man_project/domain/checking_answer.dart';
 import 'package:man_project/entities/game_state.dart';
 import 'package:man_project/entities/snake.dart';
 
@@ -77,6 +78,9 @@ class SnakeMove {
             Snake.snakePosition.add(Snake.snakePosition.last - 1);
           }
         }
+
+        if (CheckingAnswer.isTrueUserVersion) {}
+
         Snake.snakePosition.removeAt(0);
       }
     });
