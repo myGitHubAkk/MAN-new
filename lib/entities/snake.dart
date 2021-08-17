@@ -29,7 +29,6 @@ class Snake {
   static void gameOver() {
     GameState.isGameOn = false;
     // Subjects().subjects.clear();
-    print(GameState.isGameOn);
   }
 
   // Snake() {

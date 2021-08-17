@@ -3,8 +3,6 @@ import 'package:man_project/entities/subjects/apple.dart';
 import 'package:man_project/entities/user_term.dart';
 
 class CheckingAnswer {
-  static int _namberWord = 0;
-
   static String _answer = '';
   static bool _isTrueAnswer = false;
   static bool _isTrueAnswerUserVersion = false;
@@ -38,7 +36,8 @@ class CheckingAnswer {
   // }
 
   void checkingUserVersion() {
-    String trueAnswer = TermData.terms[TermData.namberTerm].values[_namberWord];
+    String trueAnswer =
+        TermData.terms[TermData.namberTerm].values[UserTerm.namberWord];
     // print('true $trueAnswer');
     if (trueAnswer == _answer) {
       _isTrueAnswer = true;
@@ -48,7 +47,7 @@ class CheckingAnswer {
 
     if (_isTrueAnswer && _isTrueAnswerUserVersion) {
       _isTrueUserVersion = true;
-      _namberWord++;
+      UserTerm.namberWord++;
       UserTerm().addValue = _answer;
     } else if (_isTrueAnswer && !_isTrueAnswerUserVersion) {
       _isTrueUserVersion = false;

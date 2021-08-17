@@ -10,6 +10,7 @@ class AppleWithWords extends Subject {
 
   static bool isClash = false;
   static String _answer = '';
+  static int _countRandomNextAnswer = 0;
 
   @override
   int get position => createPosition.posiiton;
@@ -21,23 +22,34 @@ class AppleWithWords extends Subject {
   void snakeClash() {
     createPosition = CreatePosition();
     isClash = true;
-    print('яблуко');
   }
 
   static void randomNextAnswer() {
     const _maxRandom = 4;
-    List values = UserTerm.term.values;
-    int index = 0;
-    if (UserTerm.namberWord < values.length - _maxRandom) {
-      bool isZeroNamber = Random().nextBool();
-      int randomNamber = isZeroNamber ? 0 : Random().nextInt(_maxRandom);
-      index = UserTerm.namberWord + randomNamber;
+
+    List _values = UserTerm.term.values;
+    int _index = 0;
+
+    _countRandomNextAnswer++;
+
+    if (_countRandomNextAnswer % 5 == 0) {
+      _index = UserTerm.namberWord;
+      print(_index);
     } else {
-      var randomNamber = Random().nextInt(values.length - UserTerm.namberWord);
-      index = UserTerm.namberWord + randomNamber;
+      if (UserTerm.namberWord < _values.length - _maxRandom) {
+        bool isZeroNamber = Random().nextBool();
+        int randomNamber = isZeroNamber ? 0 : Random().nextInt(_maxRandom);
+        _index = UserTerm.namberWord + randomNamber;
+        print('работає ${UserTerm.namberWord}');
+      } else {
+        int randomNamber =
+            Random().nextInt(_values.length - UserTerm.namberWord);
+        _index = UserTerm.namberWord + randomNamber;
+        print('работає коли перепол');
+      }
     }
 
-    _answer = values[index];
+    _answer = _values[_index];
   }
 
   @override

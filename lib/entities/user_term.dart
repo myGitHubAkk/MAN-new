@@ -9,13 +9,11 @@ class UserTerm {
 
   set addValue(String value) {
     valueUserTerm += value;
-    print(valueUserTerm);
   }
 
   Widget get widget => _termWidget();
 
   Widget _termWidget() {
-    print('вертаєм');
     return Text('$termTitle - це $valueUserTerm');
   }
 }
