@@ -34,7 +34,6 @@ class AppleWithWords extends Subject {
 
     if (_countRandomNextAnswer % 5 == 0) {
       _index = UserTerm.namberWord;
-      print(_index);
     } else {
       if (UserTerm.namberWord < _values.length - _maxRandom) {
         bool isZeroNamber = Random().nextBool();

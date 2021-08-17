@@ -4,6 +4,7 @@ import 'package:man_project/const/constFilled.dart';
 import 'package:man_project/domain/checking_answer.dart';
 import 'package:man_project/entities/game_state.dart';
 import 'package:man_project/entities/snake.dart';
+import 'package:man_project/entities/subjects/apple.dart';
 
 enum SnakeDirection {
   up,
@@ -28,7 +29,10 @@ class SnakeMove {
   void snakeMove() {
     const duration = Duration(milliseconds: 200);
 
-    Timer.periodic(duration, (Timer timer) {
+    int ii = 0;
+
+    while (true) {
+      Future.delayed(duration);
       if (GameState.isGamePause == false) {
         Snake();
         if (direction == SnakeDirection.up) {
@@ -79,11 +83,23 @@ class SnakeMove {
           }
         }
 
-        if (CheckingAnswer.isTrueUserVersion) {}
-
+        // if (AppleWithWords.isClash) {
+        //   if (CheckingAnswer.isTrueUserVersion) {
+        //     continue;
+        //   } else {
+        //     for (var i = 0; i < 2; i++) {
+        //       ii++;
+        //       if (ii == 2) {
+        //         ii = 0;
+        //         continue;
+        //       }
+        //     }
+        //   }
+        // } else {
         Snake.snakePosition.removeAt(0);
+        //}
       }
-    });
+    }
   }
 
   SnakeMove() {
