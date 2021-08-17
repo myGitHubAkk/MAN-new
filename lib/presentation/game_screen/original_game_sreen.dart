@@ -52,10 +52,13 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
     bool _isTrueUserVersion = CheckingAnswer().isTrueUserVersion;
 
     if (_isTrueUserVersion) {
+      // print('onPressedShowDialog $_isTrueUserVersion $_isAddWord');
       if (_isAddWord) {
+        // print('addAnswer $answer');
         UserTerm().addValue = answer;
       }
     } else {
+      // print('onPressedShowDialog $_isTrueUserVersion $_isAddWord');
       //
     }
 
@@ -66,8 +69,19 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
+        const _maxRandom = 4;
         List values = UserTerm.term.values;
-        int index = Random().nextInt(values.length);
+        int index = 0;
+        if (UserTerm.namberWord < values.length - _maxRandom) {
+          bool isZeroNamber = Random().nextBool();
+          int randomNamber = isZeroNamber ? 0 : Random().nextInt(_maxRandom);
+          index = UserTerm.namberWord + randomNamber;
+        } else {
+          var randomNamber =
+              Random().nextInt(values.length - UserTerm.namberWord);
+          index = UserTerm.namberWord + randomNamber;
+        }
+
         String _answer = values[index];
         return AlertDialog(
           content: Text(_answer),

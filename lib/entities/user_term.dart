@@ -7,11 +7,15 @@ class UserTerm {
   String termTitle = term.title;
   static String valueUserTerm = '';
 
-  set addValue(String value) => valueUserTerm += value;
+  set addValue(String value) {
+    valueUserTerm += value;
+    print(valueUserTerm);
+  }
 
   Widget get widget => _termWidget();
 
   Widget _termWidget() {
+    print('вертаєм');
     return Text('$termTitle - це $valueUserTerm');
   }
 }

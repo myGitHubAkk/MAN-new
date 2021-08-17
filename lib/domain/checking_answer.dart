@@ -13,28 +13,32 @@ class CheckingAnswer {
   }
 
   bool get isTrueAnswer {
-    checking();
+    _checkingAnswer();
     return _isTrueAnswer;
   }
 
   bool get isTrueUserVersion {
-    checking();
+    checkingUserVersion();
     return _isTrueUserVersion;
   }
 
-  void checking() {
+  void _checkingAnswer() {
     String trueAnswer = TermData.terms[TermData.namberTerm].values[_namberWord];
+    // print('true $trueAnswer');
     if (trueAnswer == _answer) {
       _isTrueAnswer = true;
     } else {
       _isTrueAnswer = false;
     }
+  }
 
+  void checkingUserVersion() {
     if (_isTrueAnswer && _isTrueAnswerUserVersion) {
       _isTrueUserVersion = true;
       _namberWord++;
+      // print('угадав $_isTrueUserVersion');
     } else if (_isTrueAnswer && !_isTrueAnswerUserVersion) {
-      _isTrueUserVersion = true;
+      _isTrueUserVersion = false;
     } else if (!_isTrueAnswer && _isTrueAnswerUserVersion) {
       _isTrueUserVersion = false;
     } else if (!_isTrueAnswer && !_isTrueAnswerUserVersion) {
