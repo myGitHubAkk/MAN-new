@@ -15,6 +15,7 @@ enum SnakeDirection {
 
 class SnakeMove {
   SnakeDirection direction = SnakeDirection.down;
+  static bool isSnakeRemove = false;
 
   // final _inputEventController = StreamController<SnakeDirection>();
   // StreamSink<SnakeDirection> get inputEventSink => _inputEventController.sink;
@@ -28,11 +29,11 @@ class SnakeMove {
 
   void snakeMove() {
     const duration = Duration(milliseconds: 200);
+    const addTail = 2;
 
     int ii = 0;
 
-    while (true) {
-      Future.delayed(duration);
+    Timer.periodic(duration, (timer) {
       if (GameState.isGamePause == false) {
         Snake();
         if (direction == SnakeDirection.up) {
@@ -83,23 +84,26 @@ class SnakeMove {
           }
         }
 
-        // if (AppleWithWords.isClash) {
-        //   if (CheckingAnswer.isTrueUserVersion) {
-        //     continue;
-        //   } else {
-        //     for (var i = 0; i < 2; i++) {
-        //       ii++;
-        //       if (ii == 2) {
-        //         ii = 0;
-        //         continue;
-        //       }
-        //     }
-        //   }
-        // } else {
-        Snake.snakePosition.removeAt(0);
-        //}
+        for (var i = 0; i < addTail; i++) {
+          if (AppleWithWords.isClash) {
+            if (CheckingAnswer.isTrueUserVersion) {
+              break;
+            } else {
+              ii++;
+              if (ii == 2) {
+                ii = 0;
+                break;
+              }
+            }
+          } else {
+            Snake.snakePosition.removeAt(0);
+            break;
+          }
+        }
       }
-    }
+    });
+    // while (true) {
+    //   Future.delayed(duration);
   }
 
   SnakeMove() {
