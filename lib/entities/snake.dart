@@ -4,12 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:man_project/const/constFilled.dart';
 import 'package:man_project/entities/game_state.dart';
 import 'package:man_project/entities/subjects/subject.dart';
-import 'package:man_project/entities/subjects/subjects.dart';
 import 'package:man_project/domain/snake_move.dart';
 
 class Snake {
   static SnakeDirection snakeDirection = SnakeDirection.down;
-  static bool isClash = false;
+  static bool isAddTail = false;
 
   static List<int> snakePosition = [
     tailPosition,
