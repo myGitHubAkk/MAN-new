@@ -26,10 +26,10 @@ class Snake {
     colorDark: Colors.green,
   );
 
-  static void gameOver() {
-    GameState.isGameOn = false;
-    // Subjects().subjects.clear();
-  }
+  // static void gameOver() {
+  //   GameState.isGameOn = false;
+  //   // Subjects().subjects.clear();
+  // }
 
   // Snake() {
   //   // snakeUpdate();

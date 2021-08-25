@@ -48,21 +48,6 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
     Snake.isAddTail = true;
     AppleWithWords.isClash = false;
     Navigator.of(context).pop();
-    // bool _isAddWord = CheckingAnswer().isTrueAnswer;
-    // bool _isTrueUserVersion = CheckingAnswer().isTrueUserVersion;
-
-    // if (_isTrueUserVersion) {
-    //   // print('onPressedShowDialog $_isTrueUserVersion $_isAddWord');
-    //   if (_isAddWord) {
-    //     // print('addAnswer $answer');
-
-    //   }
-    // } else {
-    //   // print('onPressedShowDialog $_isTrueUserVersion $_isAddWord');
-    //   //
-    // }
-
-    // // print(_isAddWord);
   }
 
   void _showDialog() {

@@ -58,7 +58,12 @@ class SnakeMove {
             Snake.snakePosition.add(Snake.snakePosition.last - 1);
           }
         }
+
         tailRemove();
+
+        if (GameState.isGameOn == false) {
+          timer.cancel();
+        }
       }
     });
   }
