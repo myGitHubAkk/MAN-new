@@ -45,6 +45,7 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
 
   void onPressedShowDialog() {
     GameState.isGamePause = false;
+    Snake.isClash = true;
     AppleWithWords.isClash = false;
     Navigator.of(context).pop();
     // bool _isAddWord = CheckingAnswer().isTrueAnswer;

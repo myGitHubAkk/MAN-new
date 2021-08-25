@@ -17,6 +17,8 @@ class SnakeMove {
   SnakeDirection direction = SnakeDirection.down;
   static bool isSnakeRemove = false;
 
+  int ii = 0;
+
   // final _inputEventController = StreamController<SnakeDirection>();
   // StreamSink<SnakeDirection> get inputEventSink => _inputEventController.sink;
 
@@ -29,9 +31,6 @@ class SnakeMove {
 
   void snakeMove() {
     const duration = Duration(milliseconds: 200);
-    const addTail = 2;
-
-    int ii = 0;
 
     Timer.periodic(duration, (timer) {
       if (GameState.isGamePause == false) {
@@ -84,26 +83,31 @@ class SnakeMove {
           }
         }
 
-        for (var i = 0; i < addTail; i++) {
-          if (AppleWithWords.isClash) {
-            if (CheckingAnswer.isTrueUserVersion) {
-              break;
-            } else {
-              ii++;
-              if (ii == 2) {
-                ii = 0;
-                break;
-              }
-            }
-          } else {
-            Snake.snakePosition.removeAt(0);
-            break;
-          }
-        }
+        tailRemove();
+
+        // for (var i = 0; i < addTail; i++) {
+
+        // }
       }
     });
     // while (true) {
     //   Future.delayed(duration);
+  }
+
+  void tailRemove() {
+    if (Snake.isClash) {
+      if (CheckingAnswer.isTrueUserVersion) {
+        Snake.isClash = false;
+      } else {
+        ii++;
+        if (ii == 2) {
+          ii = 0;
+          Snake.isClash = false;
+        }
+      }
+    } else {
+      Snake.snakePosition.removeAt(0);
+    }
   }
 
   SnakeMove() {

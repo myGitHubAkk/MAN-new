@@ -9,6 +9,7 @@ import 'package:man_project/domain/snake_move.dart';
 
 class Snake {
   static SnakeDirection snakeDirection = SnakeDirection.down;
+  static bool isClash = false;
 
   static List<int> snakePosition = [
     tailPosition,
