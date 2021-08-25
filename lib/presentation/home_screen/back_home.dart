@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:man_project/const/value_widget_visibility.dart';
+import 'package:man_project/data/xp.dart';
+import 'package:man_project/presentation/widget_template.dart';
+
+import 'back_widget/cloud.dart';
 
 class BackHomeScreen extends StatefulWidget {
   const BackHomeScreen({Key? key}) : super(key: key);
@@ -42,17 +47,17 @@ class _BackHomeScreenState extends State<BackHomeScreen> {
               flex: 3,
               child: Stack(
                 children: [
-                  BackgroundImage(
+                  backgroundImage(
                     name: 'Земля',
                     width: double.infinity,
                     height: double.infinity,
                   ),
 
-                  fractionalXP < lvlWhichNotVisibleTreshLeft
-                      ? MarginWidget(
+                  Xp.xpFractional < lvlWhichNotVisibleTreshLeft
+                      ? marginWidget(
                           top: 0,
                           left: 40,
-                          widget: BackgroundImage(
+                          widget: backgroundImage(
                             name: 'Мусор',
                             width: 90,
                             height: 90,
@@ -60,28 +65,28 @@ class _BackHomeScreenState extends State<BackHomeScreen> {
                         )
                       : Container(),
 
-                  fractionalXP < lvlWhichNotVisibleTreshRight
-                      ? MarginWidget(
+                  Xp.xpFractional < lvlWhichNotVisibleTreshRight
+                      ? marginWidget(
                           top: 60,
                           left: 320,
-                          widget: BackgroundImage(
+                          widget: backgroundImage(
                             name: 'Мусор',
                             width: 70,
                             height: 70,
                           ),
                         )
                       : Container(),
-                  fractionalXP < lvlWhichNotVisibleFactory
-                      ? MarginWidget(
+                  Xp.xpFractional < lvlWhichNotVisibleFactory
+                      ? marginWidget(
                           top: 60,
                           left: 250,
-                          widget: BackgroundImage(
+                          widget: backgroundImage(
                             name: 'Завод',
                             width: 70,
                             height: 70,
                           ),
                         )
-                      : MarginWidget(
+                      : marginWidget(
                           top: 0,
                           left: 250,
                           widget: Stack(
@@ -89,7 +94,7 @@ class _BackHomeScreenState extends State<BackHomeScreen> {
                               Positioned(
                                 top: -20,
                                 left: 0,
-                                child: BackgroundImage(
+                                child: backgroundImage(
                                   name: 'вітряк',
                                   width: 50,
                                   height: 120,
@@ -98,7 +103,7 @@ class _BackHomeScreenState extends State<BackHomeScreen> {
                               Positioned(
                                 top: -30,
                                 left: 50,
-                                child: BackgroundImage(
+                                child: backgroundImage(
                                   name: 'вітряк',
                                   width: 50,
                                   height: 120,
@@ -107,7 +112,7 @@ class _BackHomeScreenState extends State<BackHomeScreen> {
                               Positioned(
                                 top: -30,
                                 left: 100,
-                                child: BackgroundImage(
+                                child: backgroundImage(
                                   name: 'вітряк',
                                   width: 50,
                                   height: 120,
@@ -118,7 +123,8 @@ class _BackHomeScreenState extends State<BackHomeScreen> {
                         ),
 
                   //річка
-                  MarginWidget(top: 100, left: 0, widget: River(fractionalXP))
+                  marginWidget(
+                      top: 100, left: 0, widget: River(Xp.xpFractional))
                 ],
               ),
             )
@@ -138,7 +144,7 @@ class _BackHomeScreenState extends State<BackHomeScreen> {
                   color: green,
                 ),
                 //голова
-                TreeFace(fractionalXP)
+                TreeFace(Xp.xpFractional)
               ],
             ),
           ),
