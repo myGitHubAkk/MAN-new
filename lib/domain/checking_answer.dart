@@ -6,7 +6,7 @@ class CheckingAnswer {
   static String _answer = '';
   static bool _isTrueAnswer = false;
   static bool _isTrueAnswerUserVersion = false;
-  static bool _isTrueUserVersion = false;
+  static bool isTrueUserVersion = false;
 
   set addUserVersion(bool userVersion) {
     // _addUserVersion(value);
@@ -46,15 +46,15 @@ class CheckingAnswer {
     }
 
     if (_isTrueAnswer && _isTrueAnswerUserVersion) {
-      _isTrueUserVersion = true;
+      isTrueUserVersion = true;
       UserTerm.namberWord++;
       UserTerm().addValue = _answer;
     } else if (_isTrueAnswer && !_isTrueAnswerUserVersion) {
-      _isTrueUserVersion = false;
+      isTrueUserVersion = false;
     } else if (!_isTrueAnswer && _isTrueAnswerUserVersion) {
-      _isTrueUserVersion = false;
+      isTrueUserVersion = false;
     } else if (!_isTrueAnswer && !_isTrueAnswerUserVersion) {
-      _isTrueUserVersion = true;
+      isTrueUserVersion = true;
     }
   }
 

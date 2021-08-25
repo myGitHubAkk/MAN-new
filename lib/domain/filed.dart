@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:man_project/domain/checking_answer.dart';
 import 'package:man_project/entities/snake.dart';
+import 'package:man_project/entities/subjects/apple.dart';
 import 'package:man_project/entities/subjects/subject.dart';
 import 'package:man_project/entities/subjects/subjects.dart';
+import 'package:man_project/entities/user_term.dart';
 
 class Field {
   final int index;
@@ -47,6 +50,19 @@ class Field {
     //       }
     //     }
     //   }
+    // if (Snake.snakePosition.last == AppleWithWords().position) {
+    //   if (CheckingAnswer.isTrueUserVersion) {
+    //     AppleWithWords().snakeClash();
+    //   } else {
+    //     for (var i = 0; i < 2; i++) {
+    //       if (i == 2) {
+    //         AppleWithWords().snakeClash();
+    //       }
+    //     }
+    //   }
+    // } else {
+    // Snake.snakePosition.removeAt(0);
+    //}
 
     return cellTemlate(colorLight: Colors.white, colorDark: Colors.grey);
 
@@ -64,7 +80,7 @@ class Field {
   }
 
   void _clashWithSubject(Subject subject) {
-    if (Snake.snakePosition.contains(subject.position)) {
+    if (Snake.snakePosition.last == subject.position) {
       subject.snakeClash();
     }
   }
