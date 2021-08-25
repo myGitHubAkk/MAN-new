@@ -1,8 +1,8 @@
 class Xp {
-  late double xpFull = 1;
-  late int xpFractional;
-  late double xpWhole;
-  late Map<String, num> _xp;
+  static late double xpFull = 1;
+  static late int xpFractional;
+  static late double xpWhole;
+  static late Map<String, num> _xp;
 
   Map<String, num> get xp => _xp;
 
