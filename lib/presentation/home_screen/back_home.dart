@@ -123,8 +123,8 @@ class _BackHomeScreenState extends State<BackHomeScreen> {
                         ),
 
                   //річка
-                  marginWidget(
-                      top: 100, left: 0, widget: River(Xp.xpFractional))
+                  // marginWidget(
+                  //     top: 100, left: 0, widget: River(Xp.xpFractional))
                 ],
               ),
             )
@@ -132,23 +132,23 @@ class _BackHomeScreenState extends State<BackHomeScreen> {
         ),
 
         //грут
-        Container(
-          margin: EdgeInsets.only(top: 0),
-          child: Center(
-            child: Stack(
-              children: [
-                //тело
-                Container(
-                  height: 250,
-                  width: 50,
-                  color: green,
-                ),
-                //голова
-                TreeFace(Xp.xpFractional)
-              ],
-            ),
-          ),
-        ),
+        // Container(
+        //   margin: EdgeInsets.only(top: 0),
+        //   child: Center(
+        //     child: Stack(
+        //       children: [
+        //         //тело
+        //         Container(
+        //           height: 250,
+        //           width: 50,
+        //           color: green,
+        //         ),
+        //         //голова
+        //         TreeFace(Xp.xpFractional)
+        //       ],
+        //     ),
+        //   ),
+        //),
       ],
     );
   }
