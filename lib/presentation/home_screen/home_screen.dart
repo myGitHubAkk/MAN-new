@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:man_project/presentation/game_screen/original_game_sreen.dart';
+import 'package:man_project/presentation/home_screen/back_home.dart';
 import 'package:man_project/presentation/home_screen/front_home.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -27,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          //HomeBack(1),
+          BackHomeScreen(),
           Opacity(
             opacity: 0.2,
             child: Container(
