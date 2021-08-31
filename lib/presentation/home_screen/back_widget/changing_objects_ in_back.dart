@@ -5,7 +5,7 @@ import 'package:man_project/domain/back_name_widget_create.dart';
 import 'package:man_project/presentation/widget_template.dart';
 
 class ChangingObjectsInBack extends StatefulWidget {
-  Map inputData = {};
+  final Map inputData;
 
   ChangingObjectsInBack({required this.inputData});
 
@@ -16,11 +16,6 @@ class ChangingObjectsInBack extends StatefulWidget {
 class _ChangingObjectsInBackState extends State<ChangingObjectsInBack> {
   String name = '';
 
-  _ChangingObjectsInBackState() {
-    print('работає');
-    _fillInName();
-  }
-
   void _fillInName() {
     BackNameWidgetCreate backNameWidgetCreate = BackNameWidgetCreate();
     backNameWidgetCreate.create = widget.inputData;
@@ -29,6 +24,7 @@ class _ChangingObjectsInBackState extends State<ChangingObjectsInBack> {
 
   @override
   Widget build(BuildContext context) {
+    _fillInName();
     return backgroundImage(name: name, width: 100, height: 100);
   }
 }
