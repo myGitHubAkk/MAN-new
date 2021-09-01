@@ -12,6 +12,7 @@ import 'package:man_project/domain/filed.dart';
 import 'package:man_project/const/constFilled.dart';
 import 'package:man_project/domain/snake_move.dart';
 import 'package:man_project/entities/user_term.dart';
+import 'package:man_project/presentation/home_screen/home_screen.dart';
 
 class OriginalGameScreen extends StatefulWidget {
   const OriginalGameScreen({Key? key}) : super(key: key);
@@ -30,8 +31,14 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
   void snakeUpdate() {
     Timer.periodic(Duration(milliseconds: 10), (timer) {
       setState(() {});
+
       if (AppleWithWords.isClash == true && GameState.isGamePause == false) {
-        _showDialog();
+        _showDialogQuestion();
+        GameState.isGamePause = true;
+      }
+
+      if (GameState.isGameOn == false && GameState.isGamePause == false) {
+        _showDialogGameOver();
         GameState.isGamePause = true;
       }
     });
@@ -41,6 +48,7 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
   void initState() {
     super.initState();
     snakeUpdate();
+    snakeMove.snakeMove();
   }
 
   void onPressedShowDialog() {
@@ -50,7 +58,41 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
     Navigator.of(context).pop();
   }
 
-  void _showDialog() {
+  void _showDialogGameOver() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          actions: [
+            // IconButton(
+            //   icon: Icon(Icons.arrow_back),
+            //   onPressed: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(builder: (contex) {
+            //         return HomeScreen();
+            //       }),
+            //     );
+            //     //GameState.isGamePause = false;
+            //     Navigator.of(context).pop();
+            //   },
+            // ),
+            IconButton(
+              icon: Icon(Icons.cancel),
+              onPressed: () {
+                print('dg');
+                GameState.gameReset();
+                //GameState.isGamePause = false;
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showDialogQuestion() {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -103,29 +145,42 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
                 height: heightScreen,
                 child: GestureDetector(
                   onVerticalDragUpdate: (details) {
+                    final _details;
+
+                    if (GameState.isGameOn == true) {
+                      _details = details.delta.dy;
+                    } else {
+                      _details = 1;
+                    }
+
                     if (Snake.snakeDirection != SnakeDirection.up &&
-                        details.delta.dy > 0) {
+                        _details > 0) {
                       Snake.snakeDirection = SnakeDirection.down;
                       snakeMove.snakeDirection(Snake.snakeDirection);
                       // snakeDirectionBloc.inputEventSink.add(Snake.snakeDirection);
                     } else if (Snake.snakeDirection != SnakeDirection.down &&
-                        details.delta.dy < 0) {
+                        _details < 0) {
                       Snake.snakeDirection = SnakeDirection.up;
                       snakeMove.snakeDirection(Snake.snakeDirection);
                       // snakeMoveBloc.inputEventSink.add(Snake.snakeDirection);
                     }
                   },
                   onHorizontalDragUpdate: (details) {
-                    if (Snake.snakeDirection != SnakeDirection.left &&
-                        details.delta.dx > 0) {
-                      Snake.snakeDirection = SnakeDirection.right;
+                    if (GameState.isGameOn == true) {
+                      if (Snake.snakeDirection != SnakeDirection.left &&
+                          details.delta.dx > 0) {
+                        Snake.snakeDirection = SnakeDirection.right;
+                        snakeMove.snakeDirection(Snake.snakeDirection);
+                        // snakeMoveBloc.inputEventSink.add(Snake.snakeDirection);
+                      } else if (Snake.snakeDirection != SnakeDirection.right &&
+                          details.delta.dx < 0) {
+                        Snake.snakeDirection = SnakeDirection.left;
+                        snakeMove.snakeDirection(Snake.snakeDirection);
+                        // snakeMoveBloc.inputEventSink.add(Snake.snakeDirection);
+                      }
+                    } else {
+                      Snake.snakeDirection = SnakeDirection.down;
                       snakeMove.snakeDirection(Snake.snakeDirection);
-                      // snakeMoveBloc.inputEventSink.add(Snake.snakeDirection);
-                    } else if (Snake.snakeDirection != SnakeDirection.right &&
-                        details.delta.dx < 0) {
-                      Snake.snakeDirection = SnakeDirection.left;
-                      snakeMove.snakeDirection(Snake.snakeDirection);
-                      // snakeMoveBloc.inputEventSink.add(Snake.snakeDirection);
                     }
                   },
                   child: Container(

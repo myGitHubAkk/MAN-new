@@ -4,6 +4,7 @@ abstract class Subject {
   final int position = 0;
   final Widget widget = Container();
   void snakeClash() {}
+  void gameOver() {}
 }
 
 Widget cellTemlate({required Color colorLight, required Color colorDark}) {

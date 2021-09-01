@@ -18,14 +18,16 @@ class SnakeMove {
 
   void snakeDirection(SnakeDirection direction) {
     this.direction = direction;
+    print('move ${this.direction}');
   }
 
-  void snakeMove() {
+  void snakeMove() async {
     const duration = Duration(milliseconds: 200);
 
-    Timer.periodic(duration, (timer) {
+    //Timer.periodic(duration, (timer) {
+    while (true) {
+      await Future.delayed(duration);
       if (GameState.isGamePause == false) {
-        Snake();
         if (direction == SnakeDirection.up) {
           if (Snake.snakePosition.last < 0) {
             Snake.snakePosition.add(Snake.snakePosition.last + sizeFieldPlay);
@@ -61,11 +63,13 @@ class SnakeMove {
 
         tailRemove();
 
-        if (GameState.isGameOn == false) {
-          timer.cancel();
-        }
+        // if (GameState.isGameOn == false) {
+        //   timer.cancel();
+        // }
+
       }
-    });
+    }
+    //});
   }
 
   int _countTailRemove = 0;
@@ -84,9 +88,5 @@ class SnakeMove {
     } else {
       Snake.snakePosition.removeAt(0);
     }
-  }
-
-  SnakeMove() {
-    snakeMove();
   }
 }

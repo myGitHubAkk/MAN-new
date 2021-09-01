@@ -6,22 +6,27 @@ import 'package:man_project/entities/subjects/subject.dart';
 import 'package:man_project/entities/user_term.dart';
 
 class AppleWithWords extends Subject {
-  CreatePosition createPosition = CreatePosition();
+  CreatePosition _createPosition = CreatePosition();
 
   static bool isClash = false;
   static String _answer = '';
   static int _countRandomNextAnswer = 0;
 
   @override
-  int get position => createPosition.posiiton;
+  int get position => _createPosition.posiiton;
   String get answer {
     return _answer;
   }
 
   @override
   void snakeClash() {
-    createPosition = CreatePosition();
+    _createPosition = CreatePosition();
     isClash = true;
+  }
+
+  @override
+  void gameOver() {
+    _createPosition = CreatePosition();
   }
 
   static void randomNextAnswer() {
