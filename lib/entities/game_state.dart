@@ -6,6 +6,7 @@ import 'package:man_project/entities/subjects/subjects.dart';
 import 'package:man_project/entities/user_term.dart';
 
 class GameState {
+  static bool isWinner = false;
   static bool isGamePause = false;
   static bool isGameOn = true;
 

@@ -1,4 +1,5 @@
 import 'package:man_project/data/terms.dart';
+import 'package:man_project/entities/game_state.dart';
 import 'package:man_project/entities/subjects/apple.dart';
 import 'package:man_project/entities/user_term.dart';
 
@@ -36,6 +37,8 @@ class CheckingAnswer {
   // }
 
   void checkingUserVersion() {
+    List trueTerm = TermData.terms[TermData.namberTerm].values;
+    //List userTerm = [];
     String trueAnswer =
         TermData.terms[TermData.namberTerm].values[UserTerm.namberWord];
     // print('true $trueAnswer');
@@ -47,8 +50,19 @@ class CheckingAnswer {
 
     if (_isTrueAnswer && _isTrueAnswerUserVersion) {
       isTrueUserVersion = true;
-      UserTerm.namberWord++;
+
+      print(
+          'UserTerm.namberWord : ${UserTerm.namberWord} trueTerm.length : ${trueTerm.length}');
+
+      if (UserTerm.namberWord == trueTerm.length - 1) {
+        GameState.isWinner = true;
+        print('всьо');
+      } else {
+        UserTerm.namberWord++;
+      }
+
       UserTerm().addValue = _answer;
+      //userTerm.add(_answer);
     } else if (_isTrueAnswer && !_isTrueAnswerUserVersion) {
       isTrueUserVersion = false;
     } else if (!_isTrueAnswer && _isTrueAnswerUserVersion) {

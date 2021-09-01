@@ -18,7 +18,7 @@ class SnakeMove {
 
   void snakeDirection(SnakeDirection direction) {
     this.direction = direction;
-    print('move ${this.direction}');
+    //print('move ${this.direction}');
   }
 
   void snakeMove() async {

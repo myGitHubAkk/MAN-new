@@ -41,6 +41,11 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
         _showDialogGameOver();
         GameState.isGamePause = true;
       }
+
+      if (GameState.isWinner == true && GameState.isGamePause == false) {
+        _showDialogWinner();
+        GameState.isGamePause = true;
+      }
     });
   }
 
@@ -56,6 +61,41 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
     Snake.isAddTail = true;
     AppleWithWords.isClash = false;
     Navigator.of(context).pop();
+  }
+
+  void _showDialogWinner() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Text('перемога'),
+          actions: [
+            // IconButton(
+            //   icon: Icon(Icons.arrow_back),
+            //   onPressed: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(builder: (contex) {
+            //         return HomeScreen();
+            //       }),
+            //     );
+            //     //GameState.isGamePause = false;
+            //     Navigator.of(context).pop();
+            //   },
+            // ),
+            IconButton(
+              icon: Icon(Icons.cancel),
+              onPressed: () {
+                GameState.isWinner = false;
+                GameState.gameReset();
+                //GameState.isGamePause = false;
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   void _showDialogGameOver() {
@@ -80,7 +120,7 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
             IconButton(
               icon: Icon(Icons.cancel),
               onPressed: () {
-                print('dg');
+                //print('dg');
                 GameState.gameReset();
                 //GameState.isGamePause = false;
                 Navigator.of(context).pop();
