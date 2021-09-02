@@ -15,7 +15,7 @@ class Stone extends Subject {
 
   @override
   void snakeClash() {
-    GameState.isGameOn = false;
+    GameState.isShowDialogGameOver = false;
   }
 
   @override

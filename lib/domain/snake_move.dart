@@ -13,22 +13,25 @@ enum SnakeDirection {
 }
 
 class SnakeMove {
-  SnakeDirection direction = SnakeDirection.down;
+  static SnakeDirection _direction = SnakeDirection.down;
   static bool isSnakeRemove = false;
 
   void snakeDirection(SnakeDirection direction) {
-    this.direction = direction;
+    _direction = direction;
     //print('move ${this.direction}');
+    print('direction');
   }
 
-  void snakeMove() async {
+  static void snakeMove() async {
     const duration = Duration(milliseconds: 200);
+
+    print('move');
 
     //Timer.periodic(duration, (timer) {
     while (true) {
       await Future.delayed(duration);
       if (GameState.isGamePause == false) {
-        if (direction == SnakeDirection.up) {
+        if (_direction == SnakeDirection.up) {
           if (Snake.snakePosition.last < 0) {
             Snake.snakePosition.add(Snake.snakePosition.last + sizeFieldPlay);
           } else {
@@ -36,7 +39,7 @@ class SnakeMove {
           }
         }
 
-        if (direction == SnakeDirection.down) {
+        if (_direction == SnakeDirection.down) {
           if (Snake.snakePosition.last > sizeFieldPlay - lenghtRow - 1) {
             Snake.snakePosition
                 .add(Snake.snakePosition.last + lenghtRow - sizeFieldPlay);
@@ -45,7 +48,7 @@ class SnakeMove {
           }
         }
 
-        if (direction == SnakeDirection.right) {
+        if (_direction == SnakeDirection.right) {
           if ((Snake.snakePosition.last + 1) % lenghtRow == 0) {
             Snake.snakePosition.add(Snake.snakePosition.last + 1 - lenghtRow);
           } else {
@@ -53,7 +56,7 @@ class SnakeMove {
           }
         }
 
-        if (direction == SnakeDirection.left) {
+        if (_direction == SnakeDirection.left) {
           if (Snake.snakePosition.last % lenghtRow == 0) {
             Snake.snakePosition.add(Snake.snakePosition.last - 1 + lenghtRow);
           } else {
@@ -61,7 +64,7 @@ class SnakeMove {
           }
         }
 
-        tailRemove();
+        _tailRemove();
 
         // if (GameState.isGameOn == false) {
         //   timer.cancel();
@@ -72,9 +75,9 @@ class SnakeMove {
     //});
   }
 
-  int _countTailRemove = 0;
+  static int _countTailRemove = 0;
 
-  void tailRemove() {
+  static void _tailRemove() {
     if (Snake.isAddTail) {
       if (CheckingAnswer.isTrueUserVersion) {
         Snake.isAddTail = false;

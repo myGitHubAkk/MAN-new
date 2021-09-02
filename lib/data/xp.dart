@@ -8,7 +8,7 @@ class Xp {
 
   Xp(double newXp) {
     xpFull += newXp;
-    xpFractional = xpFull as int;
+    xpFractional = xpFull.toInt();
     xpWhole = xpFull - xpFractional;
     _xp = {'full': xpFull, 'fractional': xpFractional, 'whole': xpWhole};
   }

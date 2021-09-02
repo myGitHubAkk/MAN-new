@@ -45,7 +45,7 @@ class Field {
           count += 1;
         }
         if (count == 2) {
-          GameState.isGameOn = false;
+          GameState.isShowDialogGameOver = false;
         }
       }
     }

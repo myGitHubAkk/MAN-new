@@ -12,6 +12,7 @@ import 'package:man_project/domain/filed.dart';
 import 'package:man_project/const/constFilled.dart';
 import 'package:man_project/domain/snake_move.dart';
 import 'package:man_project/entities/user_term.dart';
+import 'package:man_project/presentation/home_screen/front_home.dart';
 import 'package:man_project/presentation/home_screen/home_screen.dart';
 
 class OriginalGameScreen extends StatefulWidget {
@@ -25,35 +26,48 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
   SnakeMove snakeMove = SnakeMove();
   UserTerm userTerm = UserTerm();
 
-  var snake = Snake.snakePosition;
-  var isClash = AppleWithWords.isClash;
+  List snake = Snake.snakePosition;
+  bool isClash = AppleWithWords.isClash;
+  bool isExit = false;
+
+  static int countInit = 0;
 
   void snakeUpdate() {
-    Timer.periodic(Duration(milliseconds: 10), (timer) {
-      setState(() {});
+    if (GameState.isGamePlay == true) {
+      Timer.periodic(Duration(milliseconds: 10), (timer) {
+        setState(() {});
 
-      if (AppleWithWords.isClash == true && GameState.isGamePause == false) {
-        _showDialogQuestion();
-        GameState.isGamePause = true;
-      }
+        if (AppleWithWords.isClash == true && GameState.isGamePause == false) {
+          _showDialogQuestion();
+          GameState.isGamePause = true;
+        }
 
-      if (GameState.isGameOn == false && GameState.isGamePause == false) {
-        _showDialogGameOver();
-        GameState.isGamePause = true;
-      }
+        if (GameState.isShowDialogGameOver == false &&
+            GameState.isGamePause == false) {
+          _showDialogGameOver();
+          GameState.isGamePause = true;
+        }
 
-      if (GameState.isWinner == true && GameState.isGamePause == false) {
-        _showDialogWinner();
-        GameState.isGamePause = true;
-      }
-    });
+        if (GameState.isWinner == true && GameState.isGamePause == false) {
+          _showDialogWinner();
+          GameState.isGamePause = true;
+        }
+
+        if (isExit == true) {
+          GameState.isGamePlay = false;
+          timer.cancel();
+        }
+      });
+    }
+    //}
   }
 
   @override
   void initState() {
     super.initState();
+    isExit = false;
+    // countInit++;
     snakeUpdate();
-    snakeMove.snakeMove();
   }
 
   void onPressedShowDialog() {
@@ -70,21 +84,23 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
         return AlertDialog(
           content: Text('перемога'),
           actions: [
-            // IconButton(
-            //   icon: Icon(Icons.arrow_back),
-            //   onPressed: () {
-            //     Navigator.push(
-            //       context,
-            //       MaterialPageRoute(builder: (contex) {
-            //         return HomeScreen();
-            //       }),
-            //     );
-            //     //GameState.isGamePause = false;
-            //     Navigator.of(context).pop();
-            //   },
-            // ),
             IconButton(
-              icon: Icon(Icons.cancel),
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                // GameState.gameReset();
+                isExit = true;
+                Navigator.pop(
+                  context,
+                  MaterialPageRoute(builder: (contex) {
+                    return HomeScreen();
+                  }),
+                );
+                //GameState.isGamePause = false;
+                Navigator.of(context).pop();
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.refresh),
               onPressed: () {
                 GameState.isWinner = false;
                 GameState.gameReset();
@@ -104,21 +120,23 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
       builder: (BuildContext context) {
         return AlertDialog(
           actions: [
-            // IconButton(
-            //   icon: Icon(Icons.arrow_back),
-            //   onPressed: () {
-            //     Navigator.push(
-            //       context,
-            //       MaterialPageRoute(builder: (contex) {
-            //         return HomeScreen();
-            //       }),
-            //     );
-            //     //GameState.isGamePause = false;
-            //     Navigator.of(context).pop();
-            //   },
-            // ),
             IconButton(
-              icon: Icon(Icons.cancel),
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                //GameState.gameReset();
+                isExit = true;
+                Navigator.pop(
+                  context,
+                  MaterialPageRoute(builder: (contex) {
+                    return HomeScreen();
+                  }),
+                );
+                //GameState.isGamePause = false;
+                Navigator.of(context).pop();
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.refresh),
               onPressed: () {
                 //print('dg');
                 GameState.gameReset();
@@ -185,13 +203,13 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
                 height: heightScreen,
                 child: GestureDetector(
                   onVerticalDragUpdate: (details) {
-                    final _details;
+                    final _details = details.delta.dy;
 
-                    if (GameState.isGameOn == true) {
-                      _details = details.delta.dy;
-                    } else {
-                      _details = 1;
-                    }
+                    // if (GameState.isGameOn == true) {
+                    //   _details = details.delta.dy;
+                    // } else {
+                    //   _details = 1;
+                    // }
 
                     if (Snake.snakeDirection != SnakeDirection.up &&
                         _details > 0) {
@@ -206,7 +224,7 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
                     }
                   },
                   onHorizontalDragUpdate: (details) {
-                    if (GameState.isGameOn == true) {
+                    if (GameState.isShowDialogGameOver == true) {
                       if (Snake.snakeDirection != SnakeDirection.left &&
                           details.delta.dx > 0) {
                         Snake.snakeDirection = SnakeDirection.right;

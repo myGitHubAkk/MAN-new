@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:man_project/data/xp.dart';
+import 'package:man_project/entities/game_state.dart';
 import 'package:man_project/presentation/game_screen/original_game_sreen.dart';
 import 'package:man_project/presentation/widget_template.dart';
+import 'package:man_project/domain/snake_move.dart';
 
 class FrontHomeScreen extends StatefulWidget {
   const FrontHomeScreen({Key? key}) : super(key: key);
@@ -14,6 +17,7 @@ class _FrontHomeScreenState extends State<FrontHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SnakeMove.snakeMove();
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -24,6 +28,8 @@ class _FrontHomeScreenState extends State<FrontHomeScreen> {
           ),
           GestureDetector(
             onTap: () {
+              GameState.gameReset();
+              GameState.isGamePlay = true;
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (contex) {
@@ -43,7 +49,7 @@ class _FrontHomeScreenState extends State<FrontHomeScreen> {
               children: [
                 Text(
                   // '${fractionalXP} Lvl',
-                  '${1} Lvl',
+                  '${Xp.xpFractional} Lvl',
                   style: TextStyle(fontSize: 20),
                 ),
                 SizedBox(
@@ -63,7 +69,7 @@ class _FrontHomeScreenState extends State<FrontHomeScreen> {
                     Container(
                       margin: EdgeInsets.only(left: 10),
                       // width: widthBar * wholeXP,
-                      width: widthBar * 1,
+                      width: widthBar * Xp.xpWhole,
                       height: 25,
                       decoration: BoxDecoration(
                         color: Colors.green,

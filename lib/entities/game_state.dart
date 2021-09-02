@@ -8,10 +8,11 @@ import 'package:man_project/entities/user_term.dart';
 class GameState {
   static bool isWinner = false;
   static bool isGamePause = false;
-  static bool isGameOn = true;
+  static bool isShowDialogGameOver = true;
+  static bool isGamePlay = false;
 
   static void gameReset() {
-    isGameOn = true;
+    isShowDialogGameOver = true;
     isGamePause = false;
     UserTerm.valueUserTerm = '';
     Snake.snakeDirection = SnakeDirection.down;
