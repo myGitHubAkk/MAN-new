@@ -1,5 +1,6 @@
 import 'package:man_project/data/terms.dart';
 import 'package:man_project/data/xp.dart';
+import 'package:man_project/domain/xp_bloc.dart';
 import 'package:man_project/entities/game_state.dart';
 import 'package:man_project/entities/subjects/apple.dart';
 import 'package:man_project/entities/user_term.dart';
@@ -53,7 +54,7 @@ class CheckingAnswer {
 
       if (UserTerm.namberWord == trueTerm.length - 1) {
         GameState.isWinner = true;
-        Xp(0.5);
+        XpBloc().inputEventSink.add(0.5);
         UserTerm.namberTerm++;
       } else {
         UserTerm.namberWord++;

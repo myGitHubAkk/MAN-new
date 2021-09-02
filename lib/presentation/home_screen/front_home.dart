@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:man_project/data/xp.dart';
+import 'package:man_project/domain/xp_bloc.dart';
 import 'package:man_project/entities/game_state.dart';
 import 'package:man_project/presentation/game_screen/original_game_sreen.dart';
 import 'package:man_project/presentation/widget_template.dart';
@@ -14,6 +15,7 @@ class FrontHomeScreen extends StatefulWidget {
 
 class _FrontHomeScreenState extends State<FrontHomeScreen> {
   double widthBar = 200;
+  XpBloc xpBloc = XpBloc();
 
   @override
   Widget build(BuildContext context) {
@@ -40,49 +42,58 @@ class _FrontHomeScreenState extends State<FrontHomeScreen> {
             child:
                 backgroundImage(name: 'Кнопка Старта', width: 90, height: 90),
           ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 0, vertical: 20),
-            width: widthBar + 70,
-            child: Row(
-              //mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  // '${fractionalXP} Lvl',
-                  '${Xp.xpFractional} Lvl',
-                  style: TextStyle(fontSize: 20),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Stack(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(left: 10),
-                      width: widthBar - 20,
-                      height: 25,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(50),
+          StreamBuilder(
+              stream: xpBloc.outputStateStream,
+              initialData: Xp.xp,
+              builder: (snaphot, _) {
+                print(snaphot as Map<String, num>);
+                Map<String, num> _xp = snaphot as Map<String, num>;
+                return Container(
+                  padding: EdgeInsets.symmetric(horizontal: 0, vertical: 20),
+                  width: widthBar + 70,
+                  child: Row(
+                    //mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        // '${fractionalXP} Lvl',
+                        '${_xp['fractional']!} Lvl',
+                        style: TextStyle(fontSize: 20),
                       ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left: 10),
-                      // width: widthBar * wholeXP,
-                      width: widthBar * Xp.xpWhole,
-                      height: 25,
-                      decoration: BoxDecoration(
-                        color: Colors.green,
-                        borderRadius: BorderRadius.circular(50),
+                      SizedBox(
+                        width: 10,
                       ),
-                    ),
-                    backgroundImage(
-                        name: 'Рішотка шкали', width: widthBar, height: 25),
-                  ],
-                ),
-              ],
-            ),
-          ),
+                      Stack(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(left: 10),
+                            width: widthBar - 20,
+                            height: 25,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(left: 10),
+                            // width: widthBar * wholeXP,
+                            width: widthBar * _xp['whole']!,
+                            height: 25,
+                            decoration: BoxDecoration(
+                              color: Colors.green,
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                          ),
+                          backgroundImage(
+                              name: 'Рішотка шкали',
+                              width: widthBar,
+                              height: 25),
+                        ],
+                      ),
+                    ],
+                  ),
+                );
+              })
         ],
       ),
     );

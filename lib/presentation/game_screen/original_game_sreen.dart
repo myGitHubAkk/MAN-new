@@ -89,6 +89,7 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
               onPressed: () {
                 // GameState.gameReset();
                 isExit = true;
+                GameState.isWinner = false;
                 Navigator.pop(
                   context,
                   MaterialPageRoute(builder: (contex) {

@@ -1,15 +1,10 @@
 class Xp {
-  static double xpFull = 1;
+  static double xpFull = 1.5;
   static int xpFractional = 1;
-  static double xpWhole = 0.0;
-  Map<String, num> _xp = {};
-
-  Map<String, num> get xp => _xp;
-
-  Xp(double newXp) {
-    xpFull += newXp;
-    xpFractional = xpFull.toInt();
-    xpWhole = xpFull - xpFractional;
-    _xp = {'full': xpFull, 'fractional': xpFractional, 'whole': xpWhole};
-  }
+  static double xpWhole = 0.5;
+  static Map<String, num> xp = {
+    'full': xpFull,
+    'fractional': xpFractional,
+    'whole': xpWhole,
+  };
 }
