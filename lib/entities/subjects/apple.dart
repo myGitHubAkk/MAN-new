@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:man_project/data/terms.dart';
 import 'package:man_project/domain/create_position.dart';
 import 'package:man_project/entities/subjects/subject.dart';
 import 'package:man_project/entities/user_term.dart';
@@ -32,7 +33,7 @@ class AppleWithWords extends Subject {
   static void randomNextAnswer() {
     const _maxRandom = 4;
 
-    List _values = UserTerm.term.values;
+    List _values = TermData.terms[UserTerm.namberTerm].values;
     int _index = 0;
 
     _countRandomNextAnswer++;

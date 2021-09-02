@@ -38,9 +38,9 @@ class CheckingAnswer {
   // }
 
   void checkingUserVersion() {
-    List trueTerm = TermData.terms[TermData.namberTerm].values;
+    List trueTerm = TermData.terms[UserTerm.namberTerm].values;
     String trueAnswer =
-        TermData.terms[TermData.namberTerm].values[UserTerm.namberWord];
+        TermData.terms[UserTerm.namberTerm].values[UserTerm.namberWord];
 
     if (trueAnswer == _answer) {
       _isTrueAnswer = true;
@@ -54,7 +54,7 @@ class CheckingAnswer {
       if (UserTerm.namberWord == trueTerm.length - 1) {
         GameState.isWinner = true;
         Xp(0.5);
-        print(Xp.xpFull);
+        UserTerm.namberTerm++;
       } else {
         UserTerm.namberWord++;
       }

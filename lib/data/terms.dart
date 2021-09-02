@@ -7,8 +7,6 @@ class Term {
 }
 
 class TermData {
-  static int namberTerm = 0;
-
   static final List<Term> terms = [
     Term(
       title: 'Термін1',
