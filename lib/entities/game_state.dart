@@ -14,7 +14,10 @@ class GameState {
   static void gameReset() {
     isShowDialogGameOver = true;
     isGamePause = false;
+
     UserTerm.valueUserTerm = '';
+    UserTerm.namberWord = 0;
+
     Snake.snakeDirection = SnakeDirection.down;
     SnakeMove().snakeDirection(Snake.snakeDirection);
     print(Snake.snakeDirection);

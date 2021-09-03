@@ -4,6 +4,7 @@ import 'package:man_project/domain/xp_bloc.dart';
 import 'package:man_project/entities/game_state.dart';
 import 'package:man_project/entities/subjects/apple.dart';
 import 'package:man_project/entities/user_term.dart';
+import 'package:man_project/presentation/home_screen/front_home.dart';
 
 class CheckingAnswer {
   static String _answer = '';
@@ -42,6 +43,8 @@ class CheckingAnswer {
     List trueTerm = TermData.terms[UserTerm.namberTerm].values;
     String trueAnswer =
         TermData.terms[UserTerm.namberTerm].values[UserTerm.namberWord];
+    //XpBloc xpBloc = XpBloc();
+    FrontHomeScreen screen = FrontHomeScreen();
 
     if (trueAnswer == _answer) {
       _isTrueAnswer = true;
@@ -54,8 +57,10 @@ class CheckingAnswer {
 
       if (UserTerm.namberWord == trueTerm.length - 1) {
         GameState.isWinner = true;
-        XpBloc().inputEventSink.add(0.5);
+        //xpBloc.inputEventSink.add(0.5);
         UserTerm.namberTerm++;
+        Xp().addXp(0.5);
+        //FrontHomeScreenState().update();
       } else {
         UserTerm.namberWord++;
       }

@@ -4,14 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:man_project/data/xp.dart';
 
 class XpBloc {
-  Map<String, num> _xp = Xp.xp;
+  Map _xp = Xp.xp;
 
   final _inputEventController = StreamController<double>();
   StreamSink<double> get inputEventSink => _inputEventController.sink;
 
-  final _outputStateController = StreamController<Map<String, num>>();
-  Stream<Map<String, num>> get outputStateStream =>
-      _outputStateController.stream;
+  final _outputStateController = StreamController<Map>();
+  Stream<Map> get outputStateStream => _outputStateController.stream;
 
   //преобразовує собитіє в нове состояніє
   void _addXp(double newXp) {

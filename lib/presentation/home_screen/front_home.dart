@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:man_project/data/xp.dart';
 import 'package:man_project/domain/xp_bloc.dart';
@@ -7,7 +9,11 @@ import 'package:man_project/presentation/widget_template.dart';
 import 'package:man_project/domain/snake_move.dart';
 
 class FrontHomeScreen extends StatefulWidget {
-  const FrontHomeScreen({Key? key}) : super(key: key);
+  // XpBloc xpBloc = XpBloc();
+
+  // void addXp() {
+  //   //xpBloc.inputEventSink.add(0.5);
+  // }
 
   @override
   _FrontHomeScreenState createState() => _FrontHomeScreenState();
@@ -15,11 +21,22 @@ class FrontHomeScreen extends StatefulWidget {
 
 class _FrontHomeScreenState extends State<FrontHomeScreen> {
   double widthBar = 200;
-  XpBloc xpBloc = XpBloc();
+
+  void _update() {
+    Timer.periodic(Duration(milliseconds: 10), (timer) {
+      setState(() {});
+    });
+  }
+
+  @override
+  void initState() {
+    SnakeMove.snakeMove();
+    _update();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    SnakeMove.snakeMove();
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -42,58 +59,107 @@ class _FrontHomeScreenState extends State<FrontHomeScreen> {
             child:
                 backgroundImage(name: 'Кнопка Старта', width: 90, height: 90),
           ),
-          StreamBuilder(
-              stream: xpBloc.outputStateStream,
-              initialData: Xp.xp,
-              builder: (snaphot, _) {
-                print(snaphot as Map<String, num>);
-                Map<String, num> _xp = snaphot as Map<String, num>;
-                return Container(
-                  padding: EdgeInsets.symmetric(horizontal: 0, vertical: 20),
-                  width: widthBar + 70,
-                  child: Row(
-                    //mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        // '${fractionalXP} Lvl',
-                        '${_xp['fractional']!} Lvl',
-                        style: TextStyle(fontSize: 20),
+
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 0, vertical: 20),
+            width: widthBar + 70,
+            child: Row(
+              //mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  // '${fractionalXP} Lvl',
+                  //'${_xp['fractional']!} Lvl',
+                  '${Xp.xpFractional}',
+                  //'das',
+                  style: TextStyle(fontSize: 20),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Stack(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(left: 10),
+                      width: widthBar - 20,
+                      height: 25,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(50),
                       ),
-                      SizedBox(
-                        width: 10,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 10),
+                      // width: widthBar * wholeXP,
+                      //width: widthBar * _xp['whole']!,
+                      width: widthBar * Xp.xpWhole,
+                      height: 25,
+                      decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(50),
                       ),
-                      Stack(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(left: 10),
-                            width: widthBar - 20,
-                            height: 25,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(left: 10),
-                            // width: widthBar * wholeXP,
-                            width: widthBar * _xp['whole']!,
-                            height: 25,
-                            decoration: BoxDecoration(
-                              color: Colors.green,
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                          ),
-                          backgroundImage(
-                              name: 'Рішотка шкали',
-                              width: widthBar,
-                              height: 25),
-                        ],
-                      ),
-                    ],
-                  ),
-                );
-              })
+                    ),
+                    backgroundImage(
+                        name: 'Рішотка шкали', width: widthBar, height: 25),
+                  ],
+                ),
+              ],
+            ),
+          )
+
+          // StreamBuilder(
+          //   stream: widget.xpBloc.outputStateStream,
+          //   initialData: Xp.xp,
+          //   builder: (_, snapshot) {
+          //     Map _xp = snapshot.data as Map;
+          //     print(snapshot.data as Map);
+          //     return Container(
+          //       padding: EdgeInsets.symmetric(horizontal: 0, vertical: 20),
+          //       width: widthBar + 70,
+          //       child: Row(
+          //         //mainAxisAlignment: MainAxisAlignment.start,
+          //         crossAxisAlignment: CrossAxisAlignment.center,
+          //         children: [
+          //           Text(
+          //             // '${fractionalXP} Lvl',
+          //             '${_xp['fractional']!} Lvl',
+          //             //'das',
+          //             style: TextStyle(fontSize: 20),
+          //           ),
+          //           SizedBox(
+          //             width: 10,
+          //           ),
+          //           Stack(
+          //             children: [
+          //               Container(
+          //                 margin: EdgeInsets.only(left: 10),
+          //                 width: widthBar - 20,
+          //                 height: 25,
+          //                 decoration: BoxDecoration(
+          //                   color: Colors.white,
+          //                   borderRadius: BorderRadius.circular(50),
+          //                 ),
+          //               ),
+          //               Container(
+          //                 margin: EdgeInsets.only(left: 10),
+          //                 // width: widthBar * wholeXP,
+          //                 width: widthBar * _xp['whole']!,
+          //                 //width: widthBar,
+          //                 height: 25,
+          //                 decoration: BoxDecoration(
+          //                   color: Colors.green,
+          //                   borderRadius: BorderRadius.circular(50),
+          //                 ),
+          //               ),
+          //               backgroundImage(
+          //                   name: 'Рішотка шкали', width: widthBar, height: 25),
+          //             ],
+          //           ),
+          //         ],
+          //       ),
+          //     );
+          //   },
+          // )
         ],
       ),
     );
