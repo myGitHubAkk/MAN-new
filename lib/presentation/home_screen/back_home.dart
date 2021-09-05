@@ -18,6 +18,7 @@ class BackHomeScreen extends StatefulWidget {
 class _BackHomeScreenState extends State<BackHomeScreen> {
   @override
   Widget build(BuildContext context) {
+    double heightScreen = MediaQuery.of(context).size.height;
     return Container(
       //decoration:
       //    BoxDecoration(border: Border.all(color: Colors.red, width: 3)),
@@ -39,22 +40,20 @@ class _BackHomeScreenState extends State<BackHomeScreen> {
             child: Column(
               children: [
                 Expanded(
-                  child: Stack(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Positioned(
-                        top: 80,
-                        left: 10,
-                        child: Cloud(),
+                      Cloud(
+                        top: 80.0,
+                        left: 10.0,
                       ),
-                      Positioned(
-                        top: 10,
-                        left: 140,
-                        child: Cloud(),
+                      Cloud(
+                        top: 10.0,
+                        left: 15.0,
                       ),
-                      Positioned(
-                        top: 50,
-                        left: 280,
-                        child: Cloud(),
+                      Cloud(
+                        top: 50.0,
+                        left: 20.0,
                       ),
                     ],
                   ),
@@ -64,19 +63,25 @@ class _BackHomeScreenState extends State<BackHomeScreen> {
                   child: Stack(
                     children: [
                       DestroyingObjects(
-                        bottom: 550.0,
-                        right: 350.0,
-                        valueVisibility: lvlWhichNotVisibleTreshLeft,
-                      ),
-                      DestroyingObjects(
-                        bottom: 240.0,
-                        right: 30.0,
-                        valueVisibility: lvlWhichNotVisibleTreshRight,
-                      ),
-                      DestroyingObjects(
-                        bottom: 230.0,
-                        right: 30.0,
+                        top: 100.0,
+                        left: 120.0,
                         valueVisibility: lvlWhichNotVisibleFactory,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          DestroyingObjects(
+                            top: 140.0,
+                            left: 0.0,
+                            valueVisibility: lvlWhichNotVisibleTreshLeft,
+                          ),
+                          //Груд
+                          DestroyingObjects(
+                            top: 150.0,
+                            left: 0.0,
+                            valueVisibility: lvlWhichNotVisibleTreshRight,
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -88,9 +93,11 @@ class _BackHomeScreenState extends State<BackHomeScreen> {
                 //   child: River(),
                 // ),
 
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 80),
-                  child: River(),
+                Expanded(
+                  child: River(
+                    top: 0.0,
+                    left: 0.0,
+                  ),
                 ),
 
                 //хмарки

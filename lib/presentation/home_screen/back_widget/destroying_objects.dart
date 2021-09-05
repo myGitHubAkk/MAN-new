@@ -4,13 +4,13 @@ import 'package:man_project/data/xp.dart';
 import 'package:man_project/presentation/widget_template.dart';
 
 class DestroyingObjects extends StatefulWidget {
-  final bottom;
-  final right;
+  final top;
+  final left;
   final valueVisibility;
 
   DestroyingObjects({
-    @required this.bottom,
-    @required this.right,
+    @required this.top,
+    @required this.left,
     @required this.valueVisibility,
   });
 
@@ -21,46 +21,51 @@ class DestroyingObjects extends StatefulWidget {
 class _DestroyingObjectsState extends State<DestroyingObjects> {
   @override
   Widget build(BuildContext context) {
-    double heightScreen = MediaQuery.of(context).size.height;
+    //double heightScreen = MediaQuery.of(context).size.height;
     double widthScreen = MediaQuery.of(context).size.width;
 
     print(widget.valueVisibility);
 
     Map position = {
-      'bottom': widget.bottom,
-      'right': widget.right,
+      'top': widget.top,
+      'left': widget.left,
     };
 
     if (widget.valueVisibility == lvlWhichNotVisibleTreshLeft) {
       return Xp.xpFractional < widget.valueVisibility
-          ? DestroyingObjectTemplate(
+          ? BackWidgetTemplate(
               poosition: position, width: 85.0, height: 85.0, name: 'Мусор')
           : Container();
     } else if (widget.valueVisibility == lvlWhichNotVisibleTreshRight) {
       return Xp.xpFractional < widget.valueVisibility
-          ? DestroyingObjectTemplate(
+          ? BackWidgetTemplate(
               poosition: position, width: 70.0, height: 70.0, name: 'Мусор')
           : Container();
     } else if (widget.valueVisibility == lvlWhichNotVisibleFactory) {
       return Xp.xpFractional < widget.valueVisibility
-          ? DestroyingObjectTemplate(
-              poosition: position, width: 70.0, height: 70.0, name: 'Завод')
-          : Positioned(
-              bottom: heightScreen - position['bottom'] - 10.0,
-              right: widthScreen - position['right'] - 20.0,
+          ? BackWidgetTemplate(
+              poosition: {
+                'top': position['top'],
+                'left': widthScreen - position['left']
+              },
+              width: 70.0,
+              height: 70.0,
+              name: 'Завод',
+            )
+          : Container(
               child: Stack(
                 children: [
                   Windmill(
-                    bottom: heightScreen - position['bottom'] - 10.0,
-                    right: widthScreen - position['right'],
+                    top: position['top'] - 10.0,
+                    left: position['left'],
                   ),
                   Windmill(
-                    bottom: heightScreen - position['bottom'] - 30.0,
-                    right: widthScreen - position['right'] - 50.0,
+                    top: position['top'] - 30.0,
+                    left: position['left'] - 30.0,
                   ),
                   Windmill(
-                    bottom: heightScreen - position['bottom'] - 30.0,
-                    right: widthScreen - position['right'] - 100.0,
+                    top: position['top'] - 30.0,
+                    left: position['left'] - 50.0,
                   ),
                 ],
               ),
@@ -72,29 +77,29 @@ class _DestroyingObjectsState extends State<DestroyingObjects> {
 }
 
 class Windmill extends StatelessWidget {
-  final bottom;
-  final right;
-  Windmill({@required this.bottom, @required this.right});
+  final top;
+  final left;
+  Windmill({@required this.top, @required this.left});
 
   @override
   Widget build(BuildContext context) {
     Map position = {
-      'bottom': bottom,
-      'right': right,
+      'top': top,
+      'left': left,
     };
 
-    return DestroyingObjectTemplate(
+    return BackWidgetTemplate(
         poosition: position, width: 50.0, height: 100.0, name: 'Вітряк');
   }
 }
 
-class DestroyingObjectTemplate extends StatelessWidget {
+class BackWidgetTemplate extends StatelessWidget {
   final width;
   final height;
   final poosition;
   final name;
 
-  DestroyingObjectTemplate(
+  BackWidgetTemplate(
       {@required this.poosition,
       @required this.width,
       @required this.height,
@@ -102,14 +107,11 @@ class DestroyingObjectTemplate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double heightScreen = MediaQuery.of(context).size.height;
-    double widthScreen = MediaQuery.of(context).size.width;
+    // double heightScreen = MediaQuery.of(context).size.height;
+    // double widthScreen = MediaQuery.of(context).size.width;
 
-    print(heightScreen - poosition['bottom']);
-
-    return Positioned(
-      top: heightScreen - poosition['bottom'],
-      left: widthScreen - poosition['right'],
+    return Padding(
+      padding: EdgeInsets.fromLTRB(poosition['left'], poosition['top'], 0, 0),
       child: backgroundImage(
         name: name,
         width: width,

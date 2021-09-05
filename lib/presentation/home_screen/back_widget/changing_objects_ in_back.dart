@@ -3,14 +3,19 @@ import 'package:man_project/const/value_widget_visibility.dart';
 import 'package:man_project/data/xp.dart';
 import 'package:man_project/domain/back_name_widget_create.dart';
 import 'package:man_project/presentation/widget_template.dart';
+import 'package:man_project/presentation/home_screen/back_widget/destroying_objects.dart';
 
 class ChangingObjectsInBack extends StatefulWidget {
-  final Map inputData;
-  final double width;
-  final double height;
+  final inputData;
+  final width;
+  final height;
+  final position;
 
   ChangingObjectsInBack(
-      {required this.inputData, required this.width, required this.height});
+      {required this.inputData,
+      required this.width,
+      required this.height,
+      required this.position});
 
   @override
   _ChangingObjectsInBackState createState() => _ChangingObjectsInBackState();
@@ -28,7 +33,11 @@ class _ChangingObjectsInBackState extends State<ChangingObjectsInBack> {
   @override
   Widget build(BuildContext context) {
     _fillInName();
-    return backgroundImage(
-        name: name, width: widget.width, height: widget.height);
+    return BackWidgetTemplate(
+      width: widget.width,
+      height: widget.height,
+      name: name,
+      poosition: widget.position,
+    );
   }
 }
