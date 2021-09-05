@@ -6,8 +6,11 @@ import 'package:man_project/presentation/widget_template.dart';
 
 class ChangingObjectsInBack extends StatefulWidget {
   final Map inputData;
+  final double width;
+  final double height;
 
-  ChangingObjectsInBack({required this.inputData});
+  ChangingObjectsInBack(
+      {required this.inputData, required this.width, required this.height});
 
   @override
   _ChangingObjectsInBackState createState() => _ChangingObjectsInBackState();
@@ -25,6 +28,7 @@ class _ChangingObjectsInBackState extends State<ChangingObjectsInBack> {
   @override
   Widget build(BuildContext context) {
     _fillInName();
-    return backgroundImage(name: name, width: 100, height: 100);
+    return backgroundImage(
+        name: name, width: widget.width, height: widget.height);
   }
 }

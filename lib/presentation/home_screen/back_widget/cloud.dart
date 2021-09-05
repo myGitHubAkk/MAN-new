@@ -6,6 +6,8 @@ class Cloud extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangingObjectsInBack(
+      width: 100,
+      height: 100,
       inputData: {
         'ValuesVisibility': cloudPurityLvl,
         'WidgetName': ['Тучка', 'Group 15', 'тучка чиста'],

@@ -4,13 +4,13 @@ import 'package:man_project/data/xp.dart';
 import 'package:man_project/presentation/widget_template.dart';
 
 class DestroyingObjects extends StatefulWidget {
-  final top;
-  final left;
+  final bottom;
+  final right;
   final valueVisibility;
 
   DestroyingObjects({
-    @required this.top,
-    @required this.left,
+    @required this.bottom,
+    @required this.right,
     @required this.valueVisibility,
   });
 
@@ -24,12 +24,19 @@ class _DestroyingObjectsState extends State<DestroyingObjects> {
     double heightScreen = MediaQuery.of(context).size.height;
     double widthScreen = MediaQuery.of(context).size.width;
 
+    print(widget.valueVisibility);
+
     Map position = {
-      'top': widget.top,
-      'left': widget.left,
+      'bottom': widget.bottom,
+      'right': widget.right,
     };
 
     if (widget.valueVisibility == lvlWhichNotVisibleTreshLeft) {
+      return Xp.xpFractional < widget.valueVisibility
+          ? DestroyingObjectTemplate(
+              poosition: position, width: 85.0, height: 85.0, name: 'Мусор')
+          : Container();
+    } else if (widget.valueVisibility == lvlWhichNotVisibleTreshRight) {
       return Xp.xpFractional < widget.valueVisibility
           ? DestroyingObjectTemplate(
               poosition: position, width: 70.0, height: 70.0, name: 'Мусор')
@@ -39,21 +46,21 @@ class _DestroyingObjectsState extends State<DestroyingObjects> {
           ? DestroyingObjectTemplate(
               poosition: position, width: 70.0, height: 70.0, name: 'Завод')
           : Positioned(
-              top: heightScreen - position['top'] - 10.0,
-              left: widthScreen - position['left'] - 20.0,
+              bottom: heightScreen - position['bottom'] - 10.0,
+              right: widthScreen - position['right'] - 20.0,
               child: Stack(
                 children: [
                   Windmill(
-                    top: heightScreen - position['top'] - 10.0,
-                    left: widthScreen - position['left'],
+                    bottom: heightScreen - position['bottom'] - 10.0,
+                    right: widthScreen - position['right'],
                   ),
                   Windmill(
-                    top: heightScreen - position['top'] - 30.0,
-                    left: widthScreen - position['left'] - 50.0,
+                    bottom: heightScreen - position['bottom'] - 30.0,
+                    right: widthScreen - position['right'] - 50.0,
                   ),
                   Windmill(
-                    top: heightScreen - position['top'] - 30.0,
-                    left: widthScreen - position['left'] - 100.0,
+                    bottom: heightScreen - position['bottom'] - 30.0,
+                    right: widthScreen - position['right'] - 100.0,
                   ),
                 ],
               ),
@@ -65,15 +72,15 @@ class _DestroyingObjectsState extends State<DestroyingObjects> {
 }
 
 class Windmill extends StatelessWidget {
-  final top;
-  final left;
-  Windmill({@required this.top, @required this.left});
+  final bottom;
+  final right;
+  Windmill({@required this.bottom, @required this.right});
 
   @override
   Widget build(BuildContext context) {
     Map position = {
-      'top': top,
-      'left': left,
+      'bottom': bottom,
+      'right': right,
     };
 
     return DestroyingObjectTemplate(
@@ -86,6 +93,7 @@ class DestroyingObjectTemplate extends StatelessWidget {
   final height;
   final poosition;
   final name;
+
   DestroyingObjectTemplate(
       {@required this.poosition,
       @required this.width,
@@ -97,9 +105,11 @@ class DestroyingObjectTemplate extends StatelessWidget {
     double heightScreen = MediaQuery.of(context).size.height;
     double widthScreen = MediaQuery.of(context).size.width;
 
+    print(heightScreen - poosition['bottom']);
+
     return Positioned(
-      top: heightScreen - poosition['top'],
-      left: widthScreen - poosition['left'],
+      top: heightScreen - poosition['bottom'],
+      left: widthScreen - poosition['right'],
       child: backgroundImage(
         name: name,
         width: width,

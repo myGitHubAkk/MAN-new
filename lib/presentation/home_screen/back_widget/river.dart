@@ -6,6 +6,8 @@ class River extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangingObjectsInBack(
+      width: double.infinity,
+      height: 90,
       inputData: {
         'ValuesVisibility': riverPurityLvl,
         'WidgetName': [

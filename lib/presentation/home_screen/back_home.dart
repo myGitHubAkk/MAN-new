@@ -59,102 +59,40 @@ class _BackHomeScreenState extends State<BackHomeScreen> {
                     ],
                   ),
                 ),
+
                 Expanded(
                   child: Stack(
                     children: [
                       DestroyingObjects(
-                        top: 230.0,
-                        left: 30.0,
+                        bottom: 550.0,
+                        right: 350.0,
                         valueVisibility: lvlWhichNotVisibleTreshLeft,
                       ),
                       DestroyingObjects(
-                        top: 240.0,
-                        left: 300.0,
-                        valueVisibility: lvlWhichNotVisibleTreshLeft,
+                        bottom: 240.0,
+                        right: 30.0,
+                        valueVisibility: lvlWhichNotVisibleTreshRight,
                       ),
                       DestroyingObjects(
-                        top: 230.0,
-                        left: 30.0,
+                        bottom: 230.0,
+                        right: 30.0,
                         valueVisibility: lvlWhichNotVisibleFactory,
                       ),
-                      // Xp.xpFractional < lvlWhichNotVisibleTreshLeft
-                      //     ? marginWidget(
-                      //         top: 0,
-                      //         left: 40,
-                      //         widget: backgroundImage(
-                      //           name: 'Мусор',
-                      //           width: 90,
-                      //           height: 90,
-                      //         ),
-                      //       )
-                      //     : Container(),
-                      // Xp.xpFractional < lvlWhichNotVisibleTreshRight
-                      //     ? marginWidget(
-                      //         top: 60,
-                      //         left: 320,
-                      //         widget: backgroundImage(
-                      //           name: 'Мусор',
-                      //           width: 70,
-                      //           height: 70,
-                      //         ),
-                      //       )
-                      //     : Container(),
-                      // Xp.xpFractional < lvlWhichNotVisibleFactory
-                      //     ? marginWidget(
-                      //         top: 60,
-                      //         left: 250,
-                      //         widget: backgroundImage(
-                      //           name: 'Завод',
-                      //           width: 70,
-                      //           height: 70,
-                      //         ),
-                      //       )
-                      //     : marginWidget(
-                      //         top: 0,
-                      //         left: 250,
-                      //         widget: Stack(
-                      //           children: [
-                      //             Positioned(
-                      //               top: -20,
-                      //               left: 0,
-                      //               child: backgroundImage(
-                      //                 name: 'вітряк',
-                      //                 width: 50,
-                      //                 height: 120,
-                      //               ),
-                      //             ),
-                      //             Positioned(
-                      //               top: -30,
-                      //               left: 50,
-                      //               child: backgroundImage(
-                      //                 name: 'вітряк',
-                      //                 width: 50,
-                      //                 height: 120,
-                      //               ),
-                      //             ),
-                      //             Positioned(
-                      //               top: -30,
-                      //               left: 100,
-                      //               child: backgroundImage(
-                      //                 name: 'вітряк',
-                      //                 width: 50,
-                      //                 height: 120,
-                      //               ),
-                      //             )
-                      //           ],
-                      //         ),
-                      //       ),
                     ],
                   ),
                 ),
 
-                Expanded(
-                  child: marginWidget(
-                    top: 100,
-                    left: 0,
-                    widget: River(),
-                  ),
+                // Positioned(
+                //   top: 100,
+                //   left: 0,
+                //   child: River(),
+                // ),
+
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 80),
+                  child: River(),
                 ),
+
                 //хмарки
                 //   Expanded(
                 //     flex: 2,
