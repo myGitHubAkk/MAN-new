@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:man_project/const/value_widget_visibility.dart';
-import 'package:man_project/presentation/home_screen/back_widget/changing_objects_%20in_back.dart';
+import 'package:man_project/presentation/home_screen/back_widget/template/changing_objects_%20in_back.dart';
 
 class River extends StatelessWidget {
   final top;

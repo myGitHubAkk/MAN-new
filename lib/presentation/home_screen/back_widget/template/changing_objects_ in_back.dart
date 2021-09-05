@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:man_project/const/value_widget_visibility.dart';
 import 'package:man_project/data/xp.dart';
 import 'package:man_project/domain/back_name_widget_create.dart';
+import 'package:man_project/presentation/home_screen/back_widget/template/back_widget_template.dart';
 import 'package:man_project/presentation/widget_template.dart';
 import 'package:man_project/presentation/home_screen/back_widget/destroying_objects.dart';
 

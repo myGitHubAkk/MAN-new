@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:man_project/const/value_widget_visibility.dart';
 import 'package:man_project/data/xp.dart';
+import 'package:man_project/presentation/home_screen/back_widget/template/back_widget_template.dart';
 import 'package:man_project/presentation/widget_template.dart';
 
 class DestroyingObjects extends StatefulWidget {
@@ -90,33 +91,5 @@ class Windmill extends StatelessWidget {
 
     return BackWidgetTemplate(
         poosition: position, width: 50.0, height: 100.0, name: 'Вітряк');
-  }
-}
-
-class BackWidgetTemplate extends StatelessWidget {
-  final width;
-  final height;
-  final poosition;
-  final name;
-
-  BackWidgetTemplate(
-      {@required this.poosition,
-      @required this.width,
-      @required this.height,
-      @required this.name});
-
-  @override
-  Widget build(BuildContext context) {
-    // double heightScreen = MediaQuery.of(context).size.height;
-    // double widthScreen = MediaQuery.of(context).size.width;
-
-    return Padding(
-      padding: EdgeInsets.fromLTRB(poosition['left'], poosition['top'], 0, 0),
-      child: backgroundImage(
-        name: name,
-        width: width,
-        height: height,
-      ),
-    );
   }
 }

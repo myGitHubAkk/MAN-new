@@ -6,7 +6,7 @@ import 'package:man_project/presentation/home_screen/back_widget/destroying_obje
 import 'package:man_project/presentation/home_screen/back_widget/river.dart';
 import 'package:man_project/presentation/widget_template.dart';
 
-import 'back_widget/changing_objects_ in_back.dart';
+import 'back_widget/template/changing_objects_ in_back.dart';
 
 class BackHomeScreen extends StatefulWidget {
   const BackHomeScreen({Key? key}) : super(key: key);
