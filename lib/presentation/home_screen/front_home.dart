@@ -72,12 +72,12 @@ class _FrontHomeScreenState extends State<FrontHomeScreen> {
                   Text(
                     // '${fractionalXP} Lvl',
                     //'${_xp['fractional']!} Lvl',
-                    '${Xp.xpFractional}',
+                    '${Xp.xpFractional} LvL',
                     //'das',
                     style: TextStyle(fontSize: 20),
                   ),
                   SizedBox(
-                    width: 10,
+                    width: 0,
                   ),
                   Stack(
                     children: [
