@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:man_project/const/constFilled.dart';
 import 'package:man_project/domain/checking_answer.dart';
 import 'package:man_project/entities/game_state.dart';
 import 'package:man_project/entities/snake.dart';
@@ -22,15 +23,24 @@ class Field {
     }
 
     int _count = 0;
+    List<int> _safeStraight = [];
 
-    for (var subject in Subjects.subjects) {
-      _clashWithSubject(subject);
-      if (index == subject.position) {
-        _count++;
-        if (_count > 1) {
-          break;
+    for (var i = 1; i < sizeFieldPlay / lenghtRow; i++) {
+      _safeStraight.add(tailPosition + lenghtRow * i);
+    }
+
+    if (_safeStraight.contains(index)) {
+      return cellTemlate(colorLight: Colors.white, colorDark: Colors.grey);
+    } else {
+      for (var subject in Subjects.subjects) {
+        _clashWithSubject(subject);
+        if (index == subject.position) {
+          _count++;
+          if (_count > 1) {
+            break;
+          }
+          return subject.widget;
         }
-        return subject.widget;
       }
     }
 
