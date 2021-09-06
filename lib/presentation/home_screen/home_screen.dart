@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:man_project/const/value_widget_visibility.dart';
+import 'package:man_project/data/xp.dart';
 import 'package:man_project/presentation/game_screen/original_game_sreen.dart';
 import 'package:man_project/presentation/home_screen/back_home.dart';
 import 'package:man_project/presentation/home_screen/front_home.dart';

@@ -11,7 +11,7 @@ class AppleWithWords extends Subject {
 
   static bool isClash = false;
   static String _answer = '';
-  static int _countRandomNextAnswer = 0;
+  //static int _countRandomNextAnswer = 0;
 
   @override
   int get position => _createPosition.posiiton;
@@ -31,28 +31,37 @@ class AppleWithWords extends Subject {
   }
 
   static void randomNextAnswer() {
-    const _maxRandom = 4;
-
     List _values = TermData.terms[UserTerm.namberTerm].values;
-    int _index = 0;
+    List _falseValue = TermData.terms[UserTerm.namberTerm].falseValues;
 
-    _countRandomNextAnswer++;
+    bool isZeroNamber = Random().nextBool();
 
-    if (_countRandomNextAnswer % 5 == 0) {
-      _index = UserTerm.namberWord;
-    } else {
-      if (UserTerm.namberWord < _values.length - _maxRandom) {
-        bool isZeroNamber = Random().nextBool();
-        int randomNamber = isZeroNamber ? 0 : Random().nextInt(_maxRandom);
-        _index = UserTerm.namberWord + randomNamber;
-      } else {
-        int randomNamber =
-            Random().nextInt(_values.length - UserTerm.namberWord);
-        _index = UserTerm.namberWord + randomNamber;
-      }
+    if (isZeroNamber == true) {
+      _answer = _values[UserTerm.namberWord];
+      print(UserTerm.namberWord);
+    } else if (isZeroNamber == false) {
+      int randomNamber = Random().nextInt(_falseValue.length - 1);
+      _answer = _falseValue[UserTerm.namberWord][randomNamber];
+      print(UserTerm.namberWord);
     }
 
-    _answer = _values[_index];
+    //_countRandomNextAnswer++;
+
+    // if (_countRandomNextAnswer % 5 == 0) {
+    //   _index = UserTerm.namberWord;
+    // } else {
+    //   if (UserTerm.namberWord < _values.length - _maxRandom) {
+    //     bool isZeroNamber = Random().nextBool();
+    //     int randomNamber = isZeroNamber ? 0 : Random().nextInt(_maxRandom);
+    //     _index = UserTerm.namberWord + randomNamber;
+    //   } else {
+    //     int randomNamber =
+    //         Random().nextInt(_values.length - UserTerm.namberWord);
+    //     _index = UserTerm.namberWord + randomNamber;
+    //   }
+    // }
+
+    // _answer = _values[_index];
   }
 
   @override

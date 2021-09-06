@@ -21,9 +21,15 @@ class Field {
       return Snake.snake;
     }
 
+    int _count = 0;
+
     for (var subject in Subjects.subjects) {
       _clashWithSubject(subject);
       if (index == subject.position) {
+        _count++;
+        if (_count > 1) {
+          break;
+        }
         return subject.widget;
       }
     }

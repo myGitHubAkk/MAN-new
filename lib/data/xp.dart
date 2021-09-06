@@ -1,6 +1,6 @@
 class Xp {
-  static double xpFull = 5;
-  static int xpFractional = 5;
+  static double xpFull = 1;
+  static int xpFractional = 1;
   static double xpWhole = 0.0;
   static Map<String, num> xp = {
     'full': xpFull,

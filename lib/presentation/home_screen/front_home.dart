@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:man_project/const/value_widget_visibility.dart';
 import 'package:man_project/data/xp.dart';
 import 'package:man_project/domain/xp_bloc.dart';
 import 'package:man_project/entities/game_state.dart';
@@ -47,20 +48,22 @@ class _FrontHomeScreenState extends State<FrontHomeScreen> {
             SizedBox(
               height: 20,
             ),
-            GestureDetector(
-              onTap: () {
-                GameState.gameReset();
-                GameState.isGamePlay = true;
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (contex) {
-                    return OriginalGameScreen();
-                  }),
-                );
-              },
-              child:
-                  backgroundImage(name: 'Кнопка Старта', width: 90, height: 90),
-            ),
+            Xp.xpFractional == treeHappinessLvl['Very very happy']
+                ? SizedBox()
+                : GestureDetector(
+                    onTap: () {
+                      GameState.gameReset();
+                      GameState.isGamePlay = true;
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (contex) {
+                          return OriginalGameScreen();
+                        }),
+                      );
+                    },
+                    child: backgroundImage(
+                        name: 'Кнопка Старта', width: 90, height: 90),
+                  ),
 
             Container(
               padding: EdgeInsets.symmetric(horizontal: 0, vertical: 20),
