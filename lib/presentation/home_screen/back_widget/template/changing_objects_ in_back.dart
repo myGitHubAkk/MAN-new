@@ -34,6 +34,11 @@ class _ChangingObjectsInBackState extends State<ChangingObjectsInBack> {
   @override
   Widget build(BuildContext context) {
     _fillInName();
+
+    if (name == '') {
+      return Container();
+    }
+
     return BackWidgetTemplate(
       width: widget.width,
       height: widget.height,

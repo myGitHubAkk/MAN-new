@@ -44,7 +44,6 @@ class CheckingAnswer {
     String trueAnswer =
         TermData.terms[UserTerm.namberTerm].values[UserTerm.namberWord];
     //XpBloc xpBloc = XpBloc();
-    FrontHomeScreen screen = FrontHomeScreen();
 
     if (trueAnswer == _answer) {
       _isTrueAnswer = true;

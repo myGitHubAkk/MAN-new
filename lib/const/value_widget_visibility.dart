@@ -1,24 +1,24 @@
-const int lvlWhichNotVisibleTreshLeft = 10;
-const int lvlWhichNotVisibleTreshRight = 5;
-const int lvlWhichNotVisibleFactory = 20;
+const int lvlWhichNotVisibleTreshLeft = 2;
+const int lvlWhichNotVisibleTreshRight = 3;
+const int lvlWhichNotVisibleFactory = 5;
 
 const Map<String, int> treeHappinessLvl = {
   'Very sad': 1,
-  'Sad': 5,
-  'Natural': 10,
-  'Happy': 15,
-  'Very happy': 20,
-  'Very very happy': 25
+  'Sad': 2,
+  'Natural': 3,
+  'Happy': 4,
+  'Very happy': 5,
+  'Very very happy': 6
 };
 
 const Map<String, int> riverPurityLvl = {
   'Dirty': 1,
-  'Medium': 10,
-  'Clean': 20,
+  'Medium': 2,
+  'Clean': 3,
 };
 
 const Map<String, int> cloudPurityLvl = {
   'Dirty': 1,
-  'Medium': 10,
-  'Clean': 20,
+  'Medium': 2,
+  'Clean': 3,
 };

@@ -42,14 +42,6 @@ class _BackHomeScreenState extends State<BackHomeScreen> {
                   //       border: Border.all(color: Colors.blue, width: 3)),
                   child: Stack(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 50.0),
-                        child: Container(
-                          width: 20,
-                          height: 20,
-                          color: Colors.grey,
-                        ),
-                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [

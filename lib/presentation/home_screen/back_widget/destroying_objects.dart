@@ -35,14 +35,26 @@ class _DestroyingObjectsState extends State<DestroyingObjects> {
     if (widget.valueVisibility == lvlWhichNotVisibleTreshLeft) {
       return Xp.xpFractional < widget.valueVisibility
           ? BackWidgetTemplate(
-              poosition: position, width: 85.0, height: 85.0, name: 'Мусор')
-          : Container();
+              poosition: position,
+              width: 85.0,
+              height: 85.0,
+              name: 'Мусор',
+            )
+          : BackWidgetTemplate(
+              poosition: position,
+              width: 85.0,
+              height: 85.0,
+              name: 'квіточка',
+            );
     } else if (widget.valueVisibility == lvlWhichNotVisibleTreshRight) {
       return Xp.xpFractional < widget.valueVisibility
           ? BackWidgetTemplate(
               poosition: position, width: 70.0, height: 70.0, name: 'Мусор')
-          : Container();
+          : Container(
+              width: 70,
+            );
     } else if (widget.valueVisibility == lvlWhichNotVisibleFactory) {
+      //print('${widthScreen - position['left']}');
       return Xp.xpFractional < widget.valueVisibility
           ? BackWidgetTemplate(
               poosition: {
@@ -57,16 +69,16 @@ class _DestroyingObjectsState extends State<DestroyingObjects> {
               child: Stack(
                 children: [
                   Windmill(
+                    top: position['top'] - 30.0,
+                    left: widthScreen - position['left'] + 40.0,
+                  ),
+                  Windmill(
+                    top: position['top'] - 20.0,
+                    left: widthScreen - position['left'] + 10.0,
+                  ),
+                  Windmill(
                     top: position['top'] - 10.0,
-                    left: position['left'],
-                  ),
-                  Windmill(
-                    top: position['top'] - 30.0,
-                    left: position['left'] - 30.0,
-                  ),
-                  Windmill(
-                    top: position['top'] - 30.0,
-                    left: position['left'] - 50.0,
+                    left: widthScreen - position['left'] - 20.0,
                   ),
                 ],
               ),
@@ -90,6 +102,6 @@ class Windmill extends StatelessWidget {
     };
 
     return BackWidgetTemplate(
-        poosition: position, width: 50.0, height: 100.0, name: 'Вітряк');
+        poosition: position, width: 50.0, height: 100.0, name: 'вітряк');
   }
 }

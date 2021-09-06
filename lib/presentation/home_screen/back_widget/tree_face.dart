@@ -14,9 +14,11 @@ class TreeFace extends StatelessWidget {
       inputData: {
         'ValuesVisibility': treeHappinessLvl,
         'WidgetName': [
+          'сама грусна фіо міна',
           'грусна фіо міна',
           'нейтральна фіо міна',
           'весела фіо  міна',
+          'щаслива  фіо міна',
           'дуже щаслива фіо міна',
         ],
       },

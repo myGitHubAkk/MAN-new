@@ -30,8 +30,6 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
   bool isClash = AppleWithWords.isClash;
   bool isExit = false;
 
-  static int countInit = 0;
-
   void snakeUpdate() {
     if (GameState.isGamePlay == true) {
       Timer.periodic(Duration(milliseconds: 10), (timer) {
