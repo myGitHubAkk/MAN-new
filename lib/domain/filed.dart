@@ -23,24 +23,15 @@ class Field {
     }
 
     int _count = 0;
-    List<int> _safeStraight = [];
 
-    for (var i = 1; i < sizeFieldPlay / lenghtRow; i++) {
-      _safeStraight.add(tailPosition + lenghtRow * i);
-    }
-
-    if (_safeStraight.contains(index)) {
-      return cellTemlate(colorLight: Colors.white, colorDark: Colors.grey);
-    } else {
-      for (var subject in Subjects.subjects) {
-        _clashWithSubject(subject);
-        if (index == subject.position) {
-          _count++;
-          if (_count > 1) {
-            break;
-          }
-          return subject.widget;
+    for (var subject in Subjects.subjects) {
+      _clashWithSubject(subject);
+      if (index == subject.position) {
+        _count++;
+        if (_count > 1) {
+          break;
         }
+        return subject.widget;
       }
     }
 

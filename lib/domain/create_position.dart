@@ -9,7 +9,20 @@ class CreatePosition {
   }
 
   void createPosition() {
-    Random random = Random();
-    posiiton = random.nextInt(sizeFieldPlay);
+    Random _random = Random();
+    int _randomPosiiton = _random.nextInt(sizeFieldPlay);
+    List<int> _safeStraight = [];
+
+    for (var i = 1; i < sizeFieldPlay / lenghtRow; i++) {
+      _safeStraight.add(tailPosition + lenghtRow * i);
+    }
+
+    if (_safeStraight.contains(_randomPosiiton)) {
+      _randomPosiiton = _random.nextInt(sizeFieldPlay);
+    }
+
+    if (!_safeStraight.contains(_randomPosiiton)) {
+      posiiton = _randomPosiiton;
+    }
   }
 }
