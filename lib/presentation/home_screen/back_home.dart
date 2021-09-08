@@ -1,6 +1,9 @@
+import 'dart:isolate';
+
 import 'package:flutter/material.dart';
 import 'package:man_project/const/value_widget_visibility.dart';
 import 'package:man_project/data/xp.dart';
+import 'package:man_project/domain/main_loop.dart';
 import 'package:man_project/presentation/home_screen/back_widget/cloud.dart';
 import 'package:man_project/presentation/home_screen/back_widget/destroying_objects.dart';
 import 'package:man_project/presentation/home_screen/back_widget/river.dart';
@@ -19,6 +22,24 @@ class BackHomeScreen extends StatefulWidget {
 }
 
 class _BackHomeScreenState extends State<BackHomeScreen> {
+  late ReceivePort _receivePort;
+  late Isolate _isolateLoop;
+
+  void _update() async {
+    _receivePort = ReceivePort();
+    _isolateLoop =
+        await Isolate.spawn(MainLoop.startLoop, _receivePort.sendPort);
+    _receivePort.listen((_) {
+      setState(() {});
+    });
+  }
+
+  @override
+  void initState() {
+    _update();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(

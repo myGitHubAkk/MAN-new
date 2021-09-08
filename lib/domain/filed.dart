@@ -10,6 +10,7 @@ import 'package:man_project/entities/user_term.dart';
 
 class Field {
   final int index;
+  List<int> _subject = [];
 
   Field(this.index);
 
@@ -22,16 +23,38 @@ class Field {
       return Snake.snake;
     }
 
-    int _count = 0;
-
     for (var subject in Subjects.subjects) {
       _clashWithSubject(subject);
       if (index == subject.position) {
-        _count++;
-        if (_count > 1) {
-          break;
+        _subject.add(index);
+        _check(subject);
+      }
+    }
+
+    // int _count = 0;
+
+    // for (var subject in Subjects.subjects) {
+    //   _clashWithSubject(subject);
+    //   if (index == subject.position) {
+    //     _count++;
+    //     if (_count > 1) {
+    //       break;
+    //     }
+    //     return subject.widget;
+    //   }
+    // }
+
+    return cellTemlate(colorLight: Colors.white, colorDark: Colors.grey);
+  }
+
+  Widget _check(Subject subject) {
+    for (var i = 0; i < _subject.length; i++) {
+      if (i < _subject.length) {
+        if (_subject[i] == _subject[i + 1]) {
+          return cellTemlate(colorLight: Colors.white, colorDark: Colors.grey);
+        } else {
+          return subject.widget;
         }
-        return subject.widget;
       }
     }
 
