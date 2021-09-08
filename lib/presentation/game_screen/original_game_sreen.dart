@@ -1,8 +1,10 @@
 import 'dart:async';
+import 'dart:isolate';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:man_project/domain/checking_answer.dart';
+import 'package:man_project/domain/main_loop.dart';
 import 'package:man_project/entities/game_state.dart';
 
 import 'package:man_project/entities/snake.dart';
@@ -30,35 +32,69 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
   bool isClash = AppleWithWords.isClash;
   bool isExit = false;
 
-  void snakeUpdate() {
-    if (GameState.isGamePlay == true) {
-      Timer.periodic(Duration(milliseconds: 10), (timer) {
+  late ReceivePort _receivePort;
+  late Isolate _isolateLoop;
+
+  void snakeUpdate() async {
+    _receivePort = ReceivePort();
+    _isolateLoop =
+        await Isolate.spawn(MainLoop.startLoop, _receivePort.sendPort);
+    _receivePort.listen((_) {
+      if (isExit == false) {
+        GameState.isGamePlay = false;
         setState(() {});
+      }
+      if (AppleWithWords.isClash == true && GameState.isGamePause == false) {
+        _showDialogQuestion();
+        GameState.isGamePause = true;
+      }
 
-        if (AppleWithWords.isClash == true && GameState.isGamePause == false) {
-          _showDialogQuestion();
-          GameState.isGamePause = true;
-        }
+      if (GameState.isShowDialogGameOver == false &&
+          GameState.isGamePause == false) {
+        _showDialogGameOver();
+        GameState.isGamePause = true;
+      }
 
-        if (GameState.isShowDialogGameOver == false &&
-            GameState.isGamePause == false) {
-          _showDialogGameOver();
-          GameState.isGamePause = true;
-        }
-
-        if (GameState.isWinner == true && GameState.isGamePause == false) {
-          _showDialogWinner();
-          GameState.isGamePause = true;
-        }
-
-        if (isExit == true) {
-          GameState.isGamePlay = false;
-          timer.cancel();
-        }
-      });
-    }
-    //}
+      if (GameState.isWinner == true && GameState.isGamePause == false) {
+        _showDialogWinner();
+        GameState.isGamePause = true;
+      }
+    });
+    // Timer.periodic(Duration(milliseconds: 10), (timer) {
+    //   setState(() {});
+    // });
   }
+
+  // void snakeUpdate() {
+
+  //   if (GameState.isGamePlay == true) {
+  //     Timer.periodic(Duration(milliseconds: 10), (timer) {
+  //       setState(() {});
+
+  //       if (AppleWithWords.isClash == true && GameState.isGamePause == false) {
+  //         _showDialogQuestion();
+  //         GameState.isGamePause = true;
+  //       }
+
+  //       if (GameState.isShowDialogGameOver == false &&
+  //           GameState.isGamePause == false) {
+  //         _showDialogGameOver();
+  //         GameState.isGamePause = true;
+  //       }
+
+  //       if (GameState.isWinner == true && GameState.isGamePause == false) {
+  //         _showDialogWinner();
+  //         GameState.isGamePause = true;
+  //       }
+
+  //       if (isExit == true) {
+  //         GameState.isGamePlay = false;
+  //         timer.cancel();
+  //       }
+  //     });
+  //   }
+  //   //}
+  // }
 
   @override
   void initState() {

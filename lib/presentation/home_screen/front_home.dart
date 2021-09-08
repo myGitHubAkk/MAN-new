@@ -1,8 +1,10 @@
 import 'dart:async';
+import 'dart:isolate';
 
 import 'package:flutter/material.dart';
 import 'package:man_project/const/value_widget_visibility.dart';
 import 'package:man_project/data/xp.dart';
+import 'package:man_project/domain/main_loop.dart';
 import 'package:man_project/domain/xp_bloc.dart';
 import 'package:man_project/entities/game_state.dart';
 import 'package:man_project/presentation/game_screen/original_game_sreen.dart';
@@ -10,12 +12,6 @@ import 'package:man_project/presentation/widget_template.dart';
 import 'package:man_project/domain/snake_move.dart';
 
 class FrontHomeScreen extends StatefulWidget {
-  // XpBloc xpBloc = XpBloc();
-
-  // void addXp() {
-  //   //xpBloc.inputEventSink.add(0.5);
-  // }
-
   @override
   _FrontHomeScreenState createState() => _FrontHomeScreenState();
 }
@@ -24,8 +20,14 @@ class _FrontHomeScreenState extends State<FrontHomeScreen> {
   double widthBar = 200;
   bool _isShowDialog = true;
 
-  void _update() {
-    Timer.periodic(Duration(milliseconds: 10), (timer) {
+  late ReceivePort _receivePort;
+  late Isolate _isolateLoop;
+
+  void _update() async {
+    _receivePort = ReceivePort();
+    _isolateLoop =
+        await Isolate.spawn(MainLoop.startLoop, _receivePort.sendPort);
+    _receivePort.listen((_) {
       setState(() {});
     });
   }
