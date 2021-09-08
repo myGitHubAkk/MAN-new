@@ -23,26 +23,26 @@ class Field {
       return Snake.snake;
     }
 
-    for (var subject in Subjects.subjects) {
-      _clashWithSubject(subject);
-      if (index == subject.position) {
-        _subject.add(index);
-        _check(subject);
-      }
-    }
-
-    // int _count = 0;
-
     // for (var subject in Subjects.subjects) {
     //   _clashWithSubject(subject);
     //   if (index == subject.position) {
-    //     _count++;
-    //     if (_count > 1) {
-    //       break;
-    //     }
-    //     return subject.widget;
+    //     _subject.add(index);
+    //     _check(subject);
     //   }
     // }
+
+    int _count = 0;
+
+    for (var subject in Subjects.subjects) {
+      _clashWithSubject(subject);
+      if (index == subject.position) {
+        _count++;
+        if (_count > 1) {
+          break;
+        }
+        return subject.widget;
+      }
+    }
 
     return cellTemlate(colorLight: Colors.white, colorDark: Colors.grey);
   }
