@@ -12,11 +12,9 @@ class BackNameWidgetCreate {
   }
 
   void _create(Map widget) {
-    print('values.length ${widget['ValuesVisibility'].values.length}');
     for (var i = 0; i < widget['ValuesVisibility'].values.length; i++) {
-      print('круг $i');
       if (i == widget['ValuesVisibility'].values.length - 1) {
-        if (Xp.xpFractional > widget['ValuesVisibility'].values.elementAt(i)) {
+        if (Xp.xpFractional >= widget['ValuesVisibility'].values.elementAt(i)) {
           _nameWidget = widget['WidgetName'][i];
         }
       } else {

@@ -22,6 +22,7 @@ class FrontHomeScreen extends StatefulWidget {
 
 class _FrontHomeScreenState extends State<FrontHomeScreen> {
   double widthBar = 200;
+  bool _isShowDialog = true;
 
   void _update() {
     Timer.periodic(Duration(milliseconds: 10), (timer) {
@@ -36,135 +37,216 @@ class _FrontHomeScreenState extends State<FrontHomeScreen> {
     super.initState();
   }
 
+  void _showDialog() {
+    setState(() {
+      _isShowDialog = !_isShowDialog;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    double _width = MediaQuery.of(context).size.width;
+    double _height = MediaQuery.of(context).size.height;
     return Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
+        child: Stack(
+          alignment: Alignment.center,
           children: [
-            SizedBox(
-              height: 20,
-            ),
-            Xp.xpFractional == treeHappinessLvl['Very very happy']
-                ? SizedBox()
-                : GestureDetector(
-                    onTap: () {
-                      GameState.gameReset();
-                      GameState.isGamePlay = true;
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (contex) {
-                          return OriginalGameScreen();
-                        }),
-                      );
-                    },
-                    child: backgroundImage(
-                        name: 'Кнопка Старта', width: 90, height: 90),
-                  ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  padding: EdgeInsets.only(top: 15),
+                  alignment: Alignment.centerLeft,
+                  width: double.infinity,
+                  child: IconButton(
+                      icon: Icon(
+                        Icons.info_outline,
+                        color: Colors.grey,
+                      ),
+                      onPressed: () {
+                        _showDialog();
+                      }),
+                ),
+                Xp.xpFractional == treeHappinessLvl['Very very happy']
+                    ? SizedBox()
+                    : GestureDetector(
+                        onTap: () {
+                          GameState.gameReset();
+                          GameState.isGamePlay = true;
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (contex) {
+                              return OriginalGameScreen();
+                            }),
+                          );
+                        },
+                        child: backgroundImage(
+                            name: 'Кнопка Старта', width: 90, height: 90),
+                      ),
 
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 0, vertical: 20),
-              width: widthBar + 70,
-              child: Row(
-                //mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    // '${fractionalXP} Lvl',
-                    //'${_xp['fractional']!} Lvl',
-                    '${Xp.xpFractional} LvL',
-                    //'das',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  SizedBox(
-                    width: 0,
-                  ),
-                  Stack(
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 0, vertical: 20),
+                  width: widthBar + 70,
+                  child: Row(
+                    //mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Container(
-                        margin: EdgeInsets.only(left: 10),
-                        width: widthBar - 20,
-                        height: 25,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(50),
-                        ),
+                      Text(
+                        // '${fractionalXP} Lvl',
+                        //'${_xp['fractional']!} Lvl',
+                        '${Xp.xpFractional} LvL',
+                        //'das',
+                        style: TextStyle(fontSize: 20),
                       ),
-                      Container(
-                        margin: EdgeInsets.only(left: 10),
-                        // width: widthBar * wholeXP,
-                        //width: widthBar * _xp['whole']!,
-                        width: widthBar * Xp.xpWhole,
-                        height: 25,
-                        decoration: BoxDecoration(
-                          color: Colors.green,
-                          borderRadius: BorderRadius.circular(50),
-                        ),
+                      SizedBox(
+                        width: 0,
                       ),
-                      backgroundImage(
-                          name: 'Рішотка шкали', width: widthBar, height: 25),
+                      Stack(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(left: 10),
+                            width: widthBar - 20,
+                            height: 25,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(left: 10),
+                            // width: widthBar * wholeXP,
+                            //width: widthBar * _xp['whole']!,
+                            width: widthBar * Xp.xpWhole,
+                            height: 25,
+                            decoration: BoxDecoration(
+                              color: Colors.green,
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                          ),
+                          backgroundImage(
+                              name: 'Рішотка шкали',
+                              width: widthBar,
+                              height: 25),
+                        ],
+                      ),
                     ],
                   ),
-                ],
-              ),
-            )
+                )
 
-            // StreamBuilder(
-            //   stream: widget.xpBloc.outputStateStream,
-            //   initialData: Xp.xp,
-            //   builder: (_, snapshot) {
-            //     Map _xp = snapshot.data as Map;
-            //     print(snapshot.data as Map);
-            //     return Container(
-            //       padding: EdgeInsets.symmetric(horizontal: 0, vertical: 20),
-            //       width: widthBar + 70,
-            //       child: Row(
-            //         //mainAxisAlignment: MainAxisAlignment.start,
-            //         crossAxisAlignment: CrossAxisAlignment.center,
-            //         children: [
-            //           Text(
-            //             // '${fractionalXP} Lvl',
-            //             '${_xp['fractional']!} Lvl',
-            //             //'das',
-            //             style: TextStyle(fontSize: 20),
-            //           ),
-            //           SizedBox(
-            //             width: 10,
-            //           ),
-            //           Stack(
-            //             children: [
-            //               Container(
-            //                 margin: EdgeInsets.only(left: 10),
-            //                 width: widthBar - 20,
-            //                 height: 25,
-            //                 decoration: BoxDecoration(
-            //                   color: Colors.white,
-            //                   borderRadius: BorderRadius.circular(50),
-            //                 ),
-            //               ),
-            //               Container(
-            //                 margin: EdgeInsets.only(left: 10),
-            //                 // width: widthBar * wholeXP,
-            //                 width: widthBar * _xp['whole']!,
-            //                 //width: widthBar,
-            //                 height: 25,
-            //                 decoration: BoxDecoration(
-            //                   color: Colors.green,
-            //                   borderRadius: BorderRadius.circular(50),
-            //                 ),
-            //               ),
-            //               backgroundImage(
-            //                   name: 'Рішотка шкали', width: widthBar, height: 25),
-            //             ],
-            //           ),
-            //         ],
-            //       ),
-            //     );
-            //   },
-            // )
+                // StreamBuilder(
+                //   stream: widget.xpBloc.outputStateStream,
+                //   initialData: Xp.xp,
+                //   builder: (_, snapshot) {
+                //     Map _xp = snapshot.data as Map;
+                //     print(snapshot.data as Map);
+                //     return Container(
+                //       padding: EdgeInsets.symmetric(horizontal: 0, vertical: 20),
+                //       width: widthBar + 70,
+                //       child: Row(
+                //         //mainAxisAlignment: MainAxisAlignment.start,
+                //         crossAxisAlignment: CrossAxisAlignment.center,
+                //         children: [
+                //           Text(
+                //             // '${fractionalXP} Lvl',
+                //             '${_xp['fractional']!} Lvl',
+                //             //'das',
+                //             style: TextStyle(fontSize: 20),
+                //           ),
+                //           SizedBox(
+                //             width: 10,
+                //           ),
+                //           Stack(
+                //             children: [
+                //               Container(
+                //                 margin: EdgeInsets.only(left: 10),
+                //                 width: widthBar - 20,
+                //                 height: 25,
+                //                 decoration: BoxDecoration(
+                //                   color: Colors.white,
+                //                   borderRadius: BorderRadius.circular(50),
+                //                 ),
+                //               ),
+                //               Container(
+                //                 margin: EdgeInsets.only(left: 10),
+                //                 // width: widthBar * wholeXP,
+                //                 width: widthBar * _xp['whole']!,
+                //                 //width: widthBar,
+                //                 height: 25,
+                //                 decoration: BoxDecoration(
+                //                   color: Colors.green,
+                //                   borderRadius: BorderRadius.circular(50),
+                //                 ),
+                //               ),
+                //               backgroundImage(
+                //                   name: 'Рішотка шкали', width: widthBar, height: 25),
+                //             ],
+                //           ),
+                //         ],
+                //       ),
+                //     );
+                //   },
+                // )
+              ],
+            ),
+            _isShowDialog
+                ? Container(
+                    child: Stack(
+                      children: [
+                        Container(
+                          width: _width * 0.9,
+                          height: _height * 0.9,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(
+                                  'assets/img/хмарка інформації.png'),
+                            ),
+                          ),
+                          child: Stack(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                  vertical: _height * 0.15,
+                                  horizontal: _width * 0.12,
+                                ),
+                                child: Text(
+                                    '''asd assets/i mg/хмарка інф ормації.png asset s/ img/хмарка 
+                                    інформації.png assets/img/хмарка інформації.png assets/img/хмарка інформації.png
+                                    інформації.png assets/img/хмарка інформації.png assets/img/хмарка інформації.png
+                                    інформації.png assets/img/хмарка інформації.png assets/img/хмарка інформації.png
+                                    інформації.png assets/img/хмарка інформації.png assets/img/хмарка інформації.png
+                                    інформації.png assets/img/хмарка інформації.png assets/img/хмарка інформації.png
+                                    '''),
+                              ),
+                              Positioned(
+                                bottom: _height * 0.12,
+                                child: Container(
+                                  width: _width * 0.9,
+                                  height: 110,
+                                  child: Image.asset('assets/img/спить.png'),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        Positioned(
+                          top: _height * 0.1,
+                          right: _width * 0.05,
+                          child: IconButton(
+                              icon: Icon(
+                                Icons.cancel,
+                                color: Colors.grey,
+                              ),
+                              onPressed: () {
+                                _showDialog();
+                              }),
+                        ),
+                      ],
+                    ),
+                  )
+                : SizedBox(),
           ],
         ),
       ),
