@@ -25,8 +25,6 @@ class _DestroyingObjectsState extends State<DestroyingObjects> {
     //double heightScreen = MediaQuery.of(context).size.height;
     double widthScreen = MediaQuery.of(context).size.width;
 
-    print(widget.valueVisibility);
-
     Map position = {
       'top': widget.top,
       'left': widget.left,

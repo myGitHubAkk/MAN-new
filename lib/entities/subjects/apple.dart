@@ -38,11 +38,9 @@ class AppleWithWords extends Subject {
 
     if (isZeroNamber == true) {
       _answer = _values[UserTerm.namberWord];
-      print(UserTerm.namberWord);
     } else if (isZeroNamber == false) {
       int randomNamber = Random().nextInt(_falseValue.length - 1);
       _answer = _falseValue[UserTerm.namberWord][randomNamber];
-      print(UserTerm.namberWord);
     }
 
     //_countRandomNextAnswer++;

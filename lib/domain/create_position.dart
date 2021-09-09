@@ -4,6 +4,9 @@ import 'package:man_project/const/constFilled.dart';
 
 class CreatePosition {
   late int posiiton;
+  List<int> _safeStraight = [];
+  List<int> _positions = [];
+
   CreatePosition() {
     createPosition();
   }
@@ -11,7 +14,6 @@ class CreatePosition {
   void createPosition() {
     Random _random = Random();
     int _randomPosiiton = _random.nextInt(sizeFieldPlay);
-    List<int> _safeStraight = [];
 
     for (var i = 1; i < sizeFieldPlay / lenghtRow; i++) {
       _safeStraight.add(tailPosition + lenghtRow * i);
@@ -21,8 +23,30 @@ class CreatePosition {
       _randomPosiiton = _random.nextInt(sizeFieldPlay);
     }
 
-    if (!_safeStraight.contains(_randomPosiiton)) {
-      posiiton = _randomPosiiton;
+    posiiton = _randomPosiiton;
+
+    _checkRepeat(_random);
+  }
+
+  void _checkRepeat(Random random) {
+    print('check');
+    if (_positions.length == 1) {
+      posiiton = random.nextInt(sizeFieldPlay);
+      _positions.add(posiiton);
+    } else if (_positions.length > 1) {
+      for (var i = 0; i < _positions.length; i++) {
+        if (i != _positions.length - 1) {
+          if (_positions[i] == _positions[i++]) {
+            posiiton = random.nextInt(sizeFieldPlay);
+            _positions.add(posiiton);
+          }
+        } else if (i == _positions.length - 1) {
+          if (_positions[i] == _positions[i--]) {
+            posiiton = random.nextInt(sizeFieldPlay);
+            _positions.add(posiiton);
+          }
+        }
+      }
     }
   }
 }

@@ -20,7 +20,6 @@ class GameState {
 
     Snake.snakeDirection = SnakeDirection.down;
     SnakeMove().snakeDirection(Snake.snakeDirection);
-    print(Snake.snakeDirection);
     Snake.snakePosition = [
       tailPosition,
       tailPosition + lenghtRow,

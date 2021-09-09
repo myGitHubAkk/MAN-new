@@ -47,19 +47,19 @@ class Field {
     return cellTemlate(colorLight: Colors.white, colorDark: Colors.grey);
   }
 
-  Widget _check(Subject subject) {
-    for (var i = 0; i < _subject.length; i++) {
-      if (i < _subject.length) {
-        if (_subject[i] == _subject[i + 1]) {
-          return cellTemlate(colorLight: Colors.white, colorDark: Colors.grey);
-        } else {
-          return subject.widget;
-        }
-      }
-    }
+  // Widget _check(Subject subject) {
+  //   for (var i = 0; i < _subject.length; i++) {
+  //     if (i < _subject.length) {
+  //       if (_subject[i] == _subject[i + 1]) {
+  //         return cellTemlate(colorLight: Colors.white, colorDark: Colors.grey);
+  //       } else {
+  //         return subject.widget;
+  //       }
+  //     }
+  //   }
 
-    return cellTemlate(colorLight: Colors.white, colorDark: Colors.grey);
-  }
+  //   return cellTemlate(colorLight: Colors.white, colorDark: Colors.grey);
+  // }
 
   void _clashWithSubject(Subject subject) {
     if (Snake.snakePosition.last == subject.position) {

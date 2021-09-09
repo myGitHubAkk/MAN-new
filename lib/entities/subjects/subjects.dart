@@ -5,13 +5,9 @@ import 'package:man_project/entities/subjects/subject.dart';
 class Subjects {
   static List<Subject> subjects = [
     Stone(),
-    Stone(),
-    Stone(),
-    Stone(),
-    Stone(),
-    Stone(),
-    Stone(),
-    Stone(),
+    AppleWithWords(),
+    AppleWithWords(),
+    AppleWithWords(),
     AppleWithWords(),
     AppleWithWords(),
     AppleWithWords(),
