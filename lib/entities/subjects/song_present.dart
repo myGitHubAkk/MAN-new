@@ -17,7 +17,7 @@ class SongPresent extends Subject {
   @override
   void snakeClash() {
     //print(AudioPlayer.players);
-    audioPlayer.play('slipknot_-_unsainted.mp3');
+    audioPlayer.play('assets/audio/slipknot_-_unsainted.mp3');
   }
 
   @override
