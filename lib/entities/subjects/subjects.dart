@@ -1,5 +1,5 @@
-import 'package:man_project/entities/subjects/apple.dart';
-import 'package:man_project/entities/subjects/song_present.dart';
+import 'package:man_project/entities/subjects/subject_width_answer.dart';
+import 'package:man_project/entities/subjects/surprise.dart';
 import 'package:man_project/entities/subjects/stone.dart';
 import 'package:man_project/entities/subjects/subject.dart';
 
@@ -9,9 +9,9 @@ class Subjects {
     Stone(),
     Stone(),
     Stone(),
-    AppleWithWords(),
-    AppleWithWords(),
-    AppleWithWords(),
-    SongPresent(),
+    SubjectWidthAnswer(),
+    SubjectWidthAnswer(),
+    SubjectWidthAnswer(),
+    Surprise(),
   ];
 }

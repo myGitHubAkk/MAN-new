@@ -8,7 +8,7 @@ import 'package:man_project/domain/main_loop.dart';
 import 'package:man_project/entities/game_state.dart';
 
 import 'package:man_project/entities/snake.dart';
-import 'package:man_project/entities/subjects/apple.dart';
+import 'package:man_project/entities/subjects/subject_width_answer.dart';
 import 'package:man_project/entities/subjects/subjects.dart';
 import 'package:man_project/domain/filed.dart';
 import 'package:man_project/const/constFilled.dart';
@@ -17,19 +17,19 @@ import 'package:man_project/entities/user_term.dart';
 import 'package:man_project/presentation/home_screen/front_home.dart';
 import 'package:man_project/presentation/home_screen/home_screen.dart';
 
-class OriginalGameScreen extends StatefulWidget {
-  const OriginalGameScreen({Key? key}) : super(key: key);
+class GameScreen extends StatefulWidget {
+  const GameScreen({Key? key}) : super(key: key);
 
   @override
-  _OriginalGameScreenState createState() => _OriginalGameScreenState();
+  _GameScreenState createState() => _GameScreenState();
 }
 
-class _OriginalGameScreenState extends State<OriginalGameScreen> {
+class _GameScreenState extends State<GameScreen> {
   SnakeMove snakeMove = SnakeMove();
   UserTerm userTerm = UserTerm();
 
   List snake = Snake.snakePosition;
-  bool isClash = AppleWithWords.isClash;
+  bool isClash = SubjectWidthAnswer.isClash;
   bool isExit = false;
 
   late ReceivePort _receivePort;
@@ -44,7 +44,8 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
         GameState.isGamePlay = false;
         setState(() {});
       }
-      if (AppleWithWords.isClash == true && GameState.isGamePause == false) {
+      if (SubjectWidthAnswer.isClash == true &&
+          GameState.isGamePause == false) {
         _showDialogQuestion();
         GameState.isGamePause = true;
       }
@@ -107,7 +108,7 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
   void onPressedShowDialog() {
     GameState.isGamePause = false;
     Snake.isAddTail = true;
-    AppleWithWords.isClash = false;
+    SubjectWidthAnswer.isClash = false;
     Navigator.of(context).pop();
   }
 
@@ -189,9 +190,9 @@ class _OriginalGameScreenState extends State<OriginalGameScreen> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        AppleWithWords.randomNextAnswer();
+        SubjectWidthAnswer.randomNextAnswer();
         return AlertDialog(
-          content: Text(AppleWithWords().answer),
+          content: Text(SubjectWidthAnswer().answer),
           actions: [
             IconButton(
               icon: Icon(Icons.check),

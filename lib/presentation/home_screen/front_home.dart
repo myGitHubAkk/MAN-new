@@ -7,7 +7,7 @@ import 'package:man_project/data/xp.dart';
 import 'package:man_project/domain/main_loop.dart';
 import 'package:man_project/domain/xp_bloc.dart';
 import 'package:man_project/entities/game_state.dart';
-import 'package:man_project/presentation/game_screen/original_game_sreen.dart';
+import 'package:man_project/presentation/game_screen/game_sreen.dart';
 import 'package:man_project/presentation/widget_template.dart';
 import 'package:man_project/domain/snake_move.dart';
 
@@ -81,7 +81,7 @@ class _FrontHomeScreenState extends State<FrontHomeScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (contex) {
-                              return OriginalGameScreen();
+                              return GameScreen();
                             }),
                           );
                         },

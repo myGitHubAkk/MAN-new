@@ -6,7 +6,7 @@ import 'package:man_project/domain/create_position.dart';
 import 'package:man_project/entities/subjects/subject.dart';
 import 'package:man_project/entities/user_term.dart';
 
-class AppleWithWords extends Subject {
+class SubjectWidthAnswer extends Subject {
   CreatePosition _createPosition = CreatePosition();
 
   static bool isClash = false;

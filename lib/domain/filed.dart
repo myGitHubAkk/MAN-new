@@ -3,7 +3,7 @@ import 'package:man_project/const/constFilled.dart';
 import 'package:man_project/domain/checking_answer.dart';
 import 'package:man_project/entities/game_state.dart';
 import 'package:man_project/entities/snake.dart';
-import 'package:man_project/entities/subjects/apple.dart';
+import 'package:man_project/entities/subjects/subject_width_answer.dart';
 import 'package:man_project/entities/subjects/subject.dart';
 import 'package:man_project/entities/subjects/subjects.dart';
 import 'package:man_project/entities/user_term.dart';

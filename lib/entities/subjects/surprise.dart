@@ -7,7 +7,7 @@ import 'package:man_project/entities/subjects/subject.dart';
 import 'package:man_project/entities/user_term.dart';
 import 'package:audioplayers/audioplayers.dart';
 
-class SongPresent extends Subject {
+class Surprise extends Subject {
   CreatePosition _createPosition = CreatePosition();
   AudioCache audioPlayer = AudioCache();
 

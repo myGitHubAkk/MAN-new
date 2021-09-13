@@ -2,7 +2,7 @@ import 'package:man_project/data/terms.dart';
 import 'package:man_project/data/xp.dart';
 import 'package:man_project/domain/xp_bloc.dart';
 import 'package:man_project/entities/game_state.dart';
-import 'package:man_project/entities/subjects/apple.dart';
+import 'package:man_project/entities/subjects/subject_width_answer.dart';
 import 'package:man_project/entities/user_term.dart';
 import 'package:man_project/presentation/home_screen/front_home.dart';
 
@@ -14,7 +14,7 @@ class CheckingAnswer {
 
   set addUserVersion(bool userVersion) {
     // _addUserVersion(value);
-    _answer = AppleWithWords().answer;
+    _answer = SubjectWidthAnswer().answer;
     _isTrueAnswerUserVersion = userVersion;
     checkingUserVersion();
   }

@@ -1,7 +1,7 @@
 import 'package:man_project/const/constFilled.dart';
 import 'package:man_project/domain/snake_move.dart';
 import 'package:man_project/entities/snake.dart';
-import 'package:man_project/entities/subjects/apple.dart';
+import 'package:man_project/entities/subjects/subject_width_answer.dart';
 import 'package:man_project/entities/subjects/subjects.dart';
 import 'package:man_project/entities/user_term.dart';
 
