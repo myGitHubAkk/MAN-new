@@ -3,7 +3,8 @@ import 'package:man_project/presentation/home_screen/back_widget/template/back_w
 import 'package:man_project/presentation/home_screen/back_widget/tree_face.dart';
 
 class Tree extends StatelessWidget {
-  const Tree({Key? key}) : super(key: key);
+  double _difference = 220.0 / 170.0;
+  double _width = 170;
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +19,9 @@ class Tree extends StatelessWidget {
             // decoration: BoxDecoration(
             //     border: Border.all(color: Colors.green, width: 5)),
             child: BackWidgetTemplate(
-              poosition: {'top': 75.0, 'left': 0.0},
-              width: 170.0,
-              height: 220.0,
+              poosition: {'top': 85.0, 'left': 0.0},
+              width: _width,
+              height: _width * _difference,
               name: 'Грут тіло',
             ),
           ),

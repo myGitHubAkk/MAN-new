@@ -42,94 +42,112 @@ class _BackHomeScreenState extends State<BackHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double _widthScreen = MediaQuery.of(context).size.width;
+    double _heightScreen = MediaQuery.of(context).size.height;
+
+    var k = _heightScreen / _widthScreen;
     return Container(
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
           Container(
-            child: backgroundImage(
-              name: 'Земля нова',
+            height: _widthScreen * k * 0.5,
+            width: _widthScreen,
+            child: Image.asset(
+              'assets/img/Земля нова.png',
               width: double.infinity,
-              height: 335,
+              height: double.infinity,
+              fit: BoxFit.fill,
             ),
           ),
+          // Container(
+          //   child: backgroundImage(
+          //     name: 'Земля нова',
+          //     width: double.infinity,
+          //     height: 335,
+          //   ),
+          // ),
           Container(
-            child: Column(
+            child: Stack(
+              alignment: Alignment.center,
               children: [
-                Expanded(
-                  flex: 3,
-                  // child: Container(
-                  //   decoration: BoxDecoration(
-                  //       border: Border.all(color: Colors.blue, width: 3)),
-                  child: Stack(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                DestroyingObjects(
+                  top: 20.0,
+                  left: 160.0,
+                  valueVisibility: lvlWhichNotVisibleFactory,
+                ),
+                Column(
+                  children: [
+                    Expanded(
+                      // child: Container(
+                      //   decoration: BoxDecoration(
+                      //       border: Border.all(color: Colors.blue, width: 3)),
+                      child: Stack(
                         children: [
-                          Cloud(
-                            top: 110.0,
-                            left: 10.0,
-                          ),
-                          Cloud(
-                            top: 40.0,
-                            left: 15.0,
-                          ),
-                          Cloud(
-                            top: 90.0,
-                            left: 20.0,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Cloud(
+                                top: 110.0,
+                                left: 10.0,
+                              ),
+                              Cloud(
+                                top: 0.0,
+                                left: 15.0,
+                              ),
+                              Cloud(
+                                top: 50.0,
+                                left: 20.0,
+                              ),
+                            ],
                           ),
                         ],
                       ),
-                    ],
-                  ),
-                ),
-                //),
-                Expanded(
-                  flex: 5,
-                  // child: Container(
-                  //   decoration: BoxDecoration(
-                  //       border: Border.all(color: Colors.red, width: 3)),
-                  child: Stack(
-                    children: [
-                      DestroyingObjects(
-                        top: 130.0,
-                        left: 120.0,
-                        valueVisibility: lvlWhichNotVisibleFactory,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          DestroyingObjects(
-                            top: 170.0,
-                            left: 0.0,
-                            valueVisibility: lvlWhichNotVisibleTreshLeft,
-                          ),
-                          Tree(),
-                          DestroyingObjects(
-                            top: 180.0,
-                            left: 0.0,
-                            valueVisibility: lvlWhichNotVisibleTreshRight,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                //),
-                Expanded(
-                  flex: 3,
-                  // child: Container(
-                  //   decoration: BoxDecoration(
-                  //       border: Border.all(color: Colors.green, width: 3)),
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: 40.0),
-                    child: River(
-                      top: 0.0,
-                      left: 0.0,
                     ),
-                  ),
+                    //),
+                    Expanded(
+                      // child: Container(
+                      //   decoration: BoxDecoration(
+                      //       border: Border.all(color: Colors.red, width: 3)),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 0),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            DestroyingObjects(
+                              top: 0.0,
+                              left: 0.0,
+                              valueVisibility: lvlWhichNotVisibleTreshLeft,
+                            ),
+                            //Tree(),
+                            DestroyingObjects(
+                              top: 0.0,
+                              left: 0.0,
+                              valueVisibility: lvlWhichNotVisibleTreshRight,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    //),
+                    Expanded(
+                      // child: Container(
+                      //   decoration: BoxDecoration(
+                      //       border: Border.all(color: Colors.green, width: 3)),
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 20.0),
+                        child: River(
+                          top: 0.0,
+                          left: 0.0,
+                        ),
+                      ),
+                    ),
+                    //),
+                  ],
                 ),
-                //),
+                Tree(),
               ],
             ),
           ),

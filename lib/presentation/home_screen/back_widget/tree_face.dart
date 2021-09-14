@@ -3,14 +3,14 @@ import 'package:man_project/const/value_widget_visibility.dart';
 import 'package:man_project/presentation/home_screen/back_widget/template/changing_objects_%20in_back.dart';
 
 class TreeFace extends StatelessWidget {
-  double difference = 180 / 130;
-  double width = 65;
+  double _difference = 180 / 130;
+  double _width = 75;
   @override
   Widget build(BuildContext context) {
     return ChangingObjectsInBack(
       position: {'top': 0.0, 'left': 0.0},
-      width: width,
-      height: width * difference,
+      width: _width,
+      height: _width * _difference,
       inputData: {
         'ValuesVisibility': treeHappinessLvl,
         'WidgetName': [

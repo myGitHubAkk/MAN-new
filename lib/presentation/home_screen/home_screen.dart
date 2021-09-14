@@ -14,8 +14,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String textInfo = 'тут живе грут';
-
   @override
   Widget build(BuildContext context) {
     // TreeBloc _bloc = TreeBloc();

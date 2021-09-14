@@ -20,6 +20,10 @@ class DestroyingObjects extends StatefulWidget {
 }
 
 class _DestroyingObjectsState extends State<DestroyingObjects> {
+  double _sizeTreshLeft = 100;
+  double _sizeTreshRight = 90;
+  double _sizeTreshFactory = 70;
+
   @override
   Widget build(BuildContext context) {
     //double heightScreen = MediaQuery.of(context).size.height;
@@ -34,22 +38,26 @@ class _DestroyingObjectsState extends State<DestroyingObjects> {
       return Xp.xpFractional < widget.valueVisibility
           ? BackWidgetTemplate(
               poosition: position,
-              width: 85.0,
-              height: 85.0,
+              width: _sizeTreshLeft,
+              height: _sizeTreshLeft,
               name: 'Мусор',
             )
           : BackWidgetTemplate(
               poosition: position,
-              width: 85.0,
-              height: 85.0,
+              width: _sizeTreshLeft,
+              height: _sizeTreshLeft,
               name: 'квіточка',
             );
     } else if (widget.valueVisibility == lvlWhichNotVisibleTreshRight) {
       return Xp.xpFractional < widget.valueVisibility
           ? BackWidgetTemplate(
-              poosition: position, width: 70.0, height: 70.0, name: 'Мусор')
+              poosition: position,
+              width: _sizeTreshRight,
+              height: _sizeTreshRight,
+              name: 'Мусор',
+            )
           : Container(
-              width: 70,
+              width: _sizeTreshRight,
             );
     } else if (widget.valueVisibility == lvlWhichNotVisibleFactory) {
       //print('${widthScreen - position['left']}');
@@ -59,8 +67,8 @@ class _DestroyingObjectsState extends State<DestroyingObjects> {
                 'top': position['top'],
                 'left': widthScreen - position['left']
               },
-              width: 70.0,
-              height: 70.0,
+              width: _sizeTreshFactory,
+              height: _sizeTreshFactory,
               name: 'Завод',
             )
           : Container(

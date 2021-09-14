@@ -12,6 +12,6 @@ class Subjects {
     SubjectWidthAnswer(),
     SubjectWidthAnswer(),
     SubjectWidthAnswer(),
-    Surprise(),
+    //Surprise(),
   ];
 }

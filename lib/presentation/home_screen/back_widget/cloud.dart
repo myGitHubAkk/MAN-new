@@ -20,8 +20,8 @@ class Cloud extends StatelessWidget {
 
     return ChangingObjectsInBack(
       position: position,
-      width: 100.0,
-      height: 100.0,
+      width: 120.0,
+      height: 120.0,
       inputData: {
         'ValuesVisibility': cloudPurityLvl,
         'WidgetName': ['Тучка', 'Group 15', 'тучка чиста'],
