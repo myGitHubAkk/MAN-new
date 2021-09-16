@@ -25,6 +25,9 @@ class Stone extends Subject {
 
   @override
   Widget get widget {
-    return cellTemlate(colorLight: Colors.grey, colorDark: Colors.grey[900]!);
+    return Container(
+      decoration: BoxDecoration(
+          image: DecorationImage(image: AssetImage('assets/img/Камінь.png'))),
+    );
   }
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:man_project/const/colors.dart';
 import 'package:man_project/data/terms.dart';
 
 class UserTerm {
@@ -16,6 +18,10 @@ class UserTerm {
 
   Widget _termWidget() {
     String termTitle = TermData.terms[namberTerm].title;
-    return Text('$termTitle - це $valueUserTerm');
+    return Text(
+      '$termTitle - це $valueUserTerm',
+      style: TextStyle(
+          fontSize: 18, color: blackGrey, fontWeight: FontWeight.w400),
+    );
   }
 }

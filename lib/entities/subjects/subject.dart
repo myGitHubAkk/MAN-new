@@ -6,13 +6,3 @@ abstract class Subject {
   void snakeClash() {}
   void gameOver() {}
 }
-
-Widget cellTemlate({required Color colorLight, required Color colorDark}) {
-  return Container(
-    decoration: BoxDecoration(
-      color: colorLight,
-      shape: BoxShape.circle,
-      border: Border.all(color: colorDark, width: 3),
-    ),
-  );
-}

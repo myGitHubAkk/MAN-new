@@ -5,6 +5,7 @@ import 'package:man_project/data/terms.dart';
 import 'package:man_project/domain/create_position.dart';
 import 'package:man_project/entities/subjects/subject.dart';
 import 'package:man_project/entities/user_term.dart';
+import 'package:man_project/presentation/widget_template.dart';
 
 class SubjectWidthAnswer extends Subject {
   CreatePosition _createPosition = CreatePosition();
@@ -64,6 +65,9 @@ class SubjectWidthAnswer extends Subject {
 
   @override
   Widget get widget {
-    return cellTemlate(colorLight: Colors.lightGreen, colorDark: Colors.green);
+    return Container(
+      decoration: BoxDecoration(
+          image: DecorationImage(image: AssetImage('assets/img/фрукт.png'))),
+    );
   }
 }

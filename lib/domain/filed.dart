@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:man_project/const/colors.dart';
 import 'package:man_project/const/const_filled.dart';
 import 'package:man_project/domain/checking_answer.dart';
 import 'package:man_project/entities/game_state.dart';
@@ -10,7 +11,6 @@ import 'package:man_project/entities/user_term.dart';
 
 class Field {
   final int index;
-  List<int> _subject = [];
 
   Field(this.index);
 
@@ -44,7 +44,13 @@ class Field {
       }
     }
 
-    return cellTemlate(colorLight: Colors.white, colorDark: Colors.grey);
+    return Container(
+      decoration: BoxDecoration(
+        color: white,
+        shape: BoxShape.circle,
+        border: Border.all(color: blackWhite, width: 3),
+      ),
+    );
   }
 
   // Widget _check(Subject subject) {

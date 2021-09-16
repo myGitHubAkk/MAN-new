@@ -17,6 +17,7 @@ import 'package:man_project/domain/snake_move.dart';
 import 'package:man_project/entities/user_term.dart';
 import 'package:man_project/presentation/home_screen/front_home.dart';
 import 'package:man_project/presentation/home_screen/home_screen.dart';
+import 'package:man_project/presentation/widget_template.dart';
 
 class GameScreen extends StatefulWidget {
   const GameScreen({Key? key}) : super(key: key);
@@ -193,22 +194,51 @@ class _GameScreenState extends State<GameScreen> {
       builder: (BuildContext context) {
         SubjectWidthAnswer.randomNextAnswer();
         return AlertDialog(
-          content: Text(SubjectWidthAnswer().answer),
+          content: Text(
+            SubjectWidthAnswer().answer,
+            style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w400,
+                color: Colors.lightGreen[800]),
+          ),
           actions: [
-            IconButton(
-              icon: Icon(Icons.check),
-              onPressed: () {
-                onPressedShowDialog();
-                CheckingAnswer().addUserVersion = true;
-              },
+            Container(
+              width: 350,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      onPressedShowDialog();
+                      CheckingAnswer().addUserVersion = true;
+                    },
+                    child: backgroundImage(name: 'Yes', width: 50, height: 50),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      onPressedShowDialog();
+                      CheckingAnswer().addUserVersion = false;
+                    },
+                    child: backgroundImage(name: 'X', width: 50, height: 50),
+                  ),
+                ],
+              ),
             ),
-            IconButton(
-              icon: Icon(Icons.cancel),
-              onPressed: () {
-                onPressedShowDialog();
-                CheckingAnswer().addUserVersion = false;
-              },
-            ),
+
+            // IconButton(
+            //   icon: Icon(Icons.check),
+            //   onPressed: () {
+            //     onPressedShowDialog();
+            //     CheckingAnswer().addUserVersion = true;
+            //   },
+            // ),
+            // IconButton(
+            //   icon: Icon(Icons.cancel),
+            //   onPressed: () {
+            //     onPressedShowDialog();
+            //     CheckingAnswer().addUserVersion = false;
+            //   },
+            // ),
           ],
         );
       },

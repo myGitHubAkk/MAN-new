@@ -23,7 +23,7 @@ class SnakeMove {
   }
 
   static void snakeMove() async {
-    const duration = Duration(milliseconds: 200);
+    const duration = Duration(milliseconds: 190);
 
     print('move');
 

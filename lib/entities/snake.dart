@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:man_project/const/colors.dart';
 import 'package:man_project/const/const_filled.dart';
 import 'package:man_project/entities/game_state.dart';
 import 'package:man_project/entities/subjects/subject.dart';
@@ -17,13 +18,17 @@ class Snake {
     tailPosition + lenghtRow * 3,
   ];
 
-  static Widget snake = cellTemlate(
-    colorLight: Colors.lightGreen,
-    colorDark: Colors.green,
+  static Widget snake = Container(
+    decoration: BoxDecoration(
+      color: green,
+      shape: BoxShape.circle,
+      border: Border.all(color: blackGreen, width: 3),
+    ),
   );
-  static Widget snakeHead = cellTemlate(
-    colorLight: Colors.green,
-    colorDark: Colors.green,
+
+  static Widget snakeHead = Container(
+    decoration: BoxDecoration(
+        image: DecorationImage(image: AssetImage('assets/img/голова.png'))),
   );
 
   // static void gameOver() {
