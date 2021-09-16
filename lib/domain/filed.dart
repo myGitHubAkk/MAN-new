@@ -19,6 +19,11 @@ class Field {
   Widget _createWidget() {
     _clashWithTail();
 
+    if (Snake.snakePosition.last == index) {
+      Snake snake = Snake();
+      return snake.snakeHead;
+    }
+
     if (Snake.snakePosition.contains(index)) {
       return Snake.snake;
     }

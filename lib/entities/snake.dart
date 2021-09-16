@@ -26,10 +26,7 @@ class Snake {
     ),
   );
 
-  static Widget snakeHead = Container(
-    decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage('assets/img/голова.png'))),
-  );
+  Widget get snakeHead => snakeHeadCheck();
 
   // static void gameOver() {
   //   GameState.isGameOn = false;
@@ -52,4 +49,58 @@ class Snake {
   //   // });
   //   // });
   // }
+
+  Widget snakeHeadCheck() {
+    if (snakeDirection == SnakeDirection.down) {
+      return Transform.rotate(
+        angle: 0,
+        child: Container(
+          decoration: BoxDecoration(
+              image:
+                  DecorationImage(image: AssetImage('assets/img/голова.png'))),
+        ),
+      );
+    }
+
+    if (snakeDirection == SnakeDirection.left) {
+      return Transform.rotate(
+        angle: 89.5,
+        child: Container(
+          decoration: BoxDecoration(
+              image:
+                  DecorationImage(image: AssetImage('assets/img/голова.png'))),
+        ),
+      );
+    }
+
+    if (snakeDirection == SnakeDirection.right) {
+      return Transform.rotate(
+        angle: -89.5,
+        child: Container(
+          decoration: BoxDecoration(
+              image:
+                  DecorationImage(image: AssetImage('assets/img/голова.png'))),
+        ),
+      );
+    }
+
+    if (snakeDirection == SnakeDirection.up) {
+      return Transform.rotate(
+        angle: 185.25,
+        child: Container(
+          decoration: BoxDecoration(
+              image:
+                  DecorationImage(image: AssetImage('assets/img/голова.png'))),
+        ),
+      );
+    }
+
+    return Transform.rotate(
+      angle: 0,
+      child: Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(image: AssetImage('assets/img/голова.png'))),
+      ),
+    );
+  }
 }

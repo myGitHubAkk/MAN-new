@@ -199,7 +199,7 @@ class _GameScreenState extends State<GameScreen> {
             style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w400,
-                color: Colors.lightGreen[800]),
+                color: Colors.green[800]),
           ),
           actions: [
             Container(
