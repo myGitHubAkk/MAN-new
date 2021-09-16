@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:isolate';
 
 import 'package:flutter/material.dart';
+import 'package:man_project/const/colors.dart';
 import 'package:man_project/const/value_widget_visibility.dart';
 import 'package:man_project/data/xp.dart';
 import 'package:man_project/domain/main_loop.dart';
@@ -101,34 +102,33 @@ class _FrontHomeScreenState extends State<FrontHomeScreen> {
                           EdgeInsets.symmetric(horizontal: 0, vertical: 20),
                       width: widthBar + 70,
                       child: Row(
-                        //mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(
-                            // '${fractionalXP} Lvl',
-                            //'${_xp['fractional']!} Lvl',
-                            '${Xp.xpFractional} LvL',
-                            //'das',
-                            style: TextStyle(fontSize: 20),
+                          Container(
+                            child: Text(
+                              '${Xp.xpFractional} LvL',
+                              style: TextStyle(
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold,
+                                  color: blackBrown),
+                            ),
                           ),
-                          SizedBox(
-                            width: 0,
-                          ),
+                          // SizedBox(
+                          //   width: 0,
+                          // ),
                           Stack(
                             children: [
                               Container(
-                                margin: EdgeInsets.only(left: 10),
+                                margin: EdgeInsets.only(left: 5),
                                 width: widthBar - 20,
                                 height: 25,
                                 decoration: BoxDecoration(
-                                  color: Colors.white,
+                                  color: white,
                                   borderRadius: BorderRadius.circular(50),
                                 ),
                               ),
                               Container(
-                                margin: EdgeInsets.only(left: 10),
-                                // width: widthBar * wholeXP,
-                                //width: widthBar * _xp['whole']!,
+                                margin: EdgeInsets.only(left: 5),
                                 width: widthBar * Xp.xpWhole,
                                 height: 25,
                                 decoration: BoxDecoration(

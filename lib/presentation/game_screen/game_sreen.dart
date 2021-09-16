@@ -3,6 +3,7 @@ import 'dart:isolate';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:man_project/const/colors.dart';
 import 'package:man_project/domain/checking_answer.dart';
 import 'package:man_project/domain/main_loop.dart';
 import 'package:man_project/entities/game_state.dart';
@@ -11,7 +12,7 @@ import 'package:man_project/entities/snake.dart';
 import 'package:man_project/entities/subjects/subject_width_answer.dart';
 import 'package:man_project/entities/subjects/subjects.dart';
 import 'package:man_project/domain/filed.dart';
-import 'package:man_project/const/constFilled.dart';
+import 'package:man_project/const/const_filled.dart';
 import 'package:man_project/domain/snake_move.dart';
 import 'package:man_project/entities/user_term.dart';
 import 'package:man_project/presentation/home_screen/front_home.dart';
@@ -220,6 +221,7 @@ class _GameScreenState extends State<GameScreen> {
     final heightScreen = MediaQuery.of(context).size.height * 0.65;
 
     return Scaffold(
+      backgroundColor: white,
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 0),

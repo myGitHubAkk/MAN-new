@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:man_project/const/constFilled.dart';
+import 'package:man_project/const/const_filled.dart';
 import 'package:man_project/domain/checking_answer.dart';
 import 'package:man_project/entities/game_state.dart';
 import 'package:man_project/entities/snake.dart';
