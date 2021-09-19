@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:man_project/const/value_widget_visibility.dart';
 import 'package:man_project/data/xp.dart';
 import 'package:man_project/presentation/game_screen/game_sreen.dart';
@@ -15,17 +16,16 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
+  void initState() {
+    super.initState();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    // TreeBloc _bloc = TreeBloc();
-    // TermData termData = TermData();
-    // return StreamBuilder(
-    //   stream: _bloc.outputStateStream,
-    //   initialData: xpA,
-    //   builder: (context, snapshot) {
-    //     var xp = snapshot.data as Map<String, num>;
-    //     int fractionalXP = xp['fractional']! as int;
-    //     double wholeXP = xp['whole']! as double;
-    //     print(xp);
     return Scaffold(
       body: Stack(
         children: [
@@ -37,12 +37,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           FrontHomeScreen()
-
-          //isVisibilityInfo ? Info(textInfo) : Container(),
         ],
       ),
     );
-    //   },
-    // );
   }
 }

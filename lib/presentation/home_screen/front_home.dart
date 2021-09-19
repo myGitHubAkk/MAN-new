@@ -9,8 +9,11 @@ import 'package:man_project/domain/main_loop.dart';
 import 'package:man_project/domain/xp_bloc.dart';
 import 'package:man_project/entities/game_state.dart';
 import 'package:man_project/presentation/game_screen/game_sreen.dart';
+import 'package:man_project/presentation/home_screen/front_widget/cloud_info.dart';
 import 'package:man_project/presentation/widget_template.dart';
 import 'package:man_project/domain/snake_move.dart';
+
+bool isShowDialog = true;
 
 class FrontHomeScreen extends StatefulWidget {
   @override
@@ -19,7 +22,6 @@ class FrontHomeScreen extends StatefulWidget {
 
 class _FrontHomeScreenState extends State<FrontHomeScreen> {
   double widthBar = 220;
-  bool _isShowDialog = true;
 
   late ReceivePort _receivePort;
   late Isolate _isolateLoop;
@@ -38,12 +40,6 @@ class _FrontHomeScreenState extends State<FrontHomeScreen> {
     SnakeMove.snakeMove();
     _update();
     super.initState();
-  }
-
-  void _showDialog() {
-    setState(() {
-      _isShowDialog = !_isShowDialog;
-    });
   }
 
   @override
@@ -72,7 +68,7 @@ class _FrontHomeScreenState extends State<FrontHomeScreen> {
                           color: Colors.lightGreen,
                         ),
                         onPressed: () {
-                          _showDialog();
+                          isShowDialog != isShowDialog;
                         }),
                   ),
                 ),
@@ -149,62 +145,10 @@ class _FrontHomeScreenState extends State<FrontHomeScreen> {
                 ),
               ],
             ),
-            _isShowDialog
-                ? Container(
-                    child: Stack(
-                      children: [
-                        Container(
-                          width: _width * 0.9,
-                          height: _height * 0.8,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              fit: BoxFit.fill,
-                              image: AssetImage(
-                                  'assets/img/хмарка інформації.png'),
-                            ),
-                          ),
-                          child: Stack(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                  vertical: _height * 0.09,
-                                  horizontal: _width * 0.12,
-                                ),
-                                child: Text(
-                                    '''asd assets/i mg/хмарка інф ормації.png asset s/ img/хмарка 
-                                    інформації.png assets/img/хмарка інформації.png assets/img/хмарка інформації.png
-                                    інформації.png assets/img/хмарка інформації.png assets/img/хмарка інформації.png
-                                    інформації.png assets/img/хмарка інформації.png assets/img/хмарка інформації.png
-                                    інформації.png assets/img/хмарка інформації.png assets/img/хмарка інформації.png
-                                    інформації.png assets/img/хмарка інформації.png assets/img/хмарка інформації.png
-                                    '''),
-                              ),
-                              Positioned(
-                                bottom: _height * 0.05,
-                                child: Container(
-                                  width: _width * 0.9,
-                                  height: 110,
-                                  child: Image.asset('assets/img/спить.png'),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        Positioned(
-                          top: _height * 0.05,
-                          right: _width * 0.05,
-                          child: IconButton(
-                              iconSize: 30,
-                              icon: Icon(
-                                Icons.cancel,
-                                color: Colors.grey,
-                              ),
-                              onPressed: () {
-                                _showDialog();
-                              }),
-                        ),
-                      ],
-                    ),
+            isShowDialog
+                ? Cloudinfo(
+                    width: _width,
+                    height: _height,
                   )
                 : SizedBox(),
           ],

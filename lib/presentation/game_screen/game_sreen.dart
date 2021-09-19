@@ -3,6 +3,7 @@ import 'dart:isolate';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:man_project/const/colors.dart';
 import 'package:man_project/domain/checking_answer.dart';
 import 'package:man_project/domain/main_loop.dart';
@@ -102,6 +103,11 @@ class _GameScreenState extends State<GameScreen> {
   @override
   void initState() {
     super.initState();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+
     isExit = false;
     // countInit++;
     snakeUpdate();
