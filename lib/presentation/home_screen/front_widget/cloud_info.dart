@@ -24,272 +24,11 @@ class Cloudinfo extends StatelessWidget {
             child: Stack(
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: height * 0.09,
-                    horizontal: width * 0.12,
-                  ),
-                  child: RichText(
-                    text: TextSpan(
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                        ),
-                        children: [
-                          TextSpan(
-                            text: 'Це ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'сад ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'в якому ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'живе ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'Дерево. ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'Воно ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'адже природа ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'навколо ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'нього ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'погана. ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'Єдиний ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'хто ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'може ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'все ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'виправить ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: '-  ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'це ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'Моржик Прибиральник. ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'Він ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'відповідальний ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'за ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'чистоту ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'цього ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'саду.',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'Але ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'Моржик ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'не знає ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'як ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'повинно ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'виглядати ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'чисте ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'довкілля. ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'Щоб ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'розвеселити ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'дерево ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'потрібно ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'щоб ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'моржик ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'прочитав ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'інструкцію. ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'Але ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'вона',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'розкидана ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'і щоб ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'її ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'зібрати ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'потрібна ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'твоя ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'допомога.',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'Потрібно ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'перетворити ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'моржика ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'і ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'допомогти ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'йому ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'зібрати ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'інструкцію.',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'Щоб ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'це ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'зробити ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'натискай ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'на ',
-                            style: TextStyle(),
-                          ),
-                          TextSpan(
-                            text: 'кнопку. ',
-                            style: TextStyle(),
-                          ),
-                        ]),
-                  ),
-                ),
+                    padding: EdgeInsets.symmetric(
+                      vertical: height * 0.09,
+                      horizontal: width * 0.12,
+                    ),
+                    child: TextInfo()),
                 Positioned(
                   bottom: height * 0.06,
                   child: Container(
@@ -316,6 +55,495 @@ class Cloudinfo extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class TextInfo extends StatelessWidget {
+  const TextInfo({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: TextSpan(
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 16,
+          ),
+          children: [
+            TextSpan(
+              text: 'Це ',
+              style: TextStyle(fontSize: 16),
+            ),
+            TextSpan(
+              text: 'сад ',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            TextSpan(
+              text: 'в якому ',
+              style: TextStyle(fontSize: 14),
+            ),
+            TextSpan(
+              text: 'живе ',
+              style: TextStyle(fontSize: 16, fontStyle: FontStyle.italic),
+            ),
+            TextSpan(
+              text: 'Дерево. ',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            TextSpan(
+              text: 'Воно ',
+              style: TextStyle(fontSize: 16),
+            ),
+            TextSpan(
+              text: 'сумне ',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.italic,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'адже природа ',
+              style: TextStyle(
+                fontSize: 16,
+                fontStyle: FontStyle.italic,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'навколо ',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'нього ',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'погана. ',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'Єдиний ',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+                fontStyle: FontStyle.italic,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'хто ',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'може ',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'все ',
+              style: TextStyle(
+                fontSize: 16,
+                fontStyle: FontStyle.italic,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'виправить ',
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: '-  ',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'це ',
+              style: TextStyle(
+                fontSize: 14,
+                fontStyle: FontStyle.italic,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'Моржик Прибиральник. ',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'Він ',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'відповідальний ',
+              style: TextStyle(
+                fontSize: 16,
+                fontStyle: FontStyle.italic,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'за ',
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'чистоту ',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'цього ',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'саду. ',
+              style: TextStyle(
+                fontSize: 16,
+                fontStyle: FontStyle.italic,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'Але ',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'Моржик ',
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'не знає ',
+              style: TextStyle(
+                fontSize: 14,
+                fontStyle: FontStyle.italic,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'як ',
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'повинно ',
+              style: TextStyle(
+                fontSize: 16,
+                fontStyle: FontStyle.italic,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'виглядати ',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'чисте ',
+              style: TextStyle(
+                fontSize: 18,
+                fontStyle: FontStyle.italic,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'довкілля. ',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'Щоб ',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'розвеселити ',
+              style: TextStyle(
+                fontSize: 16,
+                fontStyle: FontStyle.italic,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'Дерево ',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'потрібно ',
+              style: TextStyle(
+                fontSize: 16,
+                fontStyle: FontStyle.italic,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'щоб ',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'моржик ',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'прочитав ',
+              style: TextStyle(
+                fontSize: 14,
+                fontStyle: FontStyle.italic,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'інструкцію. ',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'Але ',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'вона',
+              style: TextStyle(
+                fontSize: 16,
+                fontStyle: FontStyle.italic,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'розкидана ',
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'і щоб ',
+              style: TextStyle(
+                fontSize: 16,
+                fontStyle: FontStyle.italic,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'її ',
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'зібрати ',
+              style: TextStyle(
+                fontSize: 18,
+                fontStyle: FontStyle.italic,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'потрібна ',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'твоя ',
+              style: TextStyle(
+                fontSize: 17,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'допомога. ',
+              style: TextStyle(
+                fontSize: 14,
+                fontStyle: FontStyle.italic,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'Потрібно ',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'перетворити ',
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.italic,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'Mоржика ',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'і ',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'допомогти ',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'йому ',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'зібрати ',
+              style: TextStyle(
+                fontSize: 16,
+                fontStyle: FontStyle.italic,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'інструкцію. ',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'Щоб ',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'це ',
+              style: TextStyle(
+                fontSize: 14,
+                fontStyle: FontStyle.italic,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'зробити ',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'натискай ',
+              style: TextStyle(
+                fontSize: 18,
+                fontStyle: FontStyle.italic,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'на ',
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            TextSpan(
+              text: 'кнопку. ',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+          ]),
     );
   }
 }
