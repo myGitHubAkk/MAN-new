@@ -56,10 +56,9 @@ class CheckingAnswer {
 
       if (UserTerm.namberWord == trueTerm.length - 1) {
         GameState.isWinner = true;
-        //xpBloc.inputEventSink.add(0.5);
         UserTerm.namberTerm++;
         Xp().addXp(0.5);
-        //FrontHomeScreenState().update();
+        UserTerm.namberWord = 0;
       } else {
         UserTerm.namberWord++;
       }

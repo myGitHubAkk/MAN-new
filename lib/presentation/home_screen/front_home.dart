@@ -79,22 +79,20 @@ class _FrontHomeScreenState extends State<FrontHomeScreen> {
                     SizedBox(
                       height: 10,
                     ),
-                    Xp.xpFractional == treeHappinessLvl['Very very happy']
-                        ? SizedBox()
-                        : GestureDetector(
-                            onTap: () {
-                              GameState.gameReset();
-                              GameState.isGamePlay = true;
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (contex) {
-                                  return GameScreen();
-                                }),
-                              );
-                            },
-                            child: backgroundImage(
-                                name: 'Кнопка Старта', width: 110, height: 110),
-                          ),
+                    GestureDetector(
+                      onTap: () {
+                        GameState.gameReset();
+                        GameState.isGamePlay = true;
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (contex) {
+                            return GameScreen();
+                          }),
+                        );
+                      },
+                      child: backgroundImage(
+                          name: 'Кнопка Старта', width: 110, height: 110),
+                    ),
                     Container(
                       padding:
                           EdgeInsets.symmetric(horizontal: 0, vertical: 20),
