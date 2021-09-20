@@ -112,8 +112,8 @@ class _FrontHomeScreenState extends State<FrontHomeScreen> {
                           Stack(
                             children: [
                               Container(
-                                margin: EdgeInsets.only(left: 5),
-                                width: widthBar - 20,
+                                margin: EdgeInsets.only(left: 18),
+                                width: widthBar - 40,
                                 height: 25,
                                 decoration: BoxDecoration(
                                   color: white,

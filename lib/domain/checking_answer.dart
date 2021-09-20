@@ -5,6 +5,7 @@ import 'package:man_project/entities/game_state.dart';
 import 'package:man_project/entities/subjects/subject_width_answer.dart';
 import 'package:man_project/entities/user_term.dart';
 import 'package:man_project/presentation/home_screen/front_home.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CheckingAnswer {
   static String _answer = '';
@@ -59,6 +60,7 @@ class CheckingAnswer {
         UserTerm.namberTerm++;
         Xp().addXp(0.5);
         UserTerm.namberWord = 0;
+        _saveNamberTerm();
       } else {
         UserTerm.namberWord++;
       }
@@ -79,4 +81,10 @@ class CheckingAnswer {
   //   _isTrueAnswerUserVersion = value['isTrue'];
   //   checkingUserVersion();
   // }
+}
+
+_saveNamberTerm() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.setInt('namberTerm', UserTerm.namberTerm);
+  UserTerm.namberTerm = prefs.getInt('namberTerm') ?? 0;
 }
