@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:man_project/const/colors.dart';
+import 'package:man_project/entities/game_state.dart';
 import 'package:man_project/presentation/home_screen/front_home.dart';
 
 class Cloudinfo extends StatelessWidget {
@@ -50,7 +52,11 @@ class Cloudinfo extends StatelessWidget {
                   color: Colors.grey,
                 ),
                 onPressed: () {
-                  isShowDialog != isShowDialog;
+                  if (GameState.isShowDialog) {
+                    GameState.isShowDialog = false;
+                  } else if (!GameState.isShowDialog) {
+                    GameState.isShowDialog = true;
+                  }
                 }),
           ),
         ],
@@ -77,7 +83,11 @@ class TextInfo extends StatelessWidget {
             ),
             TextSpan(
               text: 'сад ',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: blackGreen,
+              ),
             ),
             TextSpan(
               text: 'в якому ',
@@ -89,7 +99,8 @@ class TextInfo extends StatelessWidget {
             ),
             TextSpan(
               text: 'Дерево. ',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontSize: 18, fontWeight: FontWeight.bold, color: purple),
             ),
             TextSpan(
               text: 'Воно ',
@@ -193,7 +204,7 @@ class TextInfo extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: Colors.black,
+                color: blackGreen,
               ),
             ),
             TextSpan(
@@ -253,7 +264,7 @@ class TextInfo extends StatelessWidget {
               style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
-                color: Colors.black,
+                color: blackGreen,
               ),
             ),
             TextSpan(
@@ -323,7 +334,7 @@ class TextInfo extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: Colors.black,
+                color: purple,
               ),
             ),
             TextSpan(
@@ -342,11 +353,11 @@ class TextInfo extends StatelessWidget {
               ),
             ),
             TextSpan(
-              text: 'моржик ',
+              text: 'Моржик ',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: Colors.black,
+                color: blackGreen,
               ),
             ),
             TextSpan(
@@ -455,7 +466,7 @@ class TextInfo extends StatelessWidget {
               text: 'Mоржика ',
               style: TextStyle(
                 fontSize: 18,
-                color: Colors.black,
+                color: blackGreen,
               ),
             ),
             TextSpan(

@@ -11,6 +11,8 @@ class GameState {
   static bool isShowDialogGameOver = true;
   static bool isGamePlay = false;
 
+  static bool isShowDialog = true;
+
   static void gameReset() {
     isShowDialogGameOver = true;
     isGamePause = false;

@@ -13,8 +13,6 @@ import 'package:man_project/presentation/home_screen/front_widget/cloud_info.dar
 import 'package:man_project/presentation/widget_template.dart';
 import 'package:man_project/domain/snake_move.dart';
 
-bool isShowDialog = true;
-
 class FrontHomeScreen extends StatefulWidget {
   @override
   _FrontHomeScreenState createState() => _FrontHomeScreenState();
@@ -68,7 +66,11 @@ class _FrontHomeScreenState extends State<FrontHomeScreen> {
                           color: Colors.lightGreen,
                         ),
                         onPressed: () {
-                          isShowDialog != isShowDialog;
+                          if (GameState.isShowDialog) {
+                            GameState.isShowDialog = false;
+                          } else if (!GameState.isShowDialog) {
+                            GameState.isShowDialog = true;
+                          }
                         }),
                   ),
                 ),
@@ -109,9 +111,6 @@ class _FrontHomeScreenState extends State<FrontHomeScreen> {
                                   color: blackBrown),
                             ),
                           ),
-                          // SizedBox(
-                          //   width: 0,
-                          // ),
                           Stack(
                             children: [
                               Container(
@@ -145,7 +144,7 @@ class _FrontHomeScreenState extends State<FrontHomeScreen> {
                 ),
               ],
             ),
-            isShowDialog
+            GameState.isShowDialog
                 ? Cloudinfo(
                     width: _width,
                     height: _height,
