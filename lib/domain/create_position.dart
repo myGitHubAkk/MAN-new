@@ -29,7 +29,6 @@ class CreatePosition {
   }
 
   void _checkRepeat(Random random) {
-    print('check');
     if (_positions.length == 1) {
       posiiton = random.nextInt(sizeFieldPlay);
       _positions.add(posiiton);

@@ -18,16 +18,11 @@ class SnakeMove {
 
   void snakeDirection(SnakeDirection direction) {
     _direction = direction;
-    //print('move ${this.direction}');
-    print('direction');
   }
 
   static void snakeMove() async {
     const duration = Duration(milliseconds: 190);
 
-    print('move');
-
-    //Timer.periodic(duration, (timer) {
     while (true) {
       await Future.delayed(duration);
       if (GameState.isGamePause == false) {
@@ -65,14 +60,8 @@ class SnakeMove {
         }
 
         _tailRemove();
-
-        // if (GameState.isGameOn == false) {
-        //   timer.cancel();
-        // }
-
       }
     }
-    //});
   }
 
   static int _countTailRemove = 0;

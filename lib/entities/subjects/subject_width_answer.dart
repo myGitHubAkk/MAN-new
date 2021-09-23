@@ -40,7 +40,8 @@ class SubjectWidthAnswer extends Subject {
     if (isZeroNamber == true) {
       _answer = _values[UserTerm.namberWord];
     } else if (isZeroNamber == false) {
-      int randomNamber = Random().nextInt(_falseValue.length - 1);
+      int randomNamber =
+          Random().nextInt(_falseValue[UserTerm.namberWord].length - 1);
       _answer = _falseValue[UserTerm.namberWord][randomNamber];
     }
 

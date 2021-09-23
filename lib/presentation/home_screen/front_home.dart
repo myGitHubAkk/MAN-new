@@ -130,9 +130,10 @@ class _FrontHomeScreenState extends State<FrontHomeScreen> {
                                 ),
                               ),
                               backgroundImage(
-                                  name: 'Рішотка шкали',
-                                  width: widthBar,
-                                  height: 25),
+                                name: 'Рішотка шкали',
+                                width: widthBar,
+                                height: 25,
+                              ),
                             ],
                           ),
                         ],

@@ -16,12 +16,16 @@ class BackNameWidgetCreate {
       if (i == widget['ValuesVisibility'].values.length - 1) {
         if (Xp.xpFractional >= widget['ValuesVisibility'].values.elementAt(i)) {
           _nameWidget = widget['WidgetName'][i];
+          // print(
+          //     'кінець ${widget['WidgetName'][i]} із ${widget['ValuesVisibility'].values.length}');
         }
       } else {
         if (Xp.xpFractional >= widget['ValuesVisibility'].values.elementAt(i) &&
             Xp.xpFractional <
                 widget['ValuesVisibility'].values.elementAt(i + 1)) {
           _nameWidget = widget['WidgetName'][i];
+          // print(
+          //     '${widget['WidgetName'][i]} із ${widget['ValuesVisibility'].values.length}');
         }
       }
     }

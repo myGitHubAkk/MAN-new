@@ -8,7 +8,6 @@ class MainLoop {
   static bool isRuningLoop = true;
 
   static void startLoop(SendPort sendPort) async {
-    print('startLoop');
     Timer.periodic(
       Duration(milliseconds: 20),
       (timer) {

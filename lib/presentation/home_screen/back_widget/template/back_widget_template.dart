@@ -15,9 +15,6 @@ class BackWidgetTemplate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // double heightScreen = MediaQuery.of(context).size.height;
-    // double widthScreen = MediaQuery.of(context).size.width;
-
     return Padding(
       padding: EdgeInsets.fromLTRB(poosition['left'], poosition['top'], 0, 0),
       child: backgroundImage(

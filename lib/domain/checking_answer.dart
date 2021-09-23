@@ -14,37 +14,15 @@ class CheckingAnswer {
   static bool isTrueUserVersion = false;
 
   set addUserVersion(bool userVersion) {
-    // _addUserVersion(value);
     _answer = SubjectWidthAnswer().answer;
     _isTrueAnswerUserVersion = userVersion;
     checkingUserVersion();
   }
 
-  // bool get isTrueAnswer {
-  //   _checkingAnswer();
-  //   return _isTrueAnswer;
-  // }
-
-  // bool get isTrueUserVersion {
-  //   checkingUserVersion();
-  //   return _isTrueUserVersion;
-  // }
-
-  // void _checkingAnswer() {
-  //   String trueAnswer = TermData.terms[TermData.namberTerm].values[_namberWord];
-  //   // print('true $trueAnswer');
-  //   if (trueAnswer == _answer) {
-  //     _isTrueAnswer = true;
-  //   } else {
-  //     _isTrueAnswer = false;
-  //   }
-  // }
-
   void checkingUserVersion() {
     List trueTerm = TermData.terms[UserTerm.namberTerm].values;
     String trueAnswer =
         TermData.terms[UserTerm.namberTerm].values[UserTerm.namberWord];
-    //XpBloc xpBloc = XpBloc();
 
     if (trueAnswer == _answer) {
       _isTrueAnswer = true;
@@ -60,9 +38,19 @@ class CheckingAnswer {
         UserTerm.namberTerm++;
         Xp().addXp(0.5);
         UserTerm.namberWord = 0;
-        _saveNamberTerm();
+        //_saveNamberTerm();
+        print('');
+        print('--------------------------------------');
+        print(
+            'конець раунда namberWord: ${UserTerm.namberWord} Xp: ${Xp.xpFull} namberTerm: ${UserTerm.namberTerm}');
+        print('');
       } else {
         UserTerm.namberWord++;
+        print('');
+        print('--------------------------------------');
+        print(
+            'не конець namberWord: ${UserTerm.namberWord} із ${TermData.terms.length}');
+        print('');
       }
 
       UserTerm().addValue = _answer;
@@ -75,16 +63,10 @@ class CheckingAnswer {
       isTrueUserVersion = true;
     }
   }
-
-  // void _addUserVersion(Map value) {
-  //   _answer = AppleWithWords().answer;
-  //   _isTrueAnswerUserVersion = value['isTrue'];
-  //   checkingUserVersion();
-  // }
 }
 
-_saveNamberTerm() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  await prefs.setInt('namberTerm', UserTerm.namberTerm);
-  UserTerm.namberTerm = prefs.getInt('namberTerm') ?? 0;
-}
+// _saveNamberTerm() async {
+//   SharedPreferences prefs = await SharedPreferences.getInstance();
+//   await prefs.setInt('namberTerm', UserTerm.namberTerm);
+//   UserTerm.namberTerm = prefs.getInt('namberTerm') ?? 0;
+// }

@@ -64,41 +64,7 @@ class _GameScreenState extends State<GameScreen> {
         GameState.isGamePause = true;
       }
     });
-    // Timer.periodic(Duration(milliseconds: 10), (timer) {
-    //   setState(() {});
-    // });
   }
-
-  // void snakeUpdate() {
-
-  //   if (GameState.isGamePlay == true) {
-  //     Timer.periodic(Duration(milliseconds: 10), (timer) {
-  //       setState(() {});
-
-  //       if (AppleWithWords.isClash == true && GameState.isGamePause == false) {
-  //         _showDialogQuestion();
-  //         GameState.isGamePause = true;
-  //       }
-
-  //       if (GameState.isShowDialogGameOver == false &&
-  //           GameState.isGamePause == false) {
-  //         _showDialogGameOver();
-  //         GameState.isGamePause = true;
-  //       }
-
-  //       if (GameState.isWinner == true && GameState.isGamePause == false) {
-  //         _showDialogWinner();
-  //         GameState.isGamePause = true;
-  //       }
-
-  //       if (isExit == true) {
-  //         GameState.isGamePlay = false;
-  //         timer.cancel();
-  //       }
-  //     });
-  //   }
-  //   //}
-  // }
 
   @override
   void initState() {
@@ -109,7 +75,6 @@ class _GameScreenState extends State<GameScreen> {
     ]);
 
     isExit = false;
-    // countInit++;
     snakeUpdate();
   }
 
@@ -182,9 +147,7 @@ class _GameScreenState extends State<GameScreen> {
             IconButton(
               icon: Icon(Icons.refresh),
               onPressed: () {
-                //print('dg');
                 GameState.gameReset();
-                //GameState.isGamePause = false;
                 Navigator.of(context).pop();
               },
             ),
@@ -230,21 +193,6 @@ class _GameScreenState extends State<GameScreen> {
                 ],
               ),
             ),
-
-            // IconButton(
-            //   icon: Icon(Icons.check),
-            //   onPressed: () {
-            //     onPressedShowDialog();
-            //     CheckingAnswer().addUserVersion = true;
-            //   },
-            // ),
-            // IconButton(
-            //   icon: Icon(Icons.cancel),
-            //   onPressed: () {
-            //     onPressedShowDialog();
-            //     CheckingAnswer().addUserVersion = false;
-            //   },
-            // ),
           ],
         );
       },
@@ -278,12 +226,6 @@ class _GameScreenState extends State<GameScreen> {
                 child: GestureDetector(
                   onVerticalDragUpdate: (details) {
                     final _details = details.delta.dy;
-
-                    // if (GameState.isGameOn == true) {
-                    //   _details = details.delta.dy;
-                    // } else {
-                    //   _details = 1;
-                    // }
 
                     if (Snake.snakeDirection != SnakeDirection.up &&
                         _details > 0) {
