@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           BackHomeScreen(),
           Opacity(
-            opacity: 0.3,
+            opacity: 0.23,
             child: Container(
               color: Colors.white,
             ),

@@ -26,11 +26,12 @@ class Cloudinfo extends StatelessWidget {
             child: Stack(
               children: [
                 Padding(
-                    padding: EdgeInsets.symmetric(
-                      vertical: height * 0.09,
-                      horizontal: width * 0.12,
-                    ),
-                    child: TextInfo()),
+                  padding: EdgeInsets.symmetric(
+                    vertical: height * 0.09,
+                    horizontal: width * 0.12,
+                  ),
+                  child: TextInfo(),
+                ),
                 Positioned(
                   bottom: height * 0.06,
                   child: Container(

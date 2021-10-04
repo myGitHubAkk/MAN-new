@@ -54,7 +54,7 @@ class _BackHomeScreenState extends State<BackHomeScreen> {
             height: _widthScreen * k * 0.5,
             width: _widthScreen,
             child: Image.asset(
-              'assets/img/Земля нова.png',
+              'assets/img/Земля.png',
               width: double.infinity,
               height: double.infinity,
               fit: BoxFit.fill,
