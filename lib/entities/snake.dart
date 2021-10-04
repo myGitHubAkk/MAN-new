@@ -20,9 +20,9 @@ class Snake {
 
   static Widget snake = Container(
     decoration: BoxDecoration(
-      color: green,
+      color: lightGreen,
       shape: BoxShape.circle,
-      border: Border.all(color: blackGreen, width: 3),
+      border: Border.all(color: lightBlackGreen, width: 3),
     ),
   );
 

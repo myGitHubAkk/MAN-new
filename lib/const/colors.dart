@@ -12,6 +12,9 @@ const Color blackPurple = Color(0xff48104F);
 const Color green = Color(0xff96C577);
 const Color blackGreen = Color(0xff6B8D55);
 
+const Color lightGreen = Color(0xffA4EC75);
+const Color lightBlackGreen = Color(0xff6F9F4E);
+
 const Color brown = Color(0xffA2533A);
 const Color blackBrown = Color(0xff783824);
 
