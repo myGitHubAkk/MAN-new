@@ -28,6 +28,7 @@ class GameScreen extends StatefulWidget {
 }
 
 class _GameScreenState extends State<GameScreen> {
+  double sizeFiled = 320;
   SnakeMove snakeMove = SnakeMove();
   UserTerm userTerm = UserTerm();
 
@@ -201,79 +202,131 @@ class _GameScreenState extends State<GameScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final widthScreen = MediaQuery.of(context).size.width * 0.8;
-    final heightScreen = MediaQuery.of(context).size.height * 0.65;
+    final widthScreen = MediaQuery.of(context).size.width;
+    final heightScreen = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: white,
+      backgroundColor: skyColor,
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                height: 20,
-              ),
-              Container(
-                height: heightScreen / 3,
-                width: widthScreen,
-                child: UserTerm().widget,
-              ),
-              Container(
-                width: widthScreen,
-                height: heightScreen,
-                child: GestureDetector(
-                  onVerticalDragUpdate: (details) {
-                    final _details = details.delta.dy;
-
-                    if (Snake.snakeDirection != SnakeDirection.up &&
-                        _details > 0) {
-                      Snake.snakeDirection = SnakeDirection.down;
-                      snakeMove.snakeDirection(Snake.snakeDirection);
-                      // snakeDirectionBloc.inputEventSink.add(Snake.snakeDirection);
-                    } else if (Snake.snakeDirection != SnakeDirection.down &&
-                        _details < 0) {
-                      Snake.snakeDirection = SnakeDirection.up;
-                      snakeMove.snakeDirection(Snake.snakeDirection);
-                      // snakeMoveBloc.inputEventSink.add(Snake.snakeDirection);
-                    }
-                  },
-                  onHorizontalDragUpdate: (details) {
-                    if (GameState.isShowDialogGameOver == true) {
-                      if (Snake.snakeDirection != SnakeDirection.left &&
-                          details.delta.dx > 0) {
-                        Snake.snakeDirection = SnakeDirection.right;
-                        snakeMove.snakeDirection(Snake.snakeDirection);
-                        // snakeMoveBloc.inputEventSink.add(Snake.snakeDirection);
-                      } else if (Snake.snakeDirection != SnakeDirection.right &&
-                          details.delta.dx < 0) {
-                        Snake.snakeDirection = SnakeDirection.left;
-                        snakeMove.snakeDirection(Snake.snakeDirection);
-                        // snakeMoveBloc.inputEventSink.add(Snake.snakeDirection);
-                      }
-                    } else {
-                      Snake.snakeDirection = SnakeDirection.down;
-                      snakeMove.snakeDirection(Snake.snakeDirection);
-                    }
-                  },
-                  child: Container(
-                    child: GridView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: sizeFieldPlay,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: lenghtRow,
+        child: Column(
+          children: [
+            Expanded(
+              flex: 4,
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: 0, vertical: heightScreen * 0.07),
+                child: Container(
+                  width: widthScreen,
+                  child: Stack(
+                    children: [
+                      backgroundImage(
+                        name: 'хмарка терміна',
+                        width: double.infinity,
+                        height: double.infinity,
                       ),
-                      itemBuilder: (BuildContext context, int index) {
-                        Field collision = Field(index);
-                        return collision.widget;
-                      },
-                    ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: widthScreen * 0.15,
+                          vertical: heightScreen * 0.04,
+                        ),
+                        child: Container(
+                          child: UserTerm().widget,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+            Expanded(
+              flex: 5,
+              child: Stack(
+                children: [
+                  Transform.scale(
+                    scale: widthScreen * 0.003,
+                    child: Image.asset(
+                      'assets/img/холм.png',
+                      width: widthScreen,
+                      height: heightScreen * 0.6,
+                    ),
+                  ),
+                  Center(
+                    child: Stack(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: backgroundImage(
+                            name: 'поле',
+                            width: sizeFiled,
+                            height: sizeFiled * 9 / 8,
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          width: sizeFiled,
+                          height: sizeFiled * 9 / 8,
+                          child: GestureDetector(
+                            onVerticalDragUpdate: (details) {
+                              final _details = details.delta.dy;
+
+                              if (Snake.snakeDirection != SnakeDirection.up &&
+                                  _details > 0) {
+                                Snake.snakeDirection = SnakeDirection.down;
+                                snakeMove.snakeDirection(Snake.snakeDirection);
+                                // snakeDirectionBloc.inputEventSink.add(Snake.snakeDirection);
+                              } else if (Snake.snakeDirection !=
+                                      SnakeDirection.down &&
+                                  _details < 0) {
+                                Snake.snakeDirection = SnakeDirection.up;
+                                snakeMove.snakeDirection(Snake.snakeDirection);
+                                // snakeMoveBloc.inputEventSink.add(Snake.snakeDirection);
+                              }
+                            },
+                            onHorizontalDragUpdate: (details) {
+                              if (GameState.isShowDialogGameOver == true) {
+                                if (Snake.snakeDirection !=
+                                        SnakeDirection.left &&
+                                    details.delta.dx > 0) {
+                                  Snake.snakeDirection = SnakeDirection.right;
+                                  snakeMove
+                                      .snakeDirection(Snake.snakeDirection);
+                                  // snakeMoveBloc.inputEventSink.add(Snake.snakeDirection);
+                                } else if (Snake.snakeDirection !=
+                                        SnakeDirection.right &&
+                                    details.delta.dx < 0) {
+                                  Snake.snakeDirection = SnakeDirection.left;
+                                  snakeMove
+                                      .snakeDirection(Snake.snakeDirection);
+                                  // snakeMoveBloc.inputEventSink.add(Snake.snakeDirection);
+                                }
+                              } else {
+                                Snake.snakeDirection = SnakeDirection.down;
+                                snakeMove.snakeDirection(Snake.snakeDirection);
+                              }
+                            },
+                            child: Container(
+                              child: GridView.builder(
+                                physics: NeverScrollableScrollPhysics(),
+                                itemCount: sizeFieldPlay,
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: lenghtRow,
+                                ),
+                                itemBuilder: (BuildContext context, int index) {
+                                  Field collision = Field(index);
+                                  return collision.widget;
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

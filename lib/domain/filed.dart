@@ -49,13 +49,7 @@ class Field {
       }
     }
 
-    return Container(
-      decoration: BoxDecoration(
-        color: white,
-        shape: BoxShape.circle,
-        border: Border.all(color: blackWhite, width: 3),
-      ),
-    );
+    return SizedBox();
   }
 
   // Widget _check(Subject subject) {
