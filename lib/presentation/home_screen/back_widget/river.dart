@@ -21,14 +21,10 @@ class River extends StatelessWidget {
     return ChangingObjectsInBack(
       position: position,
       width: double.infinity,
-      height: 90.0,
+      height: 80.0,
       inputData: {
         'ValuesVisibility': riverPurityLvl,
-        'WidgetName': [
-          'Бек Річка грязна',
-          'Бек Річка нейтральна',
-          'Бек Річка чиста'
-        ],
+        'WidgetName': ['річка брудеа', 'річка сер', 'річка чиста'],
       },
     );
   }

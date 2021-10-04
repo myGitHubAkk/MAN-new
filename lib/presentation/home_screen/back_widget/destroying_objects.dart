@@ -22,7 +22,6 @@ class DestroyingObjects extends StatefulWidget {
 class _DestroyingObjectsState extends State<DestroyingObjects> {
   double _sizeTreshLeft = 100;
   double _sizeTreshRight = 90;
-  double _sizeTreshFactory = 70;
 
   @override
   Widget build(BuildContext context) {
@@ -67,8 +66,8 @@ class _DestroyingObjectsState extends State<DestroyingObjects> {
                 'top': position['top'],
                 'left': widthScreen - position['left']
               },
-              width: _sizeTreshFactory,
-              height: _sizeTreshFactory,
+              width: 70.0,
+              height: 60.0,
               name: 'Завод',
             )
           : Container(

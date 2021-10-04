@@ -18,3 +18,5 @@ const Color blackBrown = Color(0xff783824);
 const Color riverDirtyColor = Color(0xff5AA36C);
 const Color riverMediumColor = Color(0xff5AA391);
 const Color riverCleanColor = Color(0xff6DB6D2);
+
+const Color skyColor = Color(0xff9EDAF9);

@@ -72,8 +72,8 @@ class _BackHomeScreenState extends State<BackHomeScreen> {
               alignment: Alignment.center,
               children: [
                 DestroyingObjects(
-                  top: 20.0,
-                  left: 160.0,
+                  top: 40.0,
+                  left: 170.0,
                   valueVisibility: lvlWhichNotVisibleFactory,
                 ),
                 Column(
