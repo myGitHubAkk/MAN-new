@@ -6,6 +6,8 @@ class CreatePosition {
   late int posiiton;
   List<int> _safeStraight = [];
   List<int> _positions = [];
+  List<int> _leftBorder = [1];
+  List<int> _rightBorder = [];
 
   CreatePosition() {
     createPosition();
@@ -17,10 +19,20 @@ class CreatePosition {
 
     for (var i = 1; i < sizeFieldPlay / lenghtRow; i++) {
       _safeStraight.add(tailPosition + lenghtRow * i);
+      _rightBorder.add(i * lenghtRow);
+      if (i * lenghtRow + 1 <= sizeFieldPlay) {
+        _leftBorder.add(i * lenghtRow + 1);
+      } else {
+        continue;
+      }
     }
 
-    if (_safeStraight.contains(_randomPosiiton)) {
-      _randomPosiiton = _random.nextInt(sizeFieldPlay);
+    if (_safeStraight.contains(_randomPosiiton) ||
+        _randomPosiiton < lenghtRow ||
+        _randomPosiiton > sizeFieldPlay - lenghtRow ||
+        _leftBorder.contains(_randomPosiiton) ||
+        _rightBorder.contains(_randomPosiiton)) {
+      createPosition();
     }
 
     posiiton = _randomPosiiton;
