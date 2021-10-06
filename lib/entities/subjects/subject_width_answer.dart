@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:man_project/data/terms.dart';
+import 'package:man_project/data/xp.dart';
 import 'package:man_project/domain/create_position.dart';
 import 'package:man_project/entities/subjects/subject.dart';
 import 'package:man_project/entities/user_term.dart';

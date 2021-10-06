@@ -125,7 +125,7 @@ class _FrontHomeScreenState extends State<FrontHomeScreen> {
                         Row(
                           children: [
                             Text(
-                              '${Xp.xpFractional}Lvl',
+                              '${Xp.xp['fractional']}Lvl',
                               style: TextStyle(
                                 fontFamily: "VAG World",
                                 fontSize: 20,
@@ -139,7 +139,7 @@ class _FrontHomeScreenState extends State<FrontHomeScreen> {
                               children: [
                                 Container(
                                   height: 50,
-                                  width: Xp.xpWhole * 100,
+                                  width: Xp.xp['whole'] * 100,
                                   decoration: BoxDecoration(
                                     color: green,
                                     borderRadius: BorderRadius.all(
